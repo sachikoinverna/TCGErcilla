@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TCGErcilla.Models
+namespace TCGErcilla.Dto
 {
-    internal class CartaModel
+    internal class ProductoDto
     {
     }
 }
