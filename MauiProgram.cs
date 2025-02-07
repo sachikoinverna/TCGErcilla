@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using UraniumUI;
 
 namespace TCGErcilla
 {
@@ -13,7 +15,11 @@ namespace TCGErcilla
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                    fonts.AddMaterialIconFonts();
+                    fonts.AddMaterialSymbolsFonts();
+                    fonts.AddFluentIconFonts();
+                    fonts.AddFontAwesomeIconFonts();
+                }).UseMauiCommunityToolkit().UseUraniumUI().UseUraniumUIBlurs().UseUraniumUIMaterial();
 
 #if DEBUG
     		builder.Logging.AddDebug();
