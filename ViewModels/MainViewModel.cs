@@ -22,17 +22,5 @@ namespace TCGErcilla.ViewModels
             }
         }
 
-        [RelayCommand]
-        public async Task MostrarLogin()
-        {
-            try
-            {
-                await Shell.Current.GoToAsync("LoginView");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al navegar a LoginView: {ex.Message}");
-            }
-        }
     }
 }
