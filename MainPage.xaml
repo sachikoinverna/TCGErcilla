@@ -5,11 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    Title="MainPage"
     x:DataType="viewmodels:MainViewModel"
     BindingContext="{viewmodels:MainViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding MostrarLoginCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding OcultarLoginCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Label

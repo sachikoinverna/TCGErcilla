@@ -6,14 +6,21 @@
     xmlns:local="clr-namespace:TCGErcilla"
     xmlns:views="clr-namespace:TCGErcilla.Views"
     Title="TCGErcilla"
-    Shell.FlyoutBehavior="Flyout">
+    Shell.TitleColor="AntiqueWhite"
+    Shell.ForegroundColor="AliceBlue"
+    Shell.TabBarBackgroundColor="Black"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.BackgroundColor="Aqua"
+    FlyoutBackgroundColor="Red">
+    <ShellContent
+    Title="Login"
+        x:Name="LoginPage"
+    ContentTemplate="{DataTemplate views:LoginView}"
+    Route="LoginView"/>
     <ShellContent
         Title="Home"
+        Shell.TitleColor="White"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate views:LoginView}"
-        Route="LoginView"
-        IsVisible="False"/>
+    
 </Shell>
