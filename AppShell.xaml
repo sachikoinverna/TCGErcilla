@@ -3,9 +3,9 @@
     x:Class="TCGErcilla.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     xmlns:local="clr-namespace:TCGErcilla"
     xmlns:views="clr-namespace:TCGErcilla.Views"
-    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     Title="TCGErcilla"
     Shell.BackgroundColor="Aqua"
     Shell.ForegroundColor="Red"
@@ -13,29 +13,34 @@
     Shell.TitleColor="AntiqueWhite">
     <TabBar>
         <ShellContent
-        x:Name="LoginPage"
-        Title="Login"
-        ContentTemplate="{DataTemplate views:LoginView} "
-        Route="LoginView" />
+            x:Name="LoginPage"
+            Title="Login"
+            ContentTemplate="{DataTemplate views:LoginView}"
+            Route="LoginView" />
         <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"
-        Shell.TitleColor="White" />
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
+            Shell.TitleColor="White" />
         <ShellContent
-        x:Name="CartasView"
-        Title="Cartas"
-        ContentTemplate="{DataTemplate views:CartasView}" Route="CartasView">
-        </ShellContent>
+            x:Name="CartasView"
+            Title="Cartas"
+            ContentTemplate="{DataTemplate views:CartasView}"
+            Route="CartasView" />
         <ShellContent
-        Title="Colecciones"
-        ContentTemplate="{DataTemplate views:ColeccionesView}"
-        Route="ColeccionesView"
-        Shell.TitleColor="White" />
+            Title="Colecciones"
+            ContentTemplate="{DataTemplate views:ColeccionesView}"
+            Route="ColeccionesView"
+            Shell.TitleColor="White" />
         <ShellContent
-        Title="Productos"
-        ContentTemplate="{DataTemplate views:ProductosView}"
-        Route="ColeccionesView"
-        Shell.TitleColor="White" />
+            Title="Productos"
+            ContentTemplate="{DataTemplate views:ProductosView}"
+            Route="ColeccionesView"
+            Shell.TitleColor="White" />
+        <ShellContent
+            Title="Distribuidores"
+            ContentTemplate="{DataTemplate views:DistribuidoresView}"
+            Route="DistribuidoresView"
+            Shell.TitleColor="White" />
     </TabBar>
 </Shell>

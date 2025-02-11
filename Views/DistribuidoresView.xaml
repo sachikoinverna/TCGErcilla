@@ -7,7 +7,7 @@
              BindingContext="{viewmodels:DistribuidoresViewModel}"
              Title="DistribuidoresView">
     <VerticalStackLayout>
-        <Button Text="Ir a crear distribuidor" />
-        <Button Text="Ver distribuidores" Command="{Binding GoDistribuidorCrearCommand}"/>
+        <Button Text="Ir a crear distribuidor" Command="{Binding GoDistribuidorCrearCommand}"/>
+        <Button Text="Ver distribuidores" Command="{Binding GoDistribuidoresCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

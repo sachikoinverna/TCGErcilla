@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Newtonsoft.Json;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,30 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TCGErcilla.Info;
-using TCGErcilla.Models;
-using TCGErcilla.Services;
 using TCGErcilla.Views.Mopups;
-using Mopups.Services;
 
 namespace TCGErcilla.ViewModels
 {
-    public partial class GestionDistribuidoresViewModel : ObservableObject
+    public partial class GestionCartasViewModel: ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
+        private ObservableCollection<CartaInfo> listaCartas = new ObservableCollection<CartaInfo>();
         [ObservableProperty]
-        private DistribuidorInfo selectedDistribuidorInfo;
+        private CartaInfo selectedCartaInfo;
         [ObservableProperty]
         private int id;
         [ObservableProperty]
         private string name;
-        
+        [ObservableProperty]
+        private int numCarta;
         [RelayCommand]
-        public async void GetDistribuidores()
+        public async void GetCartas()
         {
             for (int i = 0; i < 5; i++)
             {
-                listaDistribuidores.Add(new DistribuidorInfo(i, "a"));
+                listaCartas.Add(new CartaInfo(i, "a",i));
             }
 
             // RequestModel request = new RequestModel()
@@ -52,17 +50,17 @@ namespace TCGErcilla.ViewModels
             //catch (Exception ex) { }
         }
         [RelayCommand]
-        public async Task AbrirMopupDistribuidor()
+        public async Task AbrirMopupCarta()
         {
             await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
         }
         [RelayCommand]
         public async Task EditarDistribuidor()
         {
-            await Shell.Current.GoToAsync("DistribuidorFormularioView",
+            await Shell.Current.GoToAsync("CartaFormularioView",
                 new Dictionary<string, object>()
                 {
-                    ["DistribuidorInfo"] = SelectedDistribuidorInfo
+                    ["CartaInfo"] = SelectedCartaInfo
                 });
         }
     }

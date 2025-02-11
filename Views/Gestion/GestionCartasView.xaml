@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="TCGErcilla.Views.GestionDistribuidoresView"
+    x:Class="TCGErcilla.Views.Gestion.GestionCartasView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:Name="gestion_distribuidores"
-    Title="GestionDistribuidoresView"
-    x:DataType="viewmodels:GestionDistribuidoresViewModel"
-    BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
+    x:Name="gestion_cartas"
+    Title="GestionCartasView"
+    x:DataType="viewmodels:GestionCartasViewModel"
+    BindingContext="{viewmodels:GestionCartasViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetCartasCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
             Margin="0,10"
             BackgroundColor="MidnightBlue"
-            Command="{Binding AbrirMopupDistribuidorCommand}"
+            Command="{Binding AbrirMopupCartaCommand}"
             CornerRadius="0"
             FontAttributes="Bold"
             FontSize="28"
@@ -50,28 +51,34 @@
                 Margin="10"
                 Background="LightGray"
                 HeightRequest="350"
-                ItemsSource="{Binding ListaDistribuidores}"
-                SelectedItem="{Binding SelectedDistribuidorInfo}"
-                SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_distribuidores}}"
+                ItemsSource="{Binding ListaCartas}"
+                SelectedItem="{Binding SelectedCartaInfo}"
+                SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_cartas}}"
                 SelectionMode="Single"
                 WidthRequest="300">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="info:DistribuidorInfo">
+                    <DataTemplate x:DataType="info:CartaInfo">
                         <Border WidthRequest="280">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
                                     x:DataType="viewmodels:GestionDistribuidoresViewModel"
-                                    BindingContext="{Binding Source={x:Reference gestion_distribuidores}, Path=BindingContext}"
+                                    BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
                                     Command="{Binding AbrirMopupDistribuidorCommand}"
                                     NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>
+                                <ffimage:CachedImage
+                                    Aspect="AspectFill"
+                                    ErrorPlaceholder="user.png"
+                                    Source="{Binding AvatarUrl}"
+                                    WidthRequest="50" />
                                 <VerticalStackLayout Margin="10">
                                     <Label Text="{Binding Nombre}" />
-
+                                    <Label Text="{Binding NumeroCartas}" />
+                                    <Label Text="{Binding FechaLanzamiento}" />
                                 </VerticalStackLayout>
 
                             </HorizontalStackLayout>

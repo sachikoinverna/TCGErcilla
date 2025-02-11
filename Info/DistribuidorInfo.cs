@@ -8,12 +8,12 @@ namespace TCGErcilla.Info
 {
     public class DistribuidorInfo
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
         public DistribuidorInfo(int id, string nombre)
         {
-            this.id = id;
-            this.nombre = nombre;
+            this.Id = id;
+            this.Nombre = nombre;
         }
     }
 }

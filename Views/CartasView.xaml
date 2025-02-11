@@ -15,5 +15,7 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" />
         <Button Command="{Binding GoCartaCrearCommand}" Text="Ir a crear carta" />
+        <Button Command="{Binding GoCartaCrearCommand}" Text="Ir a crear carta" />
+
     </VerticalStackLayout>
 </ContentPage>

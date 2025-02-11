@@ -1,6 +1,8 @@
+using Mopups.Pages;
+
 namespace TCGErcilla.Views.Mopups;
 
-public partial class DistribuidorFormularioMopup : ContentPage
+public partial class DistribuidorFormularioMopup : PopupPage
 {
 	public DistribuidorFormularioMopup()
 	{

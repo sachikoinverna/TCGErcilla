@@ -22,5 +22,17 @@ namespace TCGErcilla.ViewModels
                 Console.WriteLine($"Error al navegar a MainPage: {ex.Message}");
             }
         }
+        [RelayCommand]
+        public async Task GoDistribuidores()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("GestionDistribuidoresView");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al navegar a MainPage: {ex.Message}");
+            }
+        }
     }
 }
