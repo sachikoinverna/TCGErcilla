@@ -6,11 +6,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Info;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
+    [QueryProperty(nameof(ProductoInfo), "ProductoInfo")]
     public partial class ProductoFormularioViewModel: ObservableObject
     {
         [ObservableProperty]

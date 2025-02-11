@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.Info
 {
-    internal class DistribuidorDto
+    internal class ProductoInfo
     {
     }
 }
