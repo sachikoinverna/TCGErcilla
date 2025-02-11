@@ -6,13 +6,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Info;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
+    [QueryProperty(nameof(CartaInfo), "CartaInfo")]
+
     public partial class CartaFormularioViewModel: ObservableObject
     {
+        [ObservableProperty]
+        private CartaInfo cartaInfo;
+
         [ObservableProperty]
         private string rutaImagen;
         public CartaFormularioViewModel()
