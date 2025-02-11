@@ -22,5 +22,19 @@
         Shell.TitleColor="White"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-    
+    <ShellContent
+    Title="Cartas"
+        x:Name="CartasView"
+    ContentTemplate="{DataTemplate views:CartasView}"
+    Route="CartasView"/>
+    <ShellContent
+        Title="Colecciones"
+        Shell.TitleColor="White"
+        ContentTemplate="{DataTemplate views:ColeccionesView}"
+        Route="ColeccionesView"/>
+    <ShellContent
+    Title="Productos"
+    Shell.TitleColor="White"
+    ContentTemplate="{DataTemplate views:ProductosView}"
+    Route="ColeccionesView"/>
 </Shell>

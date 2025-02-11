@@ -54,6 +54,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.7" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -62,6 +63,7 @@
 		<PackageReference Include="UraniumUI" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Blurs" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Dialogs.CommunityToolkit" Version="2.11.0" />
+		<PackageReference Include="UraniumUI.Dialogs.Mopups" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Icons.FontAwesome" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Icons.MaterialIcons" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Icons.MaterialSymbols" Version="2.11.0" />
@@ -74,16 +76,40 @@
 	  <Compile Update="MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Formularios\CartaFormularioView.xaml.cs">
+	    <DependentUpon>CartaFormularioView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CartaView.xaml">
+	  <MauiXaml Update="Views\ColeccionesView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\CartaFormularioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CartasView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\ColeccionFormularioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\DistribuidorFormularioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\ProductoFormularioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\TipoProductoFormularioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProductosView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

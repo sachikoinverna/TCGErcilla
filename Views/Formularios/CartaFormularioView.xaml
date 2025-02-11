@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:DataType="viewmodels:CartaFormularioViewModel"
+    BindingContext="{viewmodels:CartaFormularioViewModel}"
+    x:Class="TCGErcilla.Views.CartaFormularioView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+                 xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    Title="CartaFormularioView">
+    <VerticalStackLayout>
+            <HorizontalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="20">
+                <ffimage:CachedImage
+                ErrorPlaceholder="carta_default.jpg"
+                Source="{Binding RutaImagen}"
+                WidthRequest="130"
+                HeightRequest="130" />
+                <VerticalStackLayout
+                VerticalOptions="Center"
+                Spacing="10">
+                    <Button
+                    Margin="5"
+                    Command="{Binding SeleccionarImagenCommand}"
+                    Text="Seleccionar imagen" />
+                    <Button
+                    Margin="5"
+                    Command="{Binding UploadImageCommand}"
+                    Text="Subir" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <material:TextField
+    Title="Nombre"
+    Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
+    AccentColor="DeepSkyBlue" AllowClear="True"/>
+        <material:TextField
+Title="Numero de carta"
+Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
+AccentColor="DeepSkyBlue" AllowClear="True">
+        </material:TextField>
+    </VerticalStackLayout>
+</ContentPage>

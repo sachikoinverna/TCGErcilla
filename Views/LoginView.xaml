@@ -10,34 +10,24 @@
     Shell.NavBarIsVisible="False"
     Shell.FlyoutBehavior="Disabled"
     BindingContext="{viewmodels:LoginViewModel}">
-    <StackLayout
-        Margin="20"
-        BackgroundColor="WhiteSmoke"
-        HeightRequest="550"
-        Orientation="Vertical"
-        WidthRequest="550">
-        
-        <StackLayout.Shadow>
-            <Shadow
-                Brush="Black"
-                Opacity=".7"
-                Radius="20"
-                Offset="10,10" />
-        </StackLayout.Shadow>
-        <WebView
-            Margin="10"
-            HeightRequest="500"
+    <Grid RowDefinitions="*, Auto">
+        <!-- WebView ocupa toda la pantalla -->
+        <WebView 
+            Grid.Row="0"
             Source="{Binding UrlWeb}"
-            WidthRequest="500">
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
             <WebView.Behaviors>
-                <!-- Ejecuta el comando GetLoginWebCommand cuando el WebView se carga -->
                 <toolkit:EventToCommandBehavior
                     EventName="Loaded"
                     Command="{Binding GetLoginWebCommand}" />
             </WebView.Behaviors>
         </WebView>
 
-        <!-- Botón para navegar a MainPage -->
-        <Button Text="Ir a Main" Command="{Binding MostrarMainPageCommand}" />
-    </StackLayout>
+        <!-- Botón debajo del WebView -->
+        <Button 
+            Grid.Row="1"
+            Text="Ir a Main"
+            Command="{Binding MostrarMainPageCommand}" />
+    </Grid>
 </ContentPage>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TCGErcilla.Views.Formularios.ProductoFormularioView"
+             Title="ProductoFormularioView"
+             xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                                  xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+             x:DataType="viewmodels:ProductoFormularioViewModel"
+             BindingContext="{viewmodels:ProductoFormularioViewModel}">
+    <VerticalStackLayout>
+        <HorizontalStackLayout
+HorizontalOptions="Center"
+VerticalOptions="Center"
+Spacing="20">
+
+            <ffimage:CachedImage
+        ErrorPlaceholder="producto_default.jpg"
+        Source="{Binding RutaImagen}"
+        WidthRequest="130"
+HeightRequest="130"/>
+            <VerticalStackLayout
+VerticalOptions="Center"
+Spacing="10">
+                <Button
+        Margin="5"
+        Command="{Binding SeleccionarImagenCommand}"
+        Text="Seleccionar imagen" />
+                <Button
+        Margin="5"
+        Command="{Binding UploadImageCommand}"
+        Text="Subir" />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <material:TextField
+Title="Nombre"
+Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
+AccentColor="DeepSkyBlue" AllowClear="True"/>
+        <material:DropdownField
+                Title="Pick an option"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                ItemsSource="{Binding Items}" />
+    </VerticalStackLayout>
+</ContentPage>

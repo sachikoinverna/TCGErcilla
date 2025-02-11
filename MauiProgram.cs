@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using FFImageLoading.Maui;
 using Microsoft.Extensions.Logging;
+using Mopups.Hosting;
 using UraniumUI;
 
 namespace TCGErcilla
@@ -19,7 +21,7 @@ namespace TCGErcilla
                     fonts.AddMaterialSymbolsFonts();
                     fonts.AddFluentIconFonts();
                     fonts.AddFontAwesomeIconFonts();
-                }).UseMauiCommunityToolkit().UseUraniumUI().UseUraniumUIBlurs().UseUraniumUIMaterial();
+                }).UseMauiCommunityToolkit().UseUraniumUI().UseUraniumUIBlurs().UseUraniumUIMaterial().UseFFImageLoading().ConfigureMopups();
 
 #if DEBUG
     		builder.Logging.AddDebug();
