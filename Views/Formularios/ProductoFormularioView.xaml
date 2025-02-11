@@ -19,22 +19,15 @@
                 HorizontalOptions="Center"
                 Spacing="20"
                 VerticalOptions="Center">
-
                 <ffimage:CachedImage
                     ErrorPlaceholder="producto_default.jpg"
                     HeightRequest="130"
                     Source="{Binding RutaImagen}"
                     WidthRequest="130" />
-                <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                     <Button
                         Margin="5"
                         Command="{Binding SeleccionarImagenCommand}"
                         Text="Seleccionar imagen" />
-                    <Button
-                        Margin="5"
-                        Command="{Binding UploadImageCommand}"
-                        Text="Subir" />
-                </VerticalStackLayout>
             </HorizontalStackLayout>
             <material:TextField
                 Title="Nombre"

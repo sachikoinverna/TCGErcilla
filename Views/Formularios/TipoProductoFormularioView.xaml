@@ -17,7 +17,9 @@
             Title="Tipo"
             AccentColor="DeepSkyBlue"
             Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Edit}}" />
+                                   Glyph={x:Static m:MaterialRegular.Edit}}" >
+                <validation:RequiredValidation />
+            </material:TextField>
         </input:FormView>
     </VerticalStackLayout>
 </ContentPage>

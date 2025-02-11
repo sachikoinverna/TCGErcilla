@@ -21,7 +21,10 @@
             AccentColor="DeepSkyBlue"
             AllowClear="True"
             Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Edit}}" />
+                                   Glyph={x:Static m:MaterialRegular.Edit}}">
+                    <validation:RequiredValidation />
+            </material:TextField>
+            <Button Command="" Text="Crear"/>
         </input:FormView>
 
     </VerticalStackLayout>

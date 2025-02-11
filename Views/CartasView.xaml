@@ -7,8 +7,8 @@
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title="CartasView"
-    x:DataType="viewmodels:CartaViewModel"
-    BindingContext="{viewmodels:CartaViewModel}">
+    x:DataType="viewmodels:CartasViewModel"
+    BindingContext="{viewmodels:CartasViewModel}">
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"

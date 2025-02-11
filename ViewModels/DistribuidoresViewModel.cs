@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.ViewModels
 {
-    public partial class CartaViewModel:ObservableObject
+    public partial class DistribuidoresViewModel:ObservableObject
     {
         [RelayCommand]
-        public async Task GoCartaCrear()
+        public async Task GoDistribuidorCrear()
         {
             try
             {
-                await Shell.Current.GoToAsync("CartaFormularioView");
+                await Shell.Current.GoToAsync("DistribuidorFormularioView");
             }
             catch (Exception ex)
             {

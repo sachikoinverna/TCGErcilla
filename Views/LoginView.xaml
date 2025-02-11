@@ -8,7 +8,7 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:LoginViewModel"
     BindingContext="{viewmodels:LoginViewModel}"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarIsVisible="False"
     Shell.NavBarIsVisible="False">
     <Grid RowDefinitions="*, Auto">
         <!--  WebView ocupa toda la pantalla  -->

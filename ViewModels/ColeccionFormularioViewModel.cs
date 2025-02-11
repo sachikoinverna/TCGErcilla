@@ -19,7 +19,14 @@ namespace TCGErcilla.ViewModels
         private string rutaImagen;
         public ColeccionFormularioViewModel()
         {
-            //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
+        }
+        [RelayCommand]
+        public void EstablecerValoresIniciales()
+        {
+            //if (ColeccionInfo.Id != null) //Quiere decir que estamos editando
+            //{
+            // RutaImagen = ColeccionInfo.Url;
+            // }
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -39,7 +46,7 @@ namespace TCGErcilla.ViewModels
                 string _rutaImagen = RutaImagen;
                 RutaImagen = "loading.gif";
                 await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
-                    "http://localhost:8081/dropbox/upload");
+                    "http://localhost:8081/dropbox/upload/collection");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");

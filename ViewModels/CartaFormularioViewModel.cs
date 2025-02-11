@@ -26,6 +26,14 @@ namespace TCGErcilla.ViewModels
             RutaImagen = "carta_default.png";
         }
         [RelayCommand]
+        public void EstablecerValoresIniciales()
+        {
+            //if (CartaInfo.Id != null) //Quiere decir que estamos editando
+            //{
+               // RutaImagen = Carta.Url;
+           // }
+        }
+        [RelayCommand]
         public async void SeleccionarImagen()
         {
             var file = await FileSelector.SelectImageAsync();
@@ -43,7 +51,7 @@ namespace TCGErcilla.ViewModels
                 string _rutaImagen = RutaImagen;
                // RutaImagen = "loading.gif";
                 await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
-                    "http://localhost:8081/dropbox/upload");
+                    "http://localhost:8081/dropbox/upload/card");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");

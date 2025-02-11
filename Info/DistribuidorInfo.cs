@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.Info
 {
-    internal class DistribuidorInfo
+    public class DistribuidorInfo
     {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public DistribuidorInfo(int id, string nombre)
+        {
+            this.id = id;
+            this.nombre = nombre;
+        }
     }
 }

@@ -5,36 +5,37 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TCGErcilla"
     xmlns:views="clr-namespace:TCGErcilla.Views"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     Title="TCGErcilla"
-    FlyoutBackgroundColor="Red"
     Shell.BackgroundColor="Aqua"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.ForegroundColor="AliceBlue"
-    Shell.TabBarBackgroundColor="Black"
+    Shell.ForegroundColor="Red"
+    Shell.TabBarBackgroundColor="AliceBlue"
     Shell.TitleColor="AntiqueWhite">
-    <ShellContent
+    <TabBar>
+        <ShellContent
         x:Name="LoginPage"
         Title="Login"
-        ContentTemplate="{DataTemplate views:LoginView}"
+        ContentTemplate="{DataTemplate views:LoginView} "
         Route="LoginView" />
-    <ShellContent
+        <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
         Shell.TitleColor="White" />
-    <ShellContent
+        <ShellContent
         x:Name="CartasView"
         Title="Cartas"
-        ContentTemplate="{DataTemplate views:CartasView}"
-        Route="CartasView" />
-    <ShellContent
+        ContentTemplate="{DataTemplate views:CartasView}" Route="CartasView">
+        </ShellContent>
+        <ShellContent
         Title="Colecciones"
         ContentTemplate="{DataTemplate views:ColeccionesView}"
         Route="ColeccionesView"
         Shell.TitleColor="White" />
-    <ShellContent
+        <ShellContent
         Title="Productos"
         ContentTemplate="{DataTemplate views:ProductosView}"
         Route="ColeccionesView"
         Shell.TitleColor="White" />
+    </TabBar>
 </Shell>

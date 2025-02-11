@@ -30,6 +30,14 @@ namespace TCGErcilla.ViewModels
                 RutaImagen = file.FullPath;
             }
         }
+        [RelayCommand]
+        public void EstablecerValoresIniciales()
+        {
+           // if (ProductoInfo.Id != null) //Quiere decir que estamos editando
+            //{
+             //   RutaImagen = ProductoInfo.AvatarUrl;
+           // }
+        }
 
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
@@ -39,7 +47,7 @@ namespace TCGErcilla.ViewModels
                 string _rutaImagen = RutaImagen;
                 RutaImagen = "loading.gif";
                 await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
-                    "http://localhost:8081/dropbox/upload");
+                    "http://localhost:8081/dropbox/upload/product");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
