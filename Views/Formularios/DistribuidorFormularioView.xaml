@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Views.DistribuidorFormularioView"
-                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-             x:DataType="viewmodels:DistribuidorFormularioViewModel"
-             BindingContext="{viewmodels:DistribuidorFormularioViewModel}"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-             xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+<ContentPage
+    x:Class="TCGErcilla.Views.DistribuidorFormularioView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
-             Title="Distribuidor">
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    Title="Distribuidor"
+    x:DataType="viewmodels:DistribuidorFormularioViewModel"
+    BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <VerticalStackLayout>
-        <material:TextField
+        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+            <material:TextField
             Title="Nombre"
-            Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
+            AccentColor="DeepSkyBlue"
             AllowClear="True"
-    AccentColor="DeepSkyBlue"/>
+            Icon="{FontImageSource FontFamily=MaterialRegular,
+                                   Glyph={x:Static m:MaterialRegular.Edit}}" />
+        </input:FormView>
+
     </VerticalStackLayout>
 </ContentPage>

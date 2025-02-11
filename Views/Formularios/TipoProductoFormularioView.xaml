@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Views.Formularios.TipoProductoFormularioView"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-             x:DataType="viewmodels:TipoProductoFormularioViewModel"
-                          xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+<ContentPage
+    x:Class="TCGErcilla.Views.Formularios.TipoProductoFormularioView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
-             Title="TipoProductoFormularioView">
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    Title="TipoProductoFormularioView"
+    x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <VerticalStackLayout>
-        <material:TextField
-    Title="Tipo"
-    Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
-    AccentColor="DeepSkyBlue"/>
-
+        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+            <material:TextField
+            Title="Tipo"
+            AccentColor="DeepSkyBlue"
+            Icon="{FontImageSource FontFamily=MaterialRegular,
+                                   Glyph={x:Static m:MaterialRegular.Edit}}" />
+        </input:FormView>
     </VerticalStackLayout>
 </ContentPage>

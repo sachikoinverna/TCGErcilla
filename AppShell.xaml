@@ -6,35 +6,35 @@
     xmlns:local="clr-namespace:TCGErcilla"
     xmlns:views="clr-namespace:TCGErcilla.Views"
     Title="TCGErcilla"
-    Shell.TitleColor="AntiqueWhite"
+    FlyoutBackgroundColor="Red"
+    Shell.BackgroundColor="Aqua"
+    Shell.FlyoutBehavior="Flyout"
     Shell.ForegroundColor="AliceBlue"
     Shell.TabBarBackgroundColor="Black"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.BackgroundColor="Aqua"
-    FlyoutBackgroundColor="Red">
+    Shell.TitleColor="AntiqueWhite">
     <ShellContent
-    Title="Login"
         x:Name="LoginPage"
-    ContentTemplate="{DataTemplate views:LoginView}"
-    Route="LoginView"/>
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginView}"
+        Route="LoginView" />
     <ShellContent
         Title="Home"
-        Shell.TitleColor="White"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"
+        Shell.TitleColor="White" />
     <ShellContent
-    Title="Cartas"
         x:Name="CartasView"
-    ContentTemplate="{DataTemplate views:CartasView}"
-    Route="CartasView"/>
+        Title="Cartas"
+        ContentTemplate="{DataTemplate views:CartasView}"
+        Route="CartasView" />
     <ShellContent
         Title="Colecciones"
-        Shell.TitleColor="White"
         ContentTemplate="{DataTemplate views:ColeccionesView}"
-        Route="ColeccionesView"/>
+        Route="ColeccionesView"
+        Shell.TitleColor="White" />
     <ShellContent
-    Title="Productos"
-    Shell.TitleColor="White"
-    ContentTemplate="{DataTemplate views:ProductosView}"
-    Route="ColeccionesView"/>
+        Title="Productos"
+        ContentTemplate="{DataTemplate views:ProductosView}"
+        Route="ColeccionesView"
+        Shell.TitleColor="White" />
 </Shell>

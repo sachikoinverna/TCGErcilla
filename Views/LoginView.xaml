@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="TCGErcilla.Views.LoginView"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:LoginViewModel"
-    Shell.NavBarIsVisible="False"
+    BindingContext="{viewmodels:LoginViewModel}"
     Shell.FlyoutBehavior="Disabled"
-    BindingContext="{viewmodels:LoginViewModel}">
+    Shell.NavBarIsVisible="False">
     <Grid RowDefinitions="*, Auto">
-        <!-- WebView ocupa toda la pantalla -->
-        <WebView 
+        <!--  WebView ocupa toda la pantalla  -->
+        <WebView
             Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
             Source="{Binding UrlWeb}"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand">
             <WebView.Behaviors>
-                <toolkit:EventToCommandBehavior
-                    EventName="Loaded"
-                    Command="{Binding GetLoginWebCommand}" />
+                <toolkit:EventToCommandBehavior Command="{Binding GetLoginWebCommand}" EventName="Loaded" />
             </WebView.Behaviors>
         </WebView>
 
-        <!-- Botón debajo del WebView -->
-        <Button 
+        <!--  Botón debajo del WebView  -->
+        <Button
             Grid.Row="1"
-            Text="Ir a Main"
-            Command="{Binding MostrarMainPageCommand}" />
+            Command="{Binding MostrarMainPageCommand}"
+            Text="Ir a Main" />
     </Grid>
 </ContentPage>

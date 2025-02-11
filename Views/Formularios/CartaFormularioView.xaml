@@ -1,48 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:DataType="viewmodels:CartaFormularioViewModel"
-    BindingContext="{viewmodels:CartaFormularioViewModel}"
     x:Class="TCGErcilla.Views.CartaFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                     xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
-                 xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-    Title="CartaFormularioView">
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    Title="CartaFormularioView"
+    x:DataType="viewmodels:CartaFormularioViewModel"
+    BindingContext="{viewmodels:CartaFormularioViewModel}">
     <VerticalStackLayout>
+        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
             <HorizontalStackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Spacing="20">
+                HorizontalOptions="Center"
+                Spacing="20"
+                VerticalOptions="Center">
                 <ffimage:CachedImage
-                ErrorPlaceholder="carta_default.jpg"
-                Source="{Binding RutaImagen}"
-                WidthRequest="130"
-                HeightRequest="130" />
-                <VerticalStackLayout
-                VerticalOptions="Center"
-                Spacing="10">
+                    ErrorPlaceholder="carta_default.jpg"
+                    HeightRequest="130"
+                    Source="{Binding RutaImagen}"
+                    WidthRequest="130" />
+                <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                     <Button
-                    Margin="5"
-                    Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                        Margin="5"
+                        Command="{Binding SeleccionarImagenCommand}"
+                        Text="Seleccionar imagen" />
                     <Button
-                    Margin="5"
-                    Command="{Binding UploadImageCommand}"
-                    Text="Subir" />
+                        Margin="5"
+                        Command="{Binding UploadImageCommand}"
+                        Text="Subir" />
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
             <material:TextField
-    Title="Nombre"
-    Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
-    AccentColor="DeepSkyBlue" AllowClear="True"/>
-        <material:TextField
-Title="Numero de carta"
-Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}"
-AccentColor="DeepSkyBlue" AllowClear="True">
-        </material:TextField>
+                Title="Nombre"
+                AccentColor="DeepSkyBlue"
+                AllowClear="True"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" />
+            <material:TextField
+                Title="Numero de carta"
+                AccentColor="DeepSkyBlue"
+                AllowClear="True"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" />
+            <material:DropdownField
+                Title="Pick an option"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                ItemsSource="{Binding Items}" />
+        </input:FormView>
     </VerticalStackLayout>
 </ContentPage>
