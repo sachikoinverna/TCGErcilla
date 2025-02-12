@@ -15,7 +15,7 @@
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
             <material:TextField
             Title="Nombre"
             AccentColor="DeepSkyBlue"
@@ -24,7 +24,8 @@
                                    Glyph={x:Static m:MaterialRegular.Catching_pokemon}}">
                     <validation:RequiredValidation />
             </material:TextField>
-            <Button Command="{Binding CrearDistribuidorCommand}" Text="Crear"/>
+            <Button input:FormView.IsSubmitButton="True"
+ Text="Crear"/>
         </input:FormView>
 
     </VerticalStackLayout>

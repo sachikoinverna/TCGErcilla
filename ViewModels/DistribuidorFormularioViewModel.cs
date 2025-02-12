@@ -18,7 +18,7 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private DistribuidorInfo distribuidorInfo;
         [RelayCommand]
-        public void CrearDistribuidor()
+        public async void CrearDistribuidor()
         {
             // RequestModel request = new RequestModel()
             //{

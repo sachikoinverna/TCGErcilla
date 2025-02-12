@@ -35,13 +35,17 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" />
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" >
+                <validation:RequiredValidation />
+            </material:TextField>
             <material:TextField
                 Title="Numero de carta"
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" />
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" >
+                <validation:RequiredValidation />
+            </material:TextField>
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
