@@ -18,5 +18,16 @@ namespace TCGErcilla.Info
             this.NumeroCartas = numerocartas;
             this.FechaLanzamiento = DateTime.Now;
         }
+        public CartaInfo() { 
+
+        }
+        public object Clone()
+        {
+            return new CartaInfo
+            {
+                Id = this.Id,
+                Nombre = this.Nombre,
+            };
+        }
     }
 }

@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Views.DistribuidoresView"
-             xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-             x:DataType="viewmodels:DistribuidoresViewModel"
-             BindingContext="{viewmodels:DistribuidoresViewModel}"
-             Title="DistribuidoresView">
+<ContentPage
+    x:Class="TCGErcilla.Views.GestionDistribuidoresView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:info="clr-namespace:TCGErcilla.Info"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:Name="gestion_distribuidores"
+    Title="GestionDistribuidoresView"
+    x:DataType="viewmodels:GestionDistribuidoresViewModel"
+    BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
     <VerticalStackLayout>
-        <Button Text="Ir a crear distribuidor" Command="{Binding GoDistribuidorCrearCommand}"/>
-        <Button Text="Ver distribuidores" Command="{Binding GoDistribuidoresCommand}"/>
+        <Button
+            Margin="0,10"
+            BackgroundColor="MidnightBlue"
+            Command="{Binding AbrirMopupDistribuidorCommand}"
+            CornerRadius="0"
+            FontAttributes="Bold"
+            FontSize="28"
+            Text="Crear distribuidor"
+            WidthRequest="300" />
+        <VerticalStackLayout
+            Margin="30"
+            Background="WhiteSmoke"
+            HeightRequest="650"
+            HorizontalOptions="Start"
+            WidthRequest="350">
+
+            <VerticalStackLayout.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity=".7"
+                    Radius="10"
+                    Offset="10,10" />
+            </VerticalStackLayout.Shadow>
+
+            <Label
+                Margin="0,20,0,0"
+                FontAttributes="Bold"
+                FontSize="40"
+                HorizontalOptions="Center"
+                Text="Distribuidores"
+                VerticalOptions="Center" />
+
+            <CollectionView
+                Margin="10"
+                Background="LightGray"
+                HeightRequest="350"
+                ItemsSource="{Binding ListaDistribuidores}"
+                SelectedItem="{Binding SelectedDistribuidorInfo}"
+                SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_distribuidores}}"
+                SelectionMode="Single"
+                WidthRequest="300">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="info:DistribuidorInfo">
+                        <Border WidthRequest="280">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:DataType="viewmodels:GestionDistribuidoresViewModel"
+                                    BindingContext="{Binding Source={x:Reference gestion_distribuidores}, Path=BindingContext}"
+                                    Command="{Binding AbrirMopupDistribuidorCommand}"
+                                    NumberOfTapsRequired="2" />
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout>
+                                <VerticalStackLayout Margin="10">
+                                    <Label Text="{Binding Nombre}" />
+
+                                </VerticalStackLayout>
+
+                            </HorizontalStackLayout>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="LightBlue" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+
+            </CollectionView>
+            <Button
+                Margin="0,10"
+                BackgroundColor="MidnightBlue"
+                Command="{Binding EditarDistribuidorCommand}"
+                CornerRadius="0"
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="Editar"
+                WidthRequest="300" />
+            <Button
+                Margin="0,10"
+                BackgroundColor="MidnightBlue"
+                Command="{Binding EditarDistribuidorCommand}"
+                CornerRadius="0"
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="Eliminar"
+                WidthRequest="300" />
+        </VerticalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

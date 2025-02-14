@@ -20,9 +20,8 @@
                 Spacing="20"
                 VerticalOptions="Center">
                 <ffimage:CachedImage
-                    ErrorPlaceholder="producto_default.jpg"
+                    ErrorPlaceholder="producto_default.png"
                     HeightRequest="130"
-                    Source="{Binding RutaImagen}"
                     WidthRequest="130" />
                     <Button
                         Margin="5"

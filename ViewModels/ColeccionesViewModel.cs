@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Newtonsoft.Json;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,30 +8,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TCGErcilla.Info;
-using TCGErcilla.Models;
-using TCGErcilla.Services;
 using TCGErcilla.Views.Mopups;
-using Mopups.Services;
 
 namespace TCGErcilla.ViewModels
 {
-    public partial class GestionDistribuidoresViewModel : ObservableObject
+    public partial class ColeccionesViewModel: ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
+        private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
         [ObservableProperty]
-        private DistribuidorInfo selectedDistribuidorInfo;
+        private ColeccionInfo selectedColeccionInfo;
         [ObservableProperty]
         private int id;
         [ObservableProperty]
         private string name;
-        
+        [ObservableProperty]
+        private int numCarta;
+        [ObservableProperty]
+        private DateTime fecha_lanzamiento = DateTime.Today;
         [RelayCommand]
-        public async void GetDistribuidores()
+        public async void GetColecciones()
         {
             for (int i = 0; i < 5; i++)
             {
-                listaDistribuidores.Add(new DistribuidorInfo(i, "a"));
+                listaColecciones.Add(new ColeccionInfo(i, "a", i));
             }
 
             // RequestModel request = new RequestModel()
@@ -52,19 +52,18 @@ namespace TCGErcilla.ViewModels
             //catch (Exception ex) { }
         }
         [RelayCommand]
-        public async Task AbrirMopupDistribuidor()
+        public async Task AbrirMopupCarta()
         {
-
-            await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
+            await MopupService.Instance.PushAsync(new ColeccionFormularioMopup());
         }
         [RelayCommand]
         public async Task EditarDistribuidor()
         {
-            var mopup = new DistribuidorFormularioMopup();
-            var vm = new DistribuidorFormularioViewModel();
-            vm.DistribuidorInfo = (DistribuidorInfo)SelectedDistribuidorInfo.Clone();
-            mopup.BindingContext = vm;
-            await MopupService.Instance.PushAsync(mopup);
+            //await Shell.Current.GoToAsync("View",
+              //  new Dictionary<string, object>()
+               // {
+                //    ["CartaInfo"] = SelectedColeccionInfo
+               // });
         }
     }
 }

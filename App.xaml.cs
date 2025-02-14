@@ -7,11 +7,21 @@ namespace TCGErcilla
         public App()
         {
             InitializeComponent();
-        }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
+            MainPage = new AppShell();
+            Application.Current.UserAppTheme = AppTheme.Light;
         }
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            var window = base.CreateWindow(activationState);
+
+            const int newWidth = 1400;
+            const int newHeight = 1000;
+
+            window.Width = newWidth;
+            window.Height = newHeight;
+
+            return window;
         }
     }
+}

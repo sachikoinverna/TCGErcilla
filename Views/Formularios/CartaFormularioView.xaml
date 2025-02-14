@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<StackLayout
     x:Class="TCGErcilla.Views.CartaFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -20,7 +20,7 @@
                 Spacing="20"
                 VerticalOptions="Center">
                 <ffimage:CachedImage
-                    ErrorPlaceholder="carta_default.jpg"
+                    ErrorPlaceholder="carta_default.png"
                     HeightRequest="130"
                     Source="{Binding RutaImagen}"
                     WidthRequest="130" />
@@ -53,4 +53,4 @@
                 ItemsSource="{Binding Items}" />
         </input:FormView>
     </VerticalStackLayout>
-</ContentPage>
+</StackLayout>

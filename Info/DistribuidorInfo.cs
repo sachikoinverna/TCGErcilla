@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.Info
 {
-    public class DistribuidorInfo
+    public class DistribuidorInfo: ICloneable
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -14,6 +14,16 @@ namespace TCGErcilla.Info
         {
             this.Id = id;
             this.Nombre = nombre;
+        }
+        public DistribuidorInfo() { 
+        }
+        public object Clone()
+        {
+            return new DistribuidorInfo
+            {
+                Id = this.Id,
+                Nombre = this.Nombre,
+            };
         }
     }
 }

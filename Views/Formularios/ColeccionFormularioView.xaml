@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<StackLayout
     x:Class="TCGErcilla.Views.Formularios.ColeccionFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,7 +10,6 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    Title="ColeccionFormularioView"
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
@@ -22,7 +21,7 @@
             VerticalOptions="Center">
 
                 <ffimage:CachedImage
-                ErrorPlaceholder="coleccion_default.jpg"
+                ErrorPlaceholder="coleccion_default.png"
                 HeightRequest="130"
                 Source="{Binding RutaImagen}"
                 WidthRequest="130" />
@@ -47,4 +46,4 @@
             <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
         </input:FormView>
     </VerticalStackLayout>
-</ContentPage>
+</StackLayout>
