@@ -1,7 +1,6 @@
 ﻿using TCGErcilla.Views;
 using TCGErcilla.Views.Formularios;
 using Microsoft.Maui.Controls;
-using TCGErcilla.Views.Gestion;
 namespace TCGErcilla
 {
     public partial class AppShell : Shell

@@ -10,7 +10,6 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    Title="CartaFormularioView"
     x:DataType="viewmodels:CartaFormularioViewModel"
     BindingContext="{viewmodels:CartaFormularioViewModel}">
     <VerticalStackLayout>

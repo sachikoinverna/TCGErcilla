@@ -7,8 +7,6 @@
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
     Title="CartaFormularioMopup">
     <VerticalStackLayout WidthRequest="400" HeightRequest="400">
-        <formularios:CartaFormularioView>
             
-        </formularios:CartaFormularioView>
     </VerticalStackLayout>
 </mopups:PopupPage>

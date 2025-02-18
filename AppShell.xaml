@@ -25,22 +25,22 @@
         <ShellContent
             x:Name="CartasView"
             Title="Cartas"
-            ContentTemplate="{DataTemplate views:CartasView}"
-            Route="CartasView" />
+            ContentTemplate="{DataTemplate views:GestionCartasView}"
+            Route="GestionCartasView" />
         <ShellContent
             Title="Colecciones"
-            ContentTemplate="{DataTemplate views:ColeccionesView}"
-            Route="ColeccionesView"
+            ContentTemplate="{DataTemplate views:GestionColeccionesView}"
+            Route="GestionColeccionesView"
             Shell.TitleColor="White" />
         <ShellContent
             Title="Productos"
-            ContentTemplate="{DataTemplate views:ProductosView}"
-            Route="ColeccionesView"
+            ContentTemplate="{DataTemplate views:GestionProductosView}"
+            Route="GestionProductosView"
             Shell.TitleColor="White" />
         <ShellContent
             Title="Distribuidores"
-            ContentTemplate="{DataTemplate views:DistribuidoresView}"
-            Route="DistribuidoresView"
+            ContentTemplate="{DataTemplate views:GestionDistribuidoresView}"
+            Route="GestionDistribuidoresView"
             Shell.TitleColor="White" />
     </TabBar>
 </Shell>

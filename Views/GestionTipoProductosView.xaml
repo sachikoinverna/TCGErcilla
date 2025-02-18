@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="TCGErcilla.Views.GestionDistribuidoresView"
+    x:Class="TCGErcilla.Views.GestionTipoProductosView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:Name="gestion_distribuidores"
-    Title="GestionDistribuidoresView"
-    x:DataType="viewmodels:GestionDistribuidoresViewModel"
-    BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
@@ -52,7 +48,7 @@
                 HeightRequest="350"
                 ItemsSource="{Binding ListaDistribuidores}"
                 SelectedItem="{Binding SelectedDistribuidorInfo}"
-                SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_distribuidores}}"
+                SelectionChangedCommandParameter="{Binding Source={x:Reference }}"
                 SelectionMode="Single"
                 WidthRequest="300">
                 <CollectionView.ItemsLayout>
@@ -64,7 +60,7 @@
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
                                     x:DataType="viewmodels:GestionDistribuidoresViewModel"
-                                    BindingContext="{Binding Source={x:Reference gestion_distribuidores}, Path=BindingContext}"
+                                    BindingContext="{Binding Source={x:Reference }, Path=BindingContext}"
                                     Command="{Binding AbrirMopupDistribuidorCommand}"
                                     NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>

@@ -6,17 +6,23 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:Name="login_view"
     x:DataType="viewmodels:LoginViewModel"
     BindingContext="{viewmodels:LoginViewModel}"
-    Shell.TabBarIsVisible="False"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
     <Grid RowDefinitions="*, Auto">
         <!--  WebView ocupa toda la pantalla  -->
-        <WebView  Grid.Column="0" x:Name="navigator" Source="http://www.google.es" WidthRequest="300" HeightRequest="500">
+        <WebView
+            x:Name="navegador"
+            Grid.Column="0"
+            Source="http://192.168.20.102:5001/form_login">
             <WebView.Behaviors>
-                <toolkit:EventToCommandBehavior EventName="Navigated" Command="{Binding NavigatedCommand }" 
-                                                CommandParameter="{Binding Source={x:Reference navigator}}"
-                                                BindingContext="{Binding Source={x:Reference login_popup}, Path=BindingContext}"/>
+                <toolkit:EventToCommandBehavior
+                    BindingContext="{Binding Source={x:Reference login_view}, Path=BindingContext}"
+                    Command="{Binding NavigatedCommand}"
+                    CommandParameter="{Binding Source={x:Reference navegador}}"
+                    EventName="Navigated" />
             </WebView.Behaviors>
         </WebView>
 
