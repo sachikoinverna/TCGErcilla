@@ -12,13 +12,11 @@
     Shell.NavBarIsVisible="False">
     <Grid RowDefinitions="*, Auto">
         <!--  WebView ocupa toda la pantalla  -->
-        <WebView
-            Grid.Row="0"
-            HorizontalOptions="FillAndExpand"
-            Source="{Binding UrlWeb}"
-            VerticalOptions="FillAndExpand">
+        <WebView  Grid.Column="0" x:Name="navigator" Source="http://www.google.es" WidthRequest="300" HeightRequest="500">
             <WebView.Behaviors>
-                <toolkit:EventToCommandBehavior Command="{Binding GetLoginWebCommand}" EventName="Loaded" />
+                <toolkit:EventToCommandBehavior EventName="Navigated" Command="{Binding NavigatedCommand }" 
+                                                CommandParameter="{Binding Source={x:Reference navigator}}"
+                                                BindingContext="{Binding Source={x:Reference login_popup}, Path=BindingContext}"/>
             </WebView.Behaviors>
         </WebView>
 
