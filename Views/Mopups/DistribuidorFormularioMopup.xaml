@@ -7,6 +7,9 @@
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     Background="Peru"
     CloseWhenBackgroundIsClicked="True">
-    <StackLayout WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center">
-    </StackLayout>
+    <StackLayout
+        HeightRequest="20"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="20" />
 </mopups:PopupPage>

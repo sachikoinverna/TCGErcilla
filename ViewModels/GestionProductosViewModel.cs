@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,25 +12,23 @@ using TCGErcilla.Info;
 using TCGErcilla.Models;
 using TCGErcilla.Services;
 using TCGErcilla.Views.Mopups;
-using Mopups.Services;
 
 namespace TCGErcilla.ViewModels
 {
-    public partial class GestionDistribuidoresViewModel : ObservableObject
+    public partial class GestionProductosViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
+        private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
         [ObservableProperty]
-        private DistribuidorInfo selectedDistribuidor;
-
+        private ProductoInfo selectedProducto;
         [RelayCommand]
-        public async void GetDistribuidores()
+        public async void GetProductos()
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/distribuidores/todos"
+                Route = "http://localhost:8080/productos/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -37,8 +36,9 @@ namespace TCGErcilla.ViewModels
             {
                 try
                 {
-                    ListaDistribuidores =
-                       JsonConvert.DeserializeObject<ObservableCollection<DistribuidorInfo>>(response.Data.ToString());
+                    ListaProductos.Add(new ProductoInfo(1, "Cartas de tu mama"));
+                    ListaProductos =
+                       JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
                 }
                 catch (Exception ex) { }
             }
@@ -50,13 +50,13 @@ namespace TCGErcilla.ViewModels
             await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
         }
         [RelayCommand]
-        public async Task EditarDistribuidor()
+        public async Task EditarProducto()
         {
-            //var mopup = new DistribuidorFormularioMopup();
-           // var vm = new DistribuidorFormularioViewModel();
-            //vm.DistribuidorInfo = (DistribuidorInfo)SelectedDistribuidorInfo.Clone();
-            //mopup.BindingContext = vm;
-            //await MopupService.Instance.PushAsync(mopup);
+            var mopup = new ProductoFormularioMopup();
+            var vm = new ProductoFormularioViewModel();
+            vm.ProductoInfo = (ProductoInfo)SelectedProducto.Clone();
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
     }
 }

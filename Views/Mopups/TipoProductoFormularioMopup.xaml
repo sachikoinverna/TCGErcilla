@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <mopups:PopupPage
-    x:Class="TCGErcilla.Views.Mopups.CartaFormularioMopup"
+    x:Class="TCGErcilla.Views.Mopups.TipoProductoFormularioMopup"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:Name="formulario_carta_mopup"
-    Title="CartaFormularioMopup"
-    x:DataType="viewmodels:CartaFormularioViewModel"
-    BindingContext="{viewmodels:CartaFormularioViewModel}">
+    x:Name="formulario_tipo_producto_mopup"
+    Title="TipoProductoFormularioMopup"
+    x:DataType="viewmodels:TipoProductoFormularioViewModel"
+    BindingContext="{viewmodels:TipoProductoFormularioViewModel}">
     <VerticalStackLayout HeightRequest="400" WidthRequest="400">
-        <formularios:CartaFormularioView BindingContext="{Binding Source={x:Reference formulario_carta_mopup}, Path=BindingContext}" />
+        <formularios:TipoProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_tipo_producto_mopup}, Path=BindingContext}" />
     </VerticalStackLayout>
 </mopups:PopupPage>

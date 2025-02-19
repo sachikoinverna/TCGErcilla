@@ -4,80 +4,81 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-    xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-        xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
-    xmlns:info="clr-namespace:TCGErcilla.Info"
-    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels">
+    xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:DataType="viewmodels:GestionProductosViewModel"
+    BindingContext="{viewmodels:GestionProductosViewModel}"
+    Title="">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetProductosCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
-        Margin="0,10"
-        BackgroundColor="MidnightBlue"
-        Command="{Binding}"
-        CornerRadius="0"
-        FontAttributes="Bold"
-        FontSize="28"
-        Text="Crear distribuidor"
-        WidthRequest="300" />
+            Margin="0,10"
+            BackgroundColor="MidnightBlue"
+            Command="{Binding AbrirMopupDistribuidorCommand}"
+            CornerRadius="0"
+            FontAttributes="Bold"
+            FontSize="28"
+            Text="Crear producto"
+            WidthRequest="300" />
         <VerticalStackLayout
-        Margin="30"
-        Background="WhiteSmoke"
-        HeightRequest="650"
-        HorizontalOptions="Start"
-        WidthRequest="350">
+            Margin="30"
+            Background="WhiteSmoke"
+            HeightRequest="650"
+            HorizontalOptions="Start"
+            WidthRequest="350">
 
             <VerticalStackLayout.Shadow>
                 <Shadow
-                Brush="Black"
-                Opacity=".7"
-                Radius="10"
-                Offset="10,10" />
+                    Brush="Black"
+                    Opacity=".7"
+                    Radius="10"
+                    Offset="10,10" />
             </VerticalStackLayout.Shadow>
 
             <Label
-            Margin="0,20,0,0"
-            FontAttributes="Bold"
-            FontSize="40"
-            HorizontalOptions="Center"
-            Text="Distribuidores"
-            VerticalOptions="Center" />
+                Margin="0,20,0,0"
+                FontAttributes="Bold"
+                FontSize="40"
+                HorizontalOptions="Center"
+                Text="Productos"
+                VerticalOptions="Center" />
 
             <CollectionView
-            Margin="10"
-            Background="LightGray"
-            HeightRequest="350"
-            ItemsSource="{Binding ListaColecciones}"
-            SelectedItem="{Binding SelectedColeccionInfo}"
-            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-            SelectionMode="Single"
-            WidthRequest="300">
+                Margin="10"
+                Background="LightGray"
+                HeightRequest="350"
+                ItemsSource="{Binding ListaProductos}"
+                SelectedItem="{Binding SelectedProducto}"
+                SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                SelectionMode="Single"
+                WidthRequest="300">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="info:CartaInfo">
+                    <DataTemplate x:DataType="info:ProductoInfo">
                         <Border WidthRequest="280">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
-                                x:DataType="viewmodels:ColeccionesViewModel"
-                                BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
-                                Command="{Binding AbrirMopupCartaCommand}"
-                                NumberOfTapsRequired="2" />
+                                    x:DataType="viewmodels:GestionProductosViewModel"
+                                    BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
+                                    Command="{Binding EditarProductoCommand}"
+                                    NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>
                                 <ffimage:CachedImage
-                                Aspect="AspectFill"
-                                ErrorPlaceholder="user.png"
-                                WidthRequest="50" />
+                                    Aspect="AspectFill"
+                                    ErrorPlaceholder="product_default.png"
+                                    WidthRequest="50" />
                                 <VerticalStackLayout Margin="10">
                                     <Label Text="{Binding Nombre}" />
-                                    <Label Text="{Binding NumeroCartas}" />
-                                    <Label Text="{Binding FechaLanzamiento}" />
                                 </VerticalStackLayout>
 
                             </HorizontalStackLayout>
@@ -98,23 +99,23 @@
 
             </CollectionView>
             <Button
-            Margin="0,10"
-            BackgroundColor="MidnightBlue"
-            Command="{Binding EditarDistribuidorCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="28"
-            Text="Editar"
-            WidthRequest="300" />
+                Margin="0,10"
+                BackgroundColor="MidnightBlue"
+                Command="{Binding EditarProductoCommand}"
+                CornerRadius="0"
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="Editar"
+                WidthRequest="300" />
             <Button
-            Margin="0,10"
-            BackgroundColor="MidnightBlue"
-            Command="{Binding EditarDistribuidorCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="28"
-            Text="Eliminar"
-            WidthRequest="300" />
+                Margin="0,10"
+                BackgroundColor="MidnightBlue"
+                Command="{Binding EditarProductoCommand}"
+                CornerRadius="0"
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="Eliminar"
+                WidthRequest="300" />
         </VerticalStackLayout>
 
     </VerticalStackLayout>

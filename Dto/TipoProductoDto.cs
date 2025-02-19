@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 namespace TCGErcilla.Dto
 {
     [Serializable]
-    public class DistribuidorDto
+    public class TipoProductoDto
     {
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public int? Id { get; set; }
-        [JsonProperty("nombre")]
-        public string Nombre { get; set; }
-        public DistribuidorDto(int id, string nombre)
+        [JsonProperty("tipo")]
+        public string Tipo { get; set; }
+        public TipoProductoDto(string tipo)
         {
-            Id = id;
-            Nombre = nombre;
+            Tipo = tipo;
         }
+        public TipoProductoDto() { }
     }
 }

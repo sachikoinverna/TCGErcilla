@@ -16,33 +16,33 @@
         <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
 
             <HorizontalStackLayout
-            HorizontalOptions="Center"
-            Spacing="20"
-            VerticalOptions="Center">
+                HorizontalOptions="Center"
+                Spacing="20"
+                VerticalOptions="Center">
 
                 <ffimage:CachedImage
-                ErrorPlaceholder="coleccion_default.png"
-                HeightRequest="130"
-                Source="{Binding RutaImagen}"
-                WidthRequest="130" />
-                    <Button
+                    ErrorPlaceholder="coleccion_default.png"
+                    HeightRequest="130"
+                    Source="{Binding RutaImagen}"
+                    WidthRequest="130" />
+                <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
                     Text="Seleccionar imagen" />
             </HorizontalStackLayout>
 
             <material:TextField
-            Title="Nombre"
-            AllowClear="True"
-            Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Email}}" />
+                Title="Nombre"
+                AllowClear="True"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Email}}" />
             <material:TextField
-            Title="Numero de cartas"
-            AccentColor="DeepSkyBlue"
-            AllowClear="True"
-            Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Edit}}"
-            Keyboard="Numeric" />
+                Title="Numero de cartas"
+                AccentColor="DeepSkyBlue"
+                AllowClear="True"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Keyboard="Numeric" />
             <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
         </input:FormView>
     </VerticalStackLayout>

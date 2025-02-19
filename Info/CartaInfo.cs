@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,26 +9,14 @@ namespace TCGErcilla.Info
 {
     public class CartaInfo
     {
-        public int Id;
-        public string Nombre;
-        public int NumeroCartas;
-        public DateTime FechaLanzamiento;
-        public CartaInfo(int id, string nombre, int numerocartas) {
-         this.Id = id;
-            this.Nombre = nombre;
-            this.NumeroCartas = numerocartas;
-            this.FechaLanzamiento = DateTime.Now;
-        }
-        public CartaInfo() { 
-
-        }
-        public object Clone()
-        {
-            return new CartaInfo
-            {
-                Id = this.Id,
-                Nombre = this.Nombre,
-            };
-        }
+        [JsonProperty("id")]
+        public int Id { get; set; }
+        [JsonProperty("nombre")]
+        public string Nombre { get; set; }
+        [JsonProperty("numero_coleccion")]
+        public int NumeroColeccion { get; set; }
+        [JsonProperty("url_imagen")]
+        public string UrlImagen { get; set; }
+        
     }
 }

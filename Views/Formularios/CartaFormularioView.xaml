@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
-    x:Class="TCGErcilla.Views.CartaFormularioView"
+    x:Class="TCGErcilla.Views.Formularios.CartaFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:DataType="viewmodels:CartaFormularioViewModel"
-    BindingContext="{viewmodels:CartaFormularioViewModel}">
+    x:DataType="viewmodels:CartaFormularioViewModel">
+    <StackLayout.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
+    </StackLayout.Behaviors>
     <VerticalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
             <HorizontalStackLayout
@@ -23,10 +27,10 @@
                     HeightRequest="130"
                     Source="{Binding RutaImagen}"
                     WidthRequest="130" />
-                    <Button
-                        Margin="5"
-                        Command="{Binding SeleccionarImagenCommand}"
-                        Text="Seleccionar imagen" />
+                <Button
+                    Margin="5"
+                    Command="{Binding SeleccionarImagenCommand}"
+                    Text="Seleccionar imagen" />
             </HorizontalStackLayout>
 
             <material:TextField
@@ -34,7 +38,7 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" >
+                                       Glyph={x:Static m:MaterialRegular.Edit}}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:TextField
@@ -42,14 +46,10 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" >
+                                       Glyph={x:Static m:MaterialRegular.Edit}}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <material:DropdownField
-                Title="Pick an option"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding Items}" />
+
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

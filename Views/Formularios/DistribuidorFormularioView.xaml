@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
-    x:Class="TCGErcilla.Views.DistribuidorFormularioView"
+    x:Class="TCGErcilla.Views.Formularios.DistribuidorFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
@@ -16,15 +16,14 @@
     <VerticalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
             <material:TextField
-            Title="Nombre"
-            AccentColor="DeepSkyBlue"
-            AllowClear="True"
-            Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Catching_pokemon}}">
-                    <validation:RequiredValidation />
+                Title="Nombre"
+                AccentColor="DeepSkyBlue"
+                AllowClear="True"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}">
+                <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True"
- Text="Crear"/>
+            <Button input:FormView.IsSubmitButton="True" Text="Crear" />
         </input:FormView>
 
     </VerticalStackLayout>

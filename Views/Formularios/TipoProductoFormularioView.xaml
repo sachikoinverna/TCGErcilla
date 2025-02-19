@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<StackLayout
     x:Class="TCGErcilla.Views.Formularios.TipoProductoFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -9,17 +9,18 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    Title="TipoProductoFormularioView"
     x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <VerticalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
             <material:TextField
-            Title="Tipo"
-            AccentColor="DeepSkyBlue"
-            Icon="{FontImageSource FontFamily=MaterialRegular,
-                                   Glyph={x:Static m:MaterialRegular.Edit}}" >
+                Title="Tipo"
+                AccentColor="DeepSkyBlue"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Account_box}}"
+                Text="{Binding TipoProductoInfo.Tipo}">
                 <validation:RequiredValidation />
             </material:TextField>
+            <Button input:FormView.IsSubmitButton="True" Text="Crear" />
         </input:FormView>
     </VerticalStackLayout>
-</ContentPage>
+</StackLayout>

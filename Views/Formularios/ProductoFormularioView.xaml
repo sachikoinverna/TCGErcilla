@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<StackLayout
     x:Class="TCGErcilla.Views.Formularios.ProductoFormularioView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,7 +10,6 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    Title="ProductoFormularioView"
     x:DataType="viewmodels:ProductoFormularioViewModel"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <VerticalStackLayout>
@@ -23,17 +22,17 @@
                     ErrorPlaceholder="producto_default.png"
                     HeightRequest="130"
                     WidthRequest="130" />
-                    <Button
-                        Margin="5"
-                        Command="{Binding SeleccionarImagenCommand}"
-                        Text="Seleccionar imagen" />
+                <Button
+                    Margin="5"
+                    Command="{Binding SeleccionarImagenCommand}"
+                    Text="Seleccionar imagen" />
             </HorizontalStackLayout>
             <material:TextField
                 Title="Nombre"
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding ProductoInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
@@ -68,4 +67,4 @@
         </input:FormView>
 
     </VerticalStackLayout>
-</ContentPage>
+</StackLayout>

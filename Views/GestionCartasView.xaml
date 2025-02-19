@@ -8,9 +8,9 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_cartas"
-    Title="CartasView"
-    x:DataType="viewmodels:CartasViewModel"
-    BindingContext="{viewmodels:CartasViewModel}">
+    Title=""
+    x:DataType="viewmodels:GestionCartasViewModel"
+    BindingContext="{viewmodels:GestionCartasViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetCartasCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
@@ -22,7 +22,7 @@
             CornerRadius="0"
             FontAttributes="Bold"
             FontSize="28"
-            Text="Crear distribuidor"
+            Text="Crear carta"
             WidthRequest="300" />
         <VerticalStackLayout
             Margin="30"
@@ -44,7 +44,7 @@
                 FontAttributes="Bold"
                 FontSize="40"
                 HorizontalOptions="Center"
-                Text="Distribuidores"
+                Text="Cartas"
                 VerticalOptions="Center" />
 
             <CollectionView
@@ -64,19 +64,19 @@
                         <Border WidthRequest="280">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
-                                    x:DataType="viewmodels:GestionDistribuidoresViewModel"
+                                    x:DataType="viewmodels:GestionCartasViewModel"
                                     BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
-                                    Command="{Binding AbrirMopupDistribuidorCommand}"
+                                    Command="{Binding AbrirMopupCartaCommand}"
                                     NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>
                                 <ffimage:CachedImage
                                     Aspect="AspectFill"
-                                    ErrorPlaceholder="user.png"
-                                    Source="{Binding AvatarUrl}"
+                                    ErrorPlaceholder="carta_default.png"
+                                    Source="{Binding CartaUrl}"
                                     WidthRequest="50" />
                                 <VerticalStackLayout Margin="10">
-                                    <Label Text="{Binding Nombre}" />
+                                    <Label Text="{Binding}" />
                                     <Label Text="{Binding NumeroCartas}" />
                                     <Label Text="{Binding FechaLanzamiento}" />
                                 </VerticalStackLayout>

@@ -16,9 +16,12 @@ namespace TCGErcilla.ViewModels
     public partial class ProductoFormularioViewModel: ObservableObject
     {
         [ObservableProperty]
+        private ProductoInfo productoInfo;
+        [ObservableProperty]
         private string rutaImagen;
         public ProductoFormularioViewModel()
         {
+            ProductoInfo productoInfo = new ProductoInfo();
             //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
         }
         [RelayCommand]
@@ -34,11 +37,16 @@ namespace TCGErcilla.ViewModels
         public void EstablecerValoresIniciales()
         {
            // if (ProductoInfo.Id != null) //Quiere decir que estamos editando
-            //{
-             //   RutaImagen = ProductoInfo.AvatarUrl;
+           //{
+           //   RutaImagen = ProductoInfo.AvatarUrl;
            // }
+            RutaImagen = "producto_default.png";
         }
+        [RelayCommand]
+        public async void Submit()
+        {
 
+        }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
         {

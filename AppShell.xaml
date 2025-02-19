@@ -38,9 +38,15 @@
             Route="GestionProductosView"
             Shell.TitleColor="White" />
         <ShellContent
+            Title="Tipos de productos"
+            ContentTemplate="{DataTemplate views:GestionTipoProductosView}"
+            Route="GestionTipoProductosView"
+            Shell.TitleColor="White" />
+        <ShellContent
             Title="Distribuidores"
             ContentTemplate="{DataTemplate views:GestionDistribuidoresView}"
             Route="GestionDistribuidoresView"
             Shell.TitleColor="White" />
+
     </TabBar>
 </Shell>

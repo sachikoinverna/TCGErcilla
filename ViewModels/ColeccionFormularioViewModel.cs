@@ -27,6 +27,7 @@ namespace TCGErcilla.ViewModels
             //{
             // RutaImagen = ColeccionInfo.Url;
             // }
+            RutaImagen = "coleccion_default.png";
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -37,7 +38,11 @@ namespace TCGErcilla.ViewModels
                 RutaImagen = file.FullPath;
             }
         }
+        [RelayCommand]
+        public async void Submit()
+        {
 
+        }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
         {

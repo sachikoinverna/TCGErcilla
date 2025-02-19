@@ -5,15 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    Title=""
     x:DataType="viewmodels:MainViewModel"
     BindingContext="{viewmodels:MainViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding OcultarLoginCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Image
+            HeightRequest="100"
+            Source="pokebienvenido.png"
+            WidthRequest="600" />
+        <Image
+            HeightRequest="400"
+            Source="imagen_piplup_home.png"
+            WidthRequest="400" />
+        <Image
+            HeightRequest="100"
+            Source="titulo2_home.png"
+            WidthRequest="600" />
     </VerticalStackLayout>
 </ContentPage>

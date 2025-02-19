@@ -6,13 +6,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Dto;
 using TCGErcilla.Info;
+using TCGErcilla.Models;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
-    [QueryProperty(nameof(CartaInfo), "CartaInfo")]
+    //[QueryProperty(nameof(CartaInfo), "CartaInfo")]
 
     public partial class CartaFormularioViewModel: ObservableObject
     {
@@ -21,17 +23,27 @@ namespace TCGErcilla.ViewModels
 
         [ObservableProperty]
         private string rutaImagen;
+
         public CartaFormularioViewModel()
         {
+            CartaInfo = new CartaInfo();
             RutaImagen = "carta_default.png";
+        }
+        [RelayCommand]
+        public async void Submit()
+        {
+
         }
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            //if (CartaInfo.Id != null) //Quiere decir que estamos editando
-            //{
-               // RutaImagen = Carta.Url;
-           // }
+            if (CartaInfo.Id != null) //Quiere decir que estamos editando
+            {
+
+                RutaImagen = CartaInfo.UrlImagen;
+
+            }
+            RutaImagen = "carta_default.png";
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -42,15 +54,32 @@ namespace TCGErcilla.ViewModels
                 RutaImagen = file.FullPath;
             }
         }
+        [RelayCommand]
+        public async Task CrearCarta()
+        {
+            //var chef = new CartaDto()
+            //{
+            //    Nombre = "TayTay",
+            //     = 4
+            //};
+           // var request = new RequestModel()
+           // {
+           //     Data = chef,
+           //     Method = "POST",
+           //     Route = "http://localhost:8084/chefs/crear"
+          //  };
+           // ResponseModel response = await APIService.ExecuteRequest(request);
+           // await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+        }
 
         [RelayCommand]
-        public async Task<bool> UploadImage(string idPersona)
+        public async Task<bool> UploadImage(string idCarta)
         {
             try
             {
                 string _rutaImagen = RutaImagen;
                // RutaImagen = "loading.gif";
-                await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
+                await UploadImageService.UploadImageAsync(_rutaImagen, idCarta,
                     "http://localhost:8081/dropbox/upload/card");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",

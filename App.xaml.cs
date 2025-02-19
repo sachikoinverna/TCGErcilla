@@ -7,7 +7,6 @@ namespace TCGErcilla
         public App()
         {
             InitializeComponent();
-
             MainPage = new AppShell();
             Application.Current.UserAppTheme = AppTheme.Light;
         }
@@ -23,5 +22,6 @@ namespace TCGErcilla
 
             return window;
         }
+
     }
 }

@@ -1,6 +1,6 @@
 namespace TCGErcilla.Views.Formularios;
 
-public partial class TipoProductoFormularioView : ContentPage
+public partial class TipoProductoFormularioView : StackLayout
 {
 	public TipoProductoFormularioView()
 	{
