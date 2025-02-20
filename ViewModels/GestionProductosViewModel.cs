@@ -21,13 +21,14 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
         [ObservableProperty]
         private ProductoInfo selectedProducto;
+        [ObservableProperty]
+        private bool isDistribuidoresVisible;
         [RelayCommand]
         public async void GetProductos()
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Data = string.Empty,
                 Route = "http://192.168.20.102:8080/productos/todos"
             };
 
@@ -61,19 +62,11 @@ namespace TCGErcilla.ViewModels
         public async Task EliminarProducto()
         {
             if (SelectedProducto != null)
-            {
-                //var _producto = new ProductoDto();
-                //if (ProductoInfo.Id != null)
-                //{
-                // _producto.Id = ProductoInfo.Id;
-                //_producto.Nombre = ProductoInfo.Nombre;
-                //_producto.UrlImagen = ProductoInfo.UrlImagen;
-                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
+            {                
                 var request = new RequestModel()
                 {
-                    Data = SelectedProducto.Id,
-                    Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/productos/borrar/"+SelectedProducto.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

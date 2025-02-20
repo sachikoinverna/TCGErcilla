@@ -20,10 +20,11 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}" Text="{Binding DistribuidorInfo.Nombre}">
+                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}"
+                Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
+            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
             <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
             <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
         </input:FormView>

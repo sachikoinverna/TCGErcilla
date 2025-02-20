@@ -67,9 +67,8 @@ namespace TCGErcilla.ViewModels
             {
                 var request = new RequestModel()
                 {
-                    Data = SelectedTipoProductoInfo.Id,
-                    Method = "POST",
-                    Route = "http://192.168.20.102:8080/cartas/crear"
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/tipo_producto/borrar/" + SelectedTipoProductoInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

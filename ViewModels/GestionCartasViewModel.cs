@@ -29,7 +29,6 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Data = string.Empty,
                 Route = "http://192.168.20.102:8080/cartas/todas"
             };
 
@@ -62,18 +61,10 @@ namespace TCGErcilla.ViewModels
         public async Task EliminarCarta()
         {
             if (SelectedCarta != null) {
-                //var _producto = new ProductoDto();
-                //if (ProductoInfo.Id != null)
-                //{
-                // _producto.Id = ProductoInfo.Id;
-                //_producto.Nombre = ProductoInfo.Nombre;
-                //_producto.UrlImagen = ProductoInfo.UrlImagen;
-                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
                 var request = new RequestModel()
                 {
-                    Data = SelectedCarta.Id,
-                    Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/cartas/borrar/" + SelectedCarta.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

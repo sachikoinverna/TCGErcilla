@@ -38,7 +38,8 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding CartaInfo.Nombre}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Text="{Binding CartaInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:TextField
@@ -46,11 +47,12 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding CartaInfo.NumeroColeccion}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}"  />
+            <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
+            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
             <Button IsVisible="{Binding IsEditMode}" />
         </input:FormView>
     </VerticalStackLayout>

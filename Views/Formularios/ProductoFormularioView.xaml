@@ -8,10 +8,10 @@
     xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:ProductoFormularioViewModel"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <VerticalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearProductoCommand}">
@@ -33,24 +33,27 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding ProductoInfo.Nombre}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Text="{Binding ProductoInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo}"
-                ItemsSource="{Binding Items}" />
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                ItemsSource="{Binding Items}"
+                SelectedItem="{Binding ProductoInfo}" />
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo}"
-                ItemsSource="{Binding Items}" />
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                ItemsSource="{Binding Items}"
+                SelectedItem="{Binding ProductoInfo}" />
             <material:MultiplePickerField
                 Title="Pick some options"
                 AccentColor="DeepSkyBlue"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}} ">
+                                       Glyph={x:Static m:MaterialRegular.Email}}">
                 <material:MultiplePickerField.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Option 1</x:String>
@@ -63,7 +66,7 @@
                 </material:MultiplePickerField.ItemsSource>
             </material:MultiplePickerField>
 
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
+            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
             <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
             <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
 

@@ -21,7 +21,52 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
         [ObservableProperty]
         private ColeccionInfo selectedColeccion;
-
+        [ObservableProperty]
+        private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
+        [ObservableProperty]
+        private bool isCartasVisible;
+        [ObservableProperty]
+        private bool isProductosVisible;
+        [RelayCommand]
+        public void MostrarCartas()
+        {
+            if (SelectedColeccion == null)
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+            //if (SelectedColeccion .Gastos.Count > 0)
+            //{
+             //   IsProductosVisible = false;
+              //  IsCartasVisible = true;
+            //}
+            else
+            {
+            }
+        }
+        [RelayCommand]
+        public void EstadoInicial()
+        {
+            IsProductosVisible = false;
+            IsCartasVisible = false;
+        }
+        [RelayCommand]
+        public void MostrarProductos()
+        {
+            if (SelectedColeccion == null)
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+           // if (SelectedColeccion .Gastos.Count > 0)
+           // {
+            //    IsCartasVisible = false;
+             //   IsProductosVisible = true;
+            //}
+            else
+            {
+            }
+        }
         [RelayCommand]
         public async void GetColecciones()
         {
@@ -30,7 +75,6 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Data = string.Empty,
                 Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
@@ -67,18 +111,10 @@ namespace TCGErcilla.ViewModels
         {
             if (SelectedColeccion != null)
             {
-                //var _producto = new ProductoDto();
-                //if (ProductoInfo.Id != null)
-                //{
-                // _producto.Id = ProductoInfo.Id;
-                //_producto.Nombre = ProductoInfo.Nombre;
-                //_producto.UrlImagen = ProductoInfo.UrlImagen;
-                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
                 var request = new RequestModel()
                 {
-                    Data = SelectedColeccion.Id,
-                    Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
               //  await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

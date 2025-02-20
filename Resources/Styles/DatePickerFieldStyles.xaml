@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Resources.Styles.DatePickerFieldStyles"
-                    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
-    <Style TargetType="material:DatePickerField" x:Key="DatePickerFieldStyle1">
-        <Setter Property="AllowClear" Value="True"/>
+<ResourceDictionary
+    x:Class="TCGErcilla.Resources.Styles.DatePickerFieldStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
+    <Style x:Key="DatePickerFieldStyle1" TargetType="material:DatePickerField">
+        <Setter Property="AllowClear" Value="True" />
     </Style>
 </ResourceDictionary>

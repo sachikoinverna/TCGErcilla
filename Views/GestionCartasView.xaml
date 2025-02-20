@@ -12,7 +12,7 @@
     x:DataType="viewmodels:GestionCartasViewModel"
     BindingContext="{viewmodels:GestionCartasViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetCartasCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetCartasCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
@@ -26,25 +26,26 @@
             WidthRequest="300" />
         <VerticalStackLayout
             Margin="30"
+            BackgroundColor="#bfc3ea"
             HeightRequest="650"
             HorizontalOptions="Start"
-            WidthRequest="350" BackgroundColor="#bfc3ea">
+            WidthRequest="350">
             <Image
                 Margin="0,20,0,0"
-                Source="cartas_titulo.png"
-                HorizontalOptions="Center"
-                VerticalOptions="Center" 
                 HeightRequest="100"
-                WidthRequest="100"/>
-            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="stack_layout_cartas.jpg"/>
+                HorizontalOptions="Center"
+                Source="cartas_titulo.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
             <CollectionView
                 Margin="10"
+                BackgroundColor="AntiqueWhite"
                 HeightRequest="350"
                 ItemsSource="{Binding ListaCartas}"
-                SelectedItem="{Binding SelectedCartaInfo}"
+                SelectedItem="{Binding SelectedCarta}"
                 SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_cartas}}"
                 SelectionMode="Single"
-                WidthRequest="300" BackgroundColor="AntiqueWhite">
+                WidthRequest="300">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -55,19 +56,18 @@
                                 <TapGestureRecognizer
                                     x:DataType="viewmodels:GestionCartasViewModel"
                                     BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
-                                    Command="{Binding AbrirMopupCartaCommand}"
+                                    Command="{Binding CrearCartaCommand}"
                                     NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>
                                 <ffimage:CachedImage
                                     Aspect="AspectFill"
                                     ErrorPlaceholder="carta_default.png"
-                                    Source="{Binding CartaUrl}"
+                                    Source="{Binding UrlImagen}"
                                     WidthRequest="50" />
                                 <VerticalStackLayout Margin="10">
-                                    <Label Text="{Binding}" />
-                                    <Label Text="{Binding NumeroCartas}" />
-                                    <Label Text="{Binding FechaLanzamiento}" />
+                                    <Label Text="{Binding Nombre}" />
+                                    <Label Text="{Binding NumeroColeccion}" />
                                 </VerticalStackLayout>
 
                             </HorizontalStackLayout>

@@ -10,7 +10,7 @@
     x:DataType="viewmodels:GestionTiposProductoViewModel"
     BindingContext="{viewmodels:GestionTiposProductoViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetTiposProductoCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetTiposProductoCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
@@ -38,12 +38,12 @@
             </VerticalStackLayout.Shadow>
 
             <Image
-    Margin="0,20,0,0"
-    Source="tipos_de_producto_titulo.png"
-    HorizontalOptions="Center"
-    VerticalOptions="Center" 
-    HeightRequest="100"
-    WidthRequest="100"/>
+                Margin="0,20,0,0"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="tipos_de_producto_titulo.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
 
             <CollectionView
                 Margin="10"

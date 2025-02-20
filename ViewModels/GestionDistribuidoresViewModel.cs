@@ -21,14 +21,14 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
         [ObservableProperty]
         private DistribuidorInfo selectedDistribuidor;
-
+        [ObservableProperty]
+        private bool isProductosVisible;
         [RelayCommand]
         public async void GetDistribuidores()
         {
             RequestModel request = new RequestModel()
             {
                Method = "GET",
-              Data = string.Empty,
                 Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
@@ -65,9 +65,8 @@ namespace TCGErcilla.ViewModels
             {
                 var request = new RequestModel()
                 {
-                    Data = SelectedDistribuidor.Id,
                     Method = "GET",
-                    Route = "http://192.168.20.102:8080/distribuidores/borrar"
+                    Route = "http://192.168.20.102:8080/distribuidores/borrar/" + SelectedDistribuidor.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

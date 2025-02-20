@@ -8,9 +8,9 @@
     xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
@@ -36,18 +36,33 @@
                 Title="Nombre"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}"  Text="{Binding ColeccionInfo.Nombre}"/>
+                                       Glyph={x:Static m:MaterialRegular.Email}}"
+                Text="{Binding ColeccionInfo.Nombre}" />
             <material:TextField
                 Title="Numero de cartas"
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding ColeccionInfo.NumeroCartas}"
-                Keyboard="Numeric" />
-            <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" Date="{Binding ColeccionInfo.FechaLanzamiento}"/>
-            <Button Style="{StaticResource ButtonStyleCreate}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
-            <Button Style="{StaticResource ButtonStyleDelete}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button Style="{StaticResource ButtonStyleCreate}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
+                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Keyboard="Numeric"
+                Text="{Binding ColeccionInfo.NumeroCartas}" />
+            <material:DatePickerField
+                Title="Fecha de lanzamiento"
+                Date="{Binding ColeccionInfo.FechaLanzamiento}"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
+            <Button
+                Command="{Binding CrearCartaCommand}"
+                IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonStyleCreate}" />
+            <Button
+                Command="{Binding CrearCartaCommand}"
+                IsVisible="{Binding IsEditMode}"
+                Style="{StaticResource ButtonStyleDelete}" />
+            <Button
+                Command="{Binding CrearCartaCommand}"
+                IsVisible="{Binding IsEditMode}"
+                Style="{StaticResource ButtonStyleCreate}" />
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

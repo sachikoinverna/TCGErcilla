@@ -15,7 +15,7 @@ namespace TCGErcilla.Info
             this.Tipo = tipo;
         }
 
-        [JsonProperty("id_tipo")]
+        [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("tipo")]
         public string Tipo { get; set; }

@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Resources.Styles.TextFieldStyles"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
+<ResourceDictionary
+    x:Class="TCGErcilla.Resources.Styles.TextFieldStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Style TargetType="material:TextField">
-        <Setter Property="Title" Value="Nombre"/>
+        <Setter Property="Title" Value="Nombre" />
     </Style>
 </ResourceDictionary>

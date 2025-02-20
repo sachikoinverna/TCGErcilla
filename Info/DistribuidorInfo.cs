@@ -9,7 +9,7 @@ namespace TCGErcilla.Info
 {
     public class DistribuidorInfo : ICloneable
     {
-        [JsonProperty("id_distribuidor")]
+        [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }

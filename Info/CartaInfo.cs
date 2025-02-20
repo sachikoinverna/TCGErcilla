@@ -13,9 +13,9 @@ namespace TCGErcilla.Info
         public int Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
-        [JsonProperty("numero_coleccion")]
+        [JsonProperty("numeroColeccion")]
         public int NumeroColeccion { get; set; }
-        [JsonProperty("url_imagen")]
+        [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
         public object Clone()
         {

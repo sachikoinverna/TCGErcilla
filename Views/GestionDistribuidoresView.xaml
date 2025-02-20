@@ -6,12 +6,12 @@
     xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
-    x:DataType="viewmodels:GestionDistribuidoresViewModel"
     x:Name="gestion_distribuidores"
-    BindingContext="{viewmodels:GestionDistribuidoresViewModel}"
-    Title="">
+    Title=""
+    x:DataType="viewmodels:GestionDistribuidoresViewModel"
+    BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
@@ -39,12 +39,12 @@
             </VerticalStackLayout.Shadow>
 
             <Image
-    Margin="0,20,0,0"
-    Source="distribuidores_titulo.png"
-    HorizontalOptions="Center"
-    VerticalOptions="Center" 
-    HeightRequest="100"
-    WidthRequest="100"/>
+                Margin="0,20,0,0"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="distribuidores_titulo.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
 
             <CollectionView
                 Margin="10"

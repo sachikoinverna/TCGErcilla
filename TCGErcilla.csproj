@@ -166,4 +166,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\StacksGestion\" />
+	</ItemGroup>
+
 </Project>

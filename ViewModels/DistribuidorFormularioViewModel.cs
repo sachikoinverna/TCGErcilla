@@ -55,13 +55,14 @@ namespace TCGErcilla.ViewModels
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-            await MopupService.Instance.PopAsync();
 
             // 🔹 2. Obtener la ruta actual y recargarla
             var currentRoute = Shell.Current.CurrentState.Location.OriginalString;
 
             // 🔹 3. Volver a la misma página para forzar la recarga
-            await Shell.Current.GoToAsync("//" + currentRoute, true);
+            await Shell.Current.GoToAsync("//"+currentRoute, true);
+            await MopupService.Instance.PopAsync();
+
         }
         [RelayCommand]
         public async Task EliminarDistribuidor()
