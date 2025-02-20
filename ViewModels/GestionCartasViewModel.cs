@@ -44,18 +44,18 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
-        public async Task AbrirMopupCarta()
+        public async Task CrearCarta()
         {
             await MopupService.Instance.PushAsync(new CartaFormularioMopup());
         }
         [RelayCommand]
-        public async Task EditarDistribuidor()
+        public async Task EditarCarta()
         {
-            //await Shell.Current.GoToAsync("CartaFormularioView",
-             //   new Dictionary<string, object>()
-              //  {
-               //     ["CartaInfo"] = SelectedCartaInfo
-               // });
+            var mopup = new CartaFormularioMopup();
+            var vm = new CartaFormularioViewModel();
+            vm.CartaInfo = (CartaInfo)SelectedCarta.Clone();
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
     }
 }

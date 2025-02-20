@@ -6,6 +6,8 @@
     xmlns:info="clr-namespace:TCGErcilla.Info"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:DataType="viewmodels:GestionDistribuidoresViewModel"
+    BindingContext="{viewmodels:GestionDistribuidoresViewModel}"
     Title="">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetDistribuidoresCommand}" EventName="Appearing" />
@@ -48,7 +50,7 @@
                 Background="LightGray"
                 HeightRequest="350"
                 ItemsSource="{Binding ListaDistribuidores}"
-                SelectedItem="{Binding SelectedDistribuidorInfo}"
+                SelectedItem="{Binding SelectedDistribuidor}"
                 SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
                 SelectionMode="Single"
                 WidthRequest="300">

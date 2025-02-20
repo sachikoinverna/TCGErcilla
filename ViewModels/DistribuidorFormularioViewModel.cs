@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Dto;
 using TCGErcilla.Info;
 using TCGErcilla.Models;
 using TCGErcilla.Services;
@@ -17,22 +18,29 @@ namespace TCGErcilla.ViewModels
     {
         [ObservableProperty]
         private DistribuidorInfo distribuidorInfo;
-        [RelayCommand]
-        public async void CrearDistribuidor()
+        public DistribuidorFormularioViewModel()
         {
-            // RequestModel request = new RequestModel()
-            //{
-            //   Method = "POST",
-            //  Route = "http://localhost:8080/gastos/crear",
-            // Data = vm.SelectedGasto
-            //};
+            DistribuidorInfo = new DistribuidorInfo();
+            //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
+        }
+        [RelayCommand]
+        public async Task CrearDistribuidor()
+        {
+            var _distribuidor = new DistribuidorDto();
+            if(DistribuidorInfo.Id != null)
+            {
+                _distribuidor.Id = DistribuidorInfo.Id;
+            }
+            _distribuidor.Nombre = DistribuidorInfo.Nombre;
 
-            //ResponseModel response = await APIService.ExecuteRequest(request);
-            //if (response.Success.Equals(0))
-            //{
-            //   await App.Current.MainPage.DisplayAlert("PersonasApp",
-            //      response.Message,
-            //     "ACEPTAR");
+            var request = new RequestModel()
+            {
+                Data = _distribuidor,
+                Method = "POST",
+                Route = "http://localhost:8080/distribuidores/crear"
+            };
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
         }
 
 

@@ -6,7 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Dto;
 using TCGErcilla.Info;
+using TCGErcilla.Models;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
 
@@ -16,9 +18,13 @@ namespace TCGErcilla.ViewModels
     public partial class ColeccionFormularioViewModel: ObservableObject
     {
         [ObservableProperty]
+        private ColeccionInfo coleccionInfo;
+
+        [ObservableProperty]
         private string rutaImagen;
         public ColeccionFormularioViewModel()
         {
+            ColeccionInfo = new ColeccionInfo();
         }
         [RelayCommand]
         public void EstablecerValoresIniciales()
@@ -39,9 +45,24 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
-        public async void Submit()
+        public async Task CrearColeccion()
         {
-
+            var _coleccion = new ColeccionDto();
+            if (ColeccionInfo.Id != null)
+            {
+                _coleccion.Id = ColeccionInfo.Id;
+            }
+            _coleccion.Nombre = ColeccionInfo.Nombre;
+            _coleccion.FechaLanzamiento = ColeccionInfo.FechaLanzamiento;
+            _coleccion.UrlImagen = ColeccionInfo.UrlImagen;
+            var request = new RequestModel()
+            {
+                Data = _coleccion,
+                Method = "POST",
+                Route = "http://localhost:8080/cartas/crear"
+            };
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)

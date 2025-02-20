@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.Info
 {
-    public class DistribuidorInfo
+    public class DistribuidorInfo : ICloneable
     {
         [JsonProperty("id_distribuidor")]
         public int Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
+        public object Clone()
+        {
+            return new DistribuidorInfo
+            {
+                Id = this.Id,
+                Nombre = this.Nombre
+            };
+        }
     }
 }

@@ -17,7 +17,7 @@
         <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
     </StackLayout.Behaviors>
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearCartaCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
                 Spacing="20"
@@ -25,7 +25,7 @@
                 <ffimage:CachedImage
                     ErrorPlaceholder="carta_default.png"
                     HeightRequest="130"
-                    Source="{Binding RutaImagen}"
+                    Source="{Binding CartaInfo.UrlImagen}"
                     WidthRequest="130" />
                 <Button
                     Margin="5"
@@ -38,7 +38,7 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding CartaInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:TextField
@@ -46,7 +46,7 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}">
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
 

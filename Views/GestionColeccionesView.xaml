@@ -22,7 +22,7 @@
         <Button
             Margin="0,10"
             BackgroundColor="MidnightBlue"
-            Command="{Binding AbrirMopupColeccionCommand}"
+            Command="{Binding CrearColeccionCommand}"
             CornerRadius="0"
             FontAttributes="Bold"
             FontSize="28"
@@ -70,7 +70,7 @@
                                 <TapGestureRecognizer
                                     x:DataType="viewmodels:GestionColeccionesViewModel"
                                     BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
-                                    Command="{Binding AbrirMopupColeccionCommand}"
+                                    Command="{Binding EditarColeccionCommand}"
                                     NumberOfTapsRequired="2" />
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>

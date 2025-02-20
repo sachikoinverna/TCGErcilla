@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TCGErcilla.Info
 {
-    public class ColeccionInfo
+    public class ColeccionInfo : ICloneable
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -19,5 +19,16 @@ namespace TCGErcilla.Info
         public DateTime FechaLanzamiento { get; set; }
         [JsonProperty("url_imagen")]
         public string UrlImagen { get; set; }
+        public object Clone()
+        {
+            return new ColeccionInfo
+            {
+                Id = this.Id,
+                Nombre = this.Nombre,
+                NumeroCartas = this.NumeroCartas,
+                FechaLanzamiento = this.FechaLanzamiento,
+                UrlImagen = this.UrlImagen
+            };
+        }
     }
 }

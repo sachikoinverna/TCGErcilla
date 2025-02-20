@@ -13,7 +13,7 @@
     x:DataType="viewmodels:ProductoFormularioViewModel"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearProductoCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
                 Spacing="20"
@@ -38,18 +38,18 @@
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo.}"
                 ItemsSource="{Binding Items}" />
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo}"
                 ItemsSource="{Binding Items}" />
             <material:MultiplePickerField
                 Title="Pick some options"
                 AccentColor="DeepSkyBlue"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}">
+                                       Glyph={x:Static m:MaterialRegular.Email}} ">
                 <material:MultiplePickerField.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Option 1</x:String>

@@ -20,7 +20,7 @@
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}">
+                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}" Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <Button input:FormView.IsSubmitButton="True" Text="Crear" />

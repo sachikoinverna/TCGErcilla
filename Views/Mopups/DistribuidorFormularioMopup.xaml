@@ -5,11 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:Name="formulario_distribuidor_mopup"
+    Title="DistribuidorFormularioMopup"
+    x:DataType="viewmodels:DistribuidorFormularioViewModel"
     Background="Peru"
+    BindingContext="{viewmodels:DistribuidorFormularioViewModel}"
     CloseWhenBackgroundIsClicked="True">
-    <StackLayout
-        HeightRequest="20"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        WidthRequest="20" />
+    <VerticalStackLayout HeightRequest="400" WidthRequest="400">
+        <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />
+    </VerticalStackLayout>
 </mopups:PopupPage>

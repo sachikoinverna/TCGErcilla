@@ -32,12 +32,14 @@ namespace TCGErcilla.ViewModels
             //}
         }
         [RelayCommand]
-        public async Task Submit()
+        public async Task CrearTipoProducto()
         {
-            var tipo_producto = new TipoProductoDto()
+            var tipo_producto = new TipoProductoDto();
+            if (TipoProductoInfo.Id != null)
             {
-                Tipo = TipoProductoInfo.Tipo
-            };
+                tipo_producto.Id = TipoProductoInfo.Id;
+                }         
+                tipo_producto.Tipo = TipoProductoInfo.Tipo;
             var request = new RequestModel()
             {
                 Data = tipo_producto,

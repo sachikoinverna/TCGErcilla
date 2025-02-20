@@ -57,19 +57,20 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task CrearCarta()
         {
-            //var chef = new CartaDto()
-            //{
-            //    Nombre = "TayTay",
-            //     = 4
-            //};
-           // var request = new RequestModel()
-           // {
-           //     Data = chef,
-           //     Method = "POST",
-           //     Route = "http://localhost:8084/chefs/crear"
-          //  };
-           // ResponseModel response = await APIService.ExecuteRequest(request);
-           // await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            var _carta = new CartaDto();
+            if (CartaInfo.Id != null) {
+                _carta.Id = CartaInfo.Id;
+            }
+            _carta.Nombre = CartaInfo.Nombre;
+            _carta.UrlImagen = CartaInfo.UrlImagen;
+            var request = new RequestModel()
+            {
+                Data = _carta,
+                Method = "POST",
+                Route = "http://localhost:8080/cartas/crear"
+            };
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
 
         [RelayCommand]

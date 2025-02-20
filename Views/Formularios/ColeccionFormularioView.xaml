@@ -13,7 +13,7 @@
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding SubmitCommand}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -35,15 +35,15 @@
                 Title="Nombre"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}" />
+                                       Glyph={x:Static m:MaterialRegular.Email}}"  Text="{Binding ColeccionInfo.Nombre}"/>
             <material:TextField
                 Title="Numero de cartas"
                 AccentColor="DeepSkyBlue"
                 AllowClear="True"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                                       Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding ColeccionInfo.NumeroCartas}"
                 Keyboard="Numeric" />
-            <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
+            <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" Date="{Binding ColeccionInfo.FechaLanzamiento}"/>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

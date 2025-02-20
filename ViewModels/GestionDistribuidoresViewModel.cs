@@ -52,11 +52,11 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task EditarDistribuidor()
         {
-            //var mopup = new DistribuidorFormularioMopup();
-           // var vm = new DistribuidorFormularioViewModel();
-            //vm.DistribuidorInfo = (DistribuidorInfo)SelectedDistribuidorInfo.Clone();
-            //mopup.BindingContext = vm;
-            //await MopupService.Instance.PushAsync(mopup);
+            var mopup = new DistribuidorFormularioMopup();
+            var vm = new DistribuidorFormularioViewModel();
+            vm.DistribuidorInfo = (DistribuidorInfo)SelectedDistribuidor.Clone();
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
     }
 }

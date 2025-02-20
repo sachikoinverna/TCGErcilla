@@ -18,6 +18,11 @@ namespace TCGErcilla.Dto
         {
             Tipo = tipo;
         }
+        public TipoProductoDto(int id,string tipo)
+        {
+            Id = id;
+            Tipo = tipo;
+        }
         public TipoProductoDto() { }
     }
 }
