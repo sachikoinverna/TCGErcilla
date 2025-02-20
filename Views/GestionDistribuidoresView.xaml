@@ -69,10 +69,9 @@
                             </Border.GestureRecognizers>
                             <HorizontalStackLayout>
                                 <VerticalStackLayout Margin="10">
+                                    <Label Text="{Binding Id}" />
                                     <Label Text="{Binding Nombre}" />
-
                                 </VerticalStackLayout>
-
                             </HorizontalStackLayout>
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup Name="CommonStates">
