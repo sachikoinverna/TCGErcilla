@@ -11,6 +11,7 @@
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:ProductoFormularioViewModel"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <VerticalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearProductoCommand}">
@@ -62,7 +63,9 @@
                 </material:MultiplePickerField.ItemsSource>
             </material:MultiplePickerField>
 
-            <Button input:FormView.IsSubmitButton="True" Text="Submit" />
+            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
+            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
+            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
 
         </input:FormView>
 

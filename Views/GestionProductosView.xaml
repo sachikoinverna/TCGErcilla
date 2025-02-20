@@ -42,13 +42,13 @@
                     Offset="10,10" />
             </VerticalStackLayout.Shadow>
 
-            <Label
-                Margin="0,20,0,0"
-                FontAttributes="Bold"
-                FontSize="40"
-                HorizontalOptions="Center"
-                Text="Productos"
-                VerticalOptions="Center" />
+            <Image
+    Margin="0,20,0,0"
+    Source="productos_titulos.png"
+    HorizontalOptions="Center"
+    VerticalOptions="Center" 
+    HeightRequest="100"
+    WidthRequest="100"/>
 
             <CollectionView
                 Margin="10"

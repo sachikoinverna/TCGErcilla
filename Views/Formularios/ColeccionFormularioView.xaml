@@ -10,10 +10,11 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding c}">
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -44,6 +45,9 @@
                                        Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding ColeccionInfo.NumeroCartas}"
                 Keyboard="Numeric" />
             <material:DatePickerField Title="Fecha de lanzamiento" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Calendar_month}}" Date="{Binding ColeccionInfo.FechaLanzamiento}"/>
+            <Button Style="{StaticResource ButtonStyleCreate}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
+            <Button Style="{StaticResource ButtonStyleDelete}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
+            <Button Style="{StaticResource ButtonStyleCreate}" Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

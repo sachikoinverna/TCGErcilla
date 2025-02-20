@@ -30,5 +30,6 @@ namespace TCGErcilla.Info
                 UrlImagen = this.UrlImagen
             };
         }
+        public ColeccionInfo() { }
     }
 }

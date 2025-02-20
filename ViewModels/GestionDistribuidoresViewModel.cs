@@ -27,9 +27,9 @@ namespace TCGErcilla.ViewModels
         {
             RequestModel request = new RequestModel()
             {
-                Method = "GET",
-                Data = string.Empty,
-                Route = "http://localhost:8080/distribuidores/todos"
+               Method = "GET",
+              Data = string.Empty,
+                Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -61,20 +61,13 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task EliminarDistribuidor()
         {
-            if (SelectedDistribuidor != null)
+            if (SelectedDistribuidor.Id != null)
             {
-                //var _producto = new ProductoDto();
-                //if (ProductoInfo.Id != null)
-                //{
-                // _producto.Id = ProductoInfo.Id;
-                //_producto.Nombre = ProductoInfo.Nombre;
-                //_producto.UrlImagen = ProductoInfo.UrlImagen;
-                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
                 var request = new RequestModel()
                 {
                     Data = SelectedDistribuidor.Id,
-                    Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/distribuidores/borrar"
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

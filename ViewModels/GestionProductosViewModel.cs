@@ -28,7 +28,7 @@ namespace TCGErcilla.ViewModels
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/productos/todos"
+                Route = "http://192.168.20.102:8080/productos/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -36,7 +36,6 @@ namespace TCGErcilla.ViewModels
             {
                 try
                 {
-                    ListaProductos.Add(new ProductoInfo(1, "Cartas de tu mama"));
                     ListaProductos =
                        JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
                 }

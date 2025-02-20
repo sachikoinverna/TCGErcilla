@@ -22,6 +22,8 @@ namespace TCGErcilla.ViewModels
 
         [ObservableProperty]
         private string rutaImagen;
+        [ObservableProperty]
+        private bool isEditMode;
         public ColeccionFormularioViewModel()
         {
             ColeccionInfo = new ColeccionInfo();
@@ -29,10 +31,6 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            //if (ColeccionInfo.Id != null) //Quiere decir que estamos editando
-            //{
-            // RutaImagen = ColeccionInfo.Url;
-            // }
             RutaImagen = "coleccion_default.png";
         }
         [RelayCommand]
@@ -48,9 +46,13 @@ namespace TCGErcilla.ViewModels
         public async Task CrearColeccion()
         {
             var _coleccion = new ColeccionDto();
-            if (ColeccionInfo.Id != null)
+            if (IsEditMode)
             {
                 _coleccion.Id = ColeccionInfo.Id;
+            }
+            else
+            {
+                _coleccion.Id = null;
             }
             _coleccion.Nombre = ColeccionInfo.Nombre;
             _coleccion.FechaLanzamiento = ColeccionInfo.FechaLanzamiento;

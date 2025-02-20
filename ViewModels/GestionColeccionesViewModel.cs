@@ -31,14 +31,14 @@ namespace TCGErcilla.ViewModels
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/colecciones/todas"
+                Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
             if (response.Success.Equals(0))
-            {
+           {
                 try
-                {
+               {
                     ListaColecciones =
                        JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
                 }
@@ -58,7 +58,7 @@ namespace TCGErcilla.ViewModels
         {
             var mopup = new ColeccionFormularioMopup();
             var vm = new ColeccionFormularioViewModel();
-            vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
+           // vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
         }
@@ -81,7 +81,7 @@ namespace TCGErcilla.ViewModels
                     Route = "http://localhost:8080/cartas/crear"
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
-                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+              //  await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
             }
         }
     }

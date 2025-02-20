@@ -14,10 +14,6 @@ namespace TCGErcilla.Dto
         public int? Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
-        public DistribuidorDto(string nombre)
-        {
-            Nombre = nombre;
-        }
         public DistribuidorDto() { }
     }
 }

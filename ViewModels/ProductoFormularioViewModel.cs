@@ -21,6 +21,8 @@ namespace TCGErcilla.ViewModels
         private ProductoInfo productoInfo;
         [ObservableProperty]
         private string rutaImagen;
+        [ObservableProperty]
+        private bool isEditMode;
         public ProductoFormularioViewModel()
         {
             ProductoInfo productoInfo = new ProductoInfo();
@@ -38,22 +40,25 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-           // if (ProductoInfo.Id != null) //Quiere decir que estamos editando
-           //{
-           //   RutaImagen = ProductoInfo.AvatarUrl;
-           // }
-            RutaImagen = "producto_default.png";
+            //if (ProductoInfo.Id != null) //Quiere decir que estamos editando
+            //{
+                //RutaImagen = ProductoInfo.AvatarUrl;
+              //  IsEditMode = true;
+            //} else {
+                IsEditMode = false;
+            //}
+            //RutaImagen = "producto_default.png";
         }
         [RelayCommand]
         public async Task CrearProducto()
         {
             var _producto = new ProductoDto();
-            if (ProductoInfo.Id != null)
-            {
-                _producto.Id = ProductoInfo.Id;
-            }
-            _producto.Nombre = ProductoInfo.Nombre;
-            _producto.UrlImagen = ProductoInfo.UrlImagen;
+            //if (ProductoInfo.Id != null)
+            //{
+              //  _producto.Id = ProductoInfo.Id;
+            //}
+           // _producto.Nombre = ProductoInfo.Nombre;
+            //_producto.UrlImagen = ProductoInfo.UrlImagen;
             //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
             var request = new RequestModel()
             {

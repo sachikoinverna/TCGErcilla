@@ -61,6 +61,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="SkiaSharp" Version="3.116.1" />
 		<PackageReference Include="StandardSocketsHttpHandler" Version="2.2.0.8" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.5.0" />
 		<PackageReference Include="UraniumUI" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Blurs" Version="2.11.0" />
 		<PackageReference Include="UraniumUI.Dialogs.CommunityToolkit" Version="2.11.0" />
@@ -103,7 +104,16 @@
 	  <MauiXaml Update="Resources\Styles\ButtonsStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\DatePickerFieldStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\LabelsStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\StackLayoutStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\TextFieldStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\GestionColeccionesView.xaml">

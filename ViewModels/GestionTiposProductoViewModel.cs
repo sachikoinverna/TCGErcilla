@@ -29,7 +29,7 @@ namespace TCGErcilla.ViewModels
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/tipo_producto/todos"
+                Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -56,6 +56,7 @@ namespace TCGErcilla.ViewModels
             var mopup = new TipoProductoFormularioMopup();
             var vm = new TipoProductoFormularioViewModel();
             vm.TipoProductoInfo = (TipoProductoInfo)SelectedTipoProductoInfo.Clone();
+            vm.IsEditMode = true;
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
         }
@@ -64,18 +65,11 @@ namespace TCGErcilla.ViewModels
         {
             if (SelectedTipoProductoInfo != null)
             {
-                //var _producto = new ProductoDto();
-                //if (ProductoInfo.Id != null)
-                //{
-                // _producto.Id = ProductoInfo.Id;
-                //_producto.Nombre = ProductoInfo.Nombre;
-                //_producto.UrlImagen = ProductoInfo.UrlImagen;
-                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
                 var request = new RequestModel()
                 {
                     Data = SelectedTipoProductoInfo.Id,
                     Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Route = "http://192.168.20.102:8080/cartas/crear"
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

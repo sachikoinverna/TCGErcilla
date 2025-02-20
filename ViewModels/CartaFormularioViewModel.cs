@@ -23,26 +23,18 @@ namespace TCGErcilla.ViewModels
 
         [ObservableProperty]
         private string rutaImagen;
+        [ObservableProperty]
+        private bool isEditMode;
 
         public CartaFormularioViewModel()
         {
             CartaInfo = new CartaInfo();
             RutaImagen = "carta_default.png";
         }
-        [RelayCommand]
-        public async void Submit()
-        {
 
-        }
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            if (CartaInfo.Id != null) //Quiere decir que estamos editando
-            {
-
-                RutaImagen = CartaInfo.UrlImagen;
-
-            }
             RutaImagen = "carta_default.png";
         }
         [RelayCommand]
@@ -58,8 +50,13 @@ namespace TCGErcilla.ViewModels
         public async Task CrearCarta()
         {
             var _carta = new CartaDto();
-            if (CartaInfo.Id != null) {
+            if (IsEditMode)
+            {
                 _carta.Id = CartaInfo.Id;
+            }
+            else
+            {
+                _carta.Id = null;
             }
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
@@ -70,7 +67,7 @@ namespace TCGErcilla.ViewModels
                 Route = "http://localhost:8080/cartas/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
-            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+         //   await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
 
         [RelayCommand]

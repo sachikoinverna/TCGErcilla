@@ -13,6 +13,10 @@ namespace TCGErcilla.Info
         public int Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
+        public DistribuidorInfo()
+        {
+
+        }
         public object Clone()
         {
             return new DistribuidorInfo

@@ -4,9 +4,11 @@ using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
@@ -32,14 +34,21 @@ namespace TCGErcilla.ViewModels
 
             if (cookieDict.TryGetValue("token", out string? token) &&
                 cookieDict.TryGetValue("userlogin", out string? userlogin))
+            { 
+                    Debug.WriteLine($"Token: {token}");
+                    Debug.WriteLine($"UserLogin: {userlogin}");
+                    await SecureStorage.SetAsync("auth_token", token);
+                    await SecureStorage.SetAsync("user", userlogin);
+            }
+            JwtPayload payload = JwtUtils.DecodeJwtPayload(token);
+            string rol = payload["admin"].ToString();
+            Debug.WriteLine("Payload: " + rol);
+            await App.Current.MainPage.DisplayAlert("ÉXITO", "Login correcto. El rol es: " + rol, "EMPEZAR");
+            if (rol.Equals("true"))
             {
                 await MostrarMainPage();
-                Debug.WriteLine($"Token: {token}");
-                Debug.WriteLine($"UserLogin: {userlogin}");
-                await SecureStorage.SetAsync("auth_token", token);
-                await SecureStorage.SetAsync("user", userlogin);
-
             }
+
         }
         [RelayCommand]
 

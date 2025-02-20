@@ -25,7 +25,7 @@
                 <ffimage:CachedImage
                     ErrorPlaceholder="carta_default.png"
                     HeightRequest="130"
-                    Source="{Binding CartaInfo.UrlImagen}"
+                    Source="{Binding RutaImagen}"
                     WidthRequest="130" />
                 <Button
                     Margin="5"
@@ -49,7 +49,9 @@
                                        Glyph={x:Static m:MaterialRegular.Edit}}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
-
+            <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"/>
+            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}"  />
+            <Button IsVisible="{Binding IsEditMode}" />
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

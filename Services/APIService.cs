@@ -36,7 +36,16 @@ namespace TCGErcilla.Services
 
                 // Se incluye el contenido JSON en la solicitud
                 request.Content = new StringContent(data, Encoding.UTF8, "application/json");
+                // Recuperar el token y usuario desde SecureStorage
+                string token = await SecureStorage.GetAsync("auth_token") ?? "";
+                string user = await SecureStorage.GetAsync("user") ?? "";
 
+                // Si el token está disponible, agregarlo al encabezado
+                if (!string.IsNullOrEmpty(token))
+                {
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    request.Headers.Add("User", user); // Puedes cambiar el nombre del encabezado si el backend espera otro.
+                }
                 try
                 {
                     // Se envía la solicitud al servidor de manera asíncrona y se espera una respuesta
