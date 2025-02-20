@@ -26,36 +26,25 @@
             WidthRequest="300" />
         <VerticalStackLayout
             Margin="30"
-            Background="WhiteSmoke"
             HeightRequest="650"
             HorizontalOptions="Start"
-            WidthRequest="350">
-
-            <VerticalStackLayout.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity=".7"
-                    Radius="10"
-                    Offset="10,10" />
-            </VerticalStackLayout.Shadow>
-
-            <Label
+            WidthRequest="350" BackgroundColor="#bfc3ea">
+            <Image
                 Margin="0,20,0,0"
-                FontAttributes="Bold"
-                FontSize="40"
+                Source="cartas_titulo.png"
                 HorizontalOptions="Center"
-                Text="Cartas"
-                VerticalOptions="Center" />
-
+                VerticalOptions="Center" 
+                HeightRequest="100"
+                WidthRequest="100"/>
+            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="stack_layout_cartas.jpg"/>
             <CollectionView
                 Margin="10"
-                Background="LightGray"
                 HeightRequest="350"
                 ItemsSource="{Binding ListaCartas}"
                 SelectedItem="{Binding SelectedCartaInfo}"
                 SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_cartas}}"
                 SelectionMode="Single"
-                WidthRequest="300">
+                WidthRequest="300" BackgroundColor="AntiqueWhite">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -101,7 +90,7 @@
             <Button
                 Margin="0,10"
                 BackgroundColor="MidnightBlue"
-                Command="{Binding EditarDistribuidorCommand}"
+                Command="{Binding EditarCartaCommand}"
                 CornerRadius="0"
                 FontAttributes="Bold"
                 FontSize="28"
@@ -110,13 +99,12 @@
             <Button
                 Margin="0,10"
                 BackgroundColor="MidnightBlue"
-                Command="{Binding EditarDistribuidorCommand}"
+                Command="{Binding EliminarCartaCommand}"
                 CornerRadius="0"
                 FontAttributes="Bold"
                 FontSize="28"
                 Text="Eliminar"
                 WidthRequest="300" />
         </VerticalStackLayout>
-
     </VerticalStackLayout>
 </ContentPage>

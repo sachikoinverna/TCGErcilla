@@ -38,7 +38,7 @@
             <material:DropdownField
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo.}"
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" SelectedItem="{Binding ProductoInfo}"
                 ItemsSource="{Binding Items}" />
             <material:DropdownField
                 Title="Pick an option"

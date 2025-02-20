@@ -2,4 +2,8 @@
 <ResourceDictionary
     x:Class="TCGErcilla.Resources.Styles.ButtonsStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" />
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style TargetType="Button" x:Key="button_style_delete">
+        <Setter Property="BackgroundColor" Value="Red"/>
+    </Style>
+</ResourceDictionary>

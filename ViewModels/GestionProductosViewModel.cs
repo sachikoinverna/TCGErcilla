@@ -58,5 +58,27 @@ namespace TCGErcilla.ViewModels
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
         }
+        [RelayCommand]
+        public async Task EliminarProducto()
+        {
+            if (SelectedProducto != null)
+            {
+                //var _producto = new ProductoDto();
+                //if (ProductoInfo.Id != null)
+                //{
+                // _producto.Id = ProductoInfo.Id;
+                //_producto.Nombre = ProductoInfo.Nombre;
+                //_producto.UrlImagen = ProductoInfo.UrlImagen;
+                //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
+                var request = new RequestModel()
+                {
+                    Data = SelectedProducto.Id,
+                    Method = "POST",
+                    Route = "http://localhost:8080/cartas/crear"
+                };
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            }
+        }
     }
 }
