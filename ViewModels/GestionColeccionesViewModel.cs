@@ -24,6 +24,8 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
         [ObservableProperty]
+        private ObservableCollection<CartaInfo> listaCartas = new ObservableCollection<CartaInfo>();
+        [ObservableProperty]
         private bool isCartasVisible;
         [ObservableProperty]
         private bool isProductosVisible;
@@ -51,6 +53,40 @@ namespace TCGErcilla.ViewModels
             IsCartasVisible = false;
         }
         [RelayCommand]
+        private void OcultarProductos()
+        {
+            if (SelectedColeccion == null)
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+            // if (SelectedColeccion .Gastos.Count > 0)
+            // {
+            //    IsCartasVisible = false;
+            //   IsProductosVisible = true;
+            //}
+            else
+            {
+            }
+        }
+        [RelayCommand]
+        private void OcultarCartas()
+        {
+            if (SelectedColeccion == null)
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+            // if (SelectedColeccion .Gastos.Count > 0)
+            // {
+            //    IsCartasVisible = false;
+            //   IsProductosVisible = true;
+            //}
+            else
+            {
+            }
+        }
+        [RelayCommand]
         public void MostrarProductos()
         {
             if (SelectedColeccion == null)
@@ -58,10 +94,29 @@ namespace TCGErcilla.ViewModels
                 App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
                 return;
             }
-           // if (SelectedColeccion .Gastos.Count > 0)
-           // {
+            // if (SelectedColeccion .Gastos.Count > 0)
+            // {
             //    IsCartasVisible = false;
-             //   IsProductosVisible = true;
+            //   IsProductosVisible = true;
+            //}
+            //RequestModel request = new RequestModel()
+            //{
+               // Method = "GET",
+              //  Route = "http://192.168.20.102:8080/colecciones/todas"
+            //};
+
+           // ResponseModel response = await APIService.ExecuteRequest(request);
+            //if (response.Success.Equals(0))
+            ///{
+               // try
+                //{
+                 //   ListaProductos =
+                  //     JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                //}
+                //catch (Exception ex)
+                //{
+
+                //}
             //}
             else
             {

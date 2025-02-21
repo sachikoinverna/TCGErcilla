@@ -17,7 +17,7 @@
     BindingContext="{viewmodels:GestionColeccionesViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetColeccionesCommand}" EventName="Loaded" />
-        <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
@@ -32,36 +32,36 @@
         <HorizontalStackLayout>
 
             <VerticalStackLayout
-            Margin="30"
-            Background="WhiteSmoke"
-            HeightRequest="650"
-            HorizontalOptions="Start"
-            WidthRequest="350">
+                Margin="30"
+                Background="WhiteSmoke"
+                HeightRequest="650"
+                HorizontalOptions="Start"
+                WidthRequest="350">
 
                 <VerticalStackLayout.Shadow>
                     <Shadow
-                    Brush="Black"
-                    Opacity=".7"
-                    Radius="10"
-                    Offset="10,10" />
+                        Brush="Black"
+                        Opacity=".7"
+                        Radius="10"
+                        Offset="10,10" />
                 </VerticalStackLayout.Shadow>
                 <Image
-                Margin="0,20,0,0"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                Source="colecciones_titulos.png"
-                VerticalOptions="Center"
-                WidthRequest="100" />
+                    Margin="0,20,0,0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="colecciones_titulos.png"
+                    VerticalOptions="Center"
+                    WidthRequest="100" />
 
                 <CollectionView
-                Margin="10"
-                Background="LightGray"
-                HeightRequest="350"
-                ItemsSource="{Binding ListaColecciones}"
-                SelectedItem="{Binding SelectedColeccion}"
-                SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
-                SelectionMode="Single"
-                WidthRequest="300">
+                    Margin="10"
+                    Background="LightGray"
+                    HeightRequest="350"
+                    ItemsSource="{Binding ListaColecciones}"
+                    SelectedItem="{Binding SelectedColeccion}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
+                    SelectionMode="Single"
+                    WidthRequest="300">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -70,17 +70,17 @@
                             <Border WidthRequest="280">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
-                                    x:DataType="viewmodels:GestionColeccionesViewModel"
-                                    BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
-                                    Command="{Binding EditarColeccionCommand}"
-                                    NumberOfTapsRequired="2" />
+                                        x:DataType="viewmodels:GestionColeccionesViewModel"
+                                        BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
+                                        Command="{Binding EditarColeccionCommand}"
+                                        NumberOfTapsRequired="2" />
                                 </Border.GestureRecognizers>
                                 <HorizontalStackLayout>
                                     <ffimage:CachedImage
-                                    Aspect="AspectFill"
-                                    ErrorPlaceholder="collection_default.png"
-                                    Source="{Binding UrlImagen}"
-                                    WidthRequest="50" />
+                                        Aspect="AspectFill"
+                                        ErrorPlaceholder="collection_default.png"
+                                        Source="{Binding UrlImagen}"
+                                        WidthRequest="50" />
                                     <VerticalStackLayout Margin="10">
                                         <Label Text="{Binding Nombre}" />
                                         <Label Text="{Binding NumeroCartas}" />
@@ -105,41 +105,71 @@
 
                 </CollectionView>
                 <Button
-                Margin="0,10"
-                BackgroundColor="MidnightBlue"
-                Command="{Binding EditarColeccionCommand}"
-                CornerRadius="0"
-                FontAttributes="Bold"
-                FontSize="28"
-                Text="Editar"
-                WidthRequest="300" />
+                    Margin="0,10"
+                    BackgroundColor="MidnightBlue"
+                    Command="{Binding MostrarCartasCommand}"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    IsVisible="{Binding IsCartasVisible, Converter={toolkit:InvertedBoolConverter}}"
+                    Text="Mostrar cartas"
+                    WidthRequest="300" />
                 <Button
-                Margin="0,10"
-                BackgroundColor="MidnightBlue"
-                Command="{Binding EditarColeccionCommand}"
-                CornerRadius="0"
-                FontAttributes="Bold"
-                FontSize="28"
-                Text="Eliminar"
-                WidthRequest="300" />
+                    Margin="0,10"
+                    BackgroundColor="MidnightBlue"
+                    Command="{Binding OcultarCartasCommand}"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    IsVisible="{Binding IsCartasVisible}"
+                    Text="Ocultar cartas"
+                    WidthRequest="300" />
+                <Button
+                    Margin="0,10"
+                    BackgroundColor="AntiqueWhite"
+                    Command="{Binding MostrarProductosCommand}"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
+                    Text="Mostrar productos" />
+                <Button
+                    Margin="0,10"
+                    BackgroundColor="MidnightBlue"
+                    Command="{Binding OcultarProductosCommand}"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    IsVisible="{Binding IsProductosVisible}"
+                    Text="Ocultar productos"
+                    WidthRequest="300" />
+                <Button
+                    Margin="0,10"
+                    BackgroundColor="MidnightBlue"
+                    Command="{Binding EliminarColeccionCommand}"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    Text="Eliminar"
+                    WidthRequest="300" />
             </VerticalStackLayout>
-            <VerticalStackLayout BackgroundColor="AliceBlue" BindingContext="{Binding }">
+            <VerticalStackLayout BackgroundColor="AliceBlue" IsVisible="{Binding IsProductosVisible}">
                 <Image
-                Margin="0,20,0,0"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                Source="productos_titulos.png"
-                VerticalOptions="Center"
-                WidthRequest="100" />
+                    Margin="0,20,0,0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="productos_titulos.png"
+                    VerticalOptions="Center"
+                    WidthRequest="100" />
 
                 <CollectionView
-                Margin="10"
-                Background="LightGray"
-                HeightRequest="350"
-                ItemsSource="{Binding ListaProductos}"
-                SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                SelectionMode="Single"
-                WidthRequest="300">
+                    Margin="10"
+                    Background="LightGray"
+                    HeightRequest="350"
+                    ItemsSource="{Binding ListaProductos}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                    SelectionMode="Single"
+                    WidthRequest="300">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -148,10 +178,10 @@
                             <Border WidthRequest="280">
                                 <HorizontalStackLayout>
                                     <ffimage:CachedImage
-                                    Aspect="AspectFill"
-                                    ErrorPlaceholder="product_default.png"
-                                    Source="{Binding UrlImagen}"
-                                    WidthRequest="50" />
+                                        Aspect="AspectFill"
+                                        ErrorPlaceholder="product_default.png"
+                                        Source="{Binding UrlImagen}"
+                                        WidthRequest="50" />
                                     <VerticalStackLayout Margin="10">
                                         <Label Text="{Binding Nombre}" />
                                     </VerticalStackLayout>
@@ -164,22 +194,22 @@
             </VerticalStackLayout>
             <VerticalStackLayout BackgroundColor="AliceBlue" IsEnabled="{Binding IsCartasVisible}">
                 <Image
-    Margin="0,20,0,0"
-    HeightRequest="100"
-    HorizontalOptions="Center"
-    Source="productos_titulos.png"
-    VerticalOptions="Center"
-    WidthRequest="100" />
+                    Margin="0,20,0,0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="cartas_titulo.png"
+                    VerticalOptions="Center"
+                    WidthRequest="100" />
 
                 <CollectionView
-    Margin="10"
-    Background="LightGray"
-    HeightRequest="350"
-    ItemsSource="{Binding ListaCartas}"
-    SelectedItem="{Binding SelectedCarta}"
-    SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-    SelectionMode="Single"
-    WidthRequest="300">
+                    Margin="10"
+                    Background="LightGray"
+                    HeightRequest="350"
+                    ItemsSource="{Binding ListaCartas}"
+                    SelectedItem="{Binding SelectedCarta}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                    SelectionMode="Single"
+                    WidthRequest="300">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -188,10 +218,10 @@
                             <Border WidthRequest="280">
                                 <HorizontalStackLayout>
                                     <ffimage:CachedImage
-                        Aspect="AspectFill"
-                        ErrorPlaceholder="cartas_default.png"
-                        Source="{Binding UrlImagen}"
-                        WidthRequest="50" />
+                                        Aspect="AspectFill"
+                                        ErrorPlaceholder="cartas_default.png"
+                                        Source="{Binding UrlImagen}"
+                                        WidthRequest="50" />
                                     <VerticalStackLayout Margin="10">
                                         <Label Text="{Binding Nombre}" />
                                     </VerticalStackLayout>
@@ -203,24 +233,7 @@
 
 
                 </CollectionView>
-                <Button
-    Margin="0,10"
-    BackgroundColor="MidnightBlue"
-    Command="{Binding EditarColeccionCommand}"
-    CornerRadius="0"
-    FontAttributes="Bold"
-    FontSize="28"
-    Text="Editar"
-    WidthRequest="300" />
-                <Button
-    Margin="0,10"
-    BackgroundColor="MidnightBlue"
-    Command="{Binding EditarProductoCommand}"
-    CornerRadius="0"
-    FontAttributes="Bold"
-    FontSize="28"
-    Text="Eliminar"
-    WidthRequest="300" />
+
             </VerticalStackLayout>
         </HorizontalStackLayout>
     </VerticalStackLayout>
