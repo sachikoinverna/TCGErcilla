@@ -14,7 +14,7 @@
     <TabBar>
         <ShellContent
             x:Name="LoginPage"
-            Title="Loginç"
+            Title="Login"
             ContentTemplate="{DataTemplate views:LoginView}"
             Route="LoginView" />
         <ShellContent
