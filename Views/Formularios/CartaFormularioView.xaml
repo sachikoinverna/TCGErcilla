@@ -54,6 +54,7 @@
             <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
             <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
             <Button IsVisible="{Binding IsEditMode}" />
+            <ImageButton input:FormView.IsSubmitButton="True" BorderColor="Orange" BorderWidth="3"  Source="fondo_cartas.jpg"/>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>
