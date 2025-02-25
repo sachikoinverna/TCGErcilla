@@ -47,8 +47,8 @@
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
                                        Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding Items}"
-                SelectedItem="{Binding ProductoInfo}" />
+                ItemsSource="{Binding ListaColecciones}"
+                SelectedItem="{Binding ColeccionInfo}" />
             <material:MultiplePickerField
                 Title="Pick some options"
                 AccentColor="DeepSkyBlue"

@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,10 @@ namespace TCGErcilla.ViewModels
         private string rutaImagen;
         [ObservableProperty]
         private bool isEditMode;
+        [ObservableProperty]
+        private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
+        [ObservableProperty]
+        private ColeccionInfo coleccionInfo;
         public ProductoFormularioViewModel()
         {
             ProductoInfo productoInfo = new ProductoInfo();
@@ -35,6 +41,27 @@ namespace TCGErcilla.ViewModels
             if (file != null)
             {
                 RutaImagen = file.FullPath;
+            }
+        }
+        [RelayCommand]
+        public async void GetColecciones()
+        {
+
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                Route = "http://192.168.20.102:8080/colecciones/todas"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaColecciones =
+                JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
             }
         }
         [RelayCommand]

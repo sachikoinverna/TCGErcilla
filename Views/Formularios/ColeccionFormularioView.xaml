@@ -54,15 +54,15 @@
             <Button
                 Command="{Binding CrearCartaCommand}"
                 IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                Style="{StaticResource ButtonStyleCreate}" />
+                Style="{StaticResource ButtonStyleCreate}" Text="Crear"/>
             <Button
                 Command="{Binding CrearCartaCommand}"
                 IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleDelete}" />
+                Style="{StaticResource ButtonStyleDelete}" Text="Eliminar"/>
             <Button
                 Command="{Binding CrearCartaCommand}"
                 IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleCreate}" />
+                Style="{StaticResource ButtonStyleCreate}"  Text="Editar"/>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

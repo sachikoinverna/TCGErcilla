@@ -157,7 +157,7 @@ namespace TCGErcilla.ViewModels
         {
             var mopup = new ColeccionFormularioMopup();
             var vm = new ColeccionFormularioViewModel();
-           // vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
+            vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
         }

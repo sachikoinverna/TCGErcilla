@@ -51,10 +51,20 @@
                 Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
+            <material:DropdownField
+                Title="Pick an option"
+                Icon="{FontImageSource FontFamily=MaterialRegular,
+                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                ItemsSource="{Binding ListaColecciones}"
+                SelectedItem="{Binding ColeccionInfo}" />
             <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
             <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
             <Button IsVisible="{Binding IsEditMode}" />
-            <ImageButton input:FormView.IsSubmitButton="True" BorderColor="Orange" BorderWidth="3"  Source="fondo_cartas.jpg"/>
+            <ImageButton
+                input:FormView.IsSubmitButton="True"
+                BorderColor="Orange"
+                BorderWidth="3"
+                Source="fondo_cartas.jpg" />
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>
