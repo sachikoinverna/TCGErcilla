@@ -3,25 +3,77 @@
     x:Class="TCGErcilla.Resources.Styles.FramesStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style x:Key="FrameCartasFormularioStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="HeightRequest" Value="500" />
+        <Setter Property="WidthRequest" Value="550" />
+    </Style>
+    <Style x:Key="FrameColeccionesFormularioStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="HeightRequest" Value="550" />
+        <Setter Property="WidthRequest" Value="550" />
+    </Style>
+    <Style x:Key="FrameDistribuidoresFormularioStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="HeightRequest" Value="400" />
+        <Setter Property="WidthRequest" Value="550" />
+    </Style>
+    <Style x:Key="FrameProductosFormularioStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="HeightRequest" Value="550" />
+        <Setter Property="WidthRequest" Value="550" />
+    </Style>
+    <Style x:Key="FrameTipoProductosFormularioStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="HeightRequest" Value="550" />
+        <Setter Property="WidthRequest" Value="550" />
+    </Style>
     <Style x:Key="FrameCartasGestionCartasStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Green" />
-        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
     </Style>
     <Style x:Key="FrameProductosGestionProductosStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Green" />
-        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
     </Style>
     <Style x:Key="FrameColeccionesGestionColeccionesStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Green" />
-        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
     </Style>
     <Style x:Key="FrameTiposProductosGestionTiposProductosStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameProductosGestionTiposProductosStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="Green" />
         <Setter Property="BorderColor" Value="Black" />
         <Setter Property="CornerRadius" Value="20" />
@@ -30,6 +82,24 @@
     <Style x:Key="FrameDistribuidoresGestionDistribuidoresStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="Green" />
         <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameProductosGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameCollectionViewProductosGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#e993aa" />
+        <Setter Property="BorderColor" Value="#b74b6d" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameCollectionViewCartasGestionCartasStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#fef698" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
     </Style>

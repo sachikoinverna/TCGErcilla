@@ -8,6 +8,8 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
     x:DataType="viewmodels:GestionTiposProductoViewModel"
+            BackgroundImageSource="fondo_tipos_de_producto.jpg"
+
     BindingContext="{viewmodels:GestionTiposProductoViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetTiposProductoCommand}" EventName="Loaded" />
@@ -15,13 +17,9 @@
     <VerticalStackLayout>
         <Button
             Margin="0,10"
-            BackgroundColor="MidnightBlue"
+            Style="{StaticResource ButtonStyleCrearTiposProductosGestionTiposProductos}"
             Command="{Binding CrearTipoProductoCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="28"
-            Text="Crear tipo de producto"
-            WidthRequest="300" />
+/>
         <HorizontalStackLayout>
             <Frame Style="{StaticResource FrameTiposProductosGestionTiposProductosStyle}">
 
@@ -86,25 +84,11 @@
 
                     </CollectionView>
                     <Button
-                        Margin="0,10"
-                        BackgroundColor="MidnightBlue"
-                        Command="{Binding EditarTipoProductoCommand}"
-                        CornerRadius="0"
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        Text="Editar"
-                        WidthRequest="300" />
-                    <Button
-                        Margin="0,10"
-                        BackgroundColor="MidnightBlue"
-                        Command="{Binding EliminarTiposProductoCommand}"
-                        CornerRadius="0"
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        Text="Eliminar"
-                        WidthRequest="300" />
+                        Command="{Binding GetTiposProductoCommand}"
+                        Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}"/>
                 </StackLayout>
             </Frame>
+            <Frame Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
             <VerticalStackLayout
                 Margin="30"
                 Background="WhiteSmoke"
@@ -156,6 +140,7 @@
 
                 </CollectionView>
             </VerticalStackLayout>
+            </Frame>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

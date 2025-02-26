@@ -14,8 +14,10 @@
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
             <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -49,7 +51,7 @@
                 Date="{Binding ColeccionInfo.FechaLanzamiento}"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
                                        Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"

@@ -119,6 +119,9 @@
 	  <MauiXaml Update="Resources\Styles\ImageButtonsStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\ImageStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\LabelsStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

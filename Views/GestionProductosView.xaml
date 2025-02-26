@@ -12,6 +12,8 @@
     xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
+            BackgroundImageSource="fondo_productos.jpg"
+
     x:DataType="viewmodels:GestionProductosViewModel"
     BindingContext="{viewmodels:GestionProductosViewModel}">
     <ContentPage.Behaviors>
@@ -19,14 +21,9 @@
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
+            Style="{StaticResource ButtonStyleCrearProductoGestionProductos}"
             Margin="0,10"
-            BackgroundColor="MidnightBlue"
-            Command="{Binding AbrirMopupDistribuidorCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="28"
-            Text="Crear producto"
-            WidthRequest="300" />
+            Command="{Binding AbrirMopupDistribuidorCommand}"/>
         <Frame Style="{StaticResource FrameProductosGestionProductosStyle}">
 
             <StackLayout

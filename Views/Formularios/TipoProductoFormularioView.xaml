@@ -12,18 +12,17 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <VerticalStackLayout>
-        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
 
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearTipoProductoCommand}">
             <material:TextField
-                Title="Tipo"
-                AccentColor="DeepSkyBlue"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Account_box}}"
+               Style="{StaticResource TextFielTipoTipoProductoStyle}"
                 Text="{Binding TipoProductoInfo.Tipo}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Button
                 input:FormView.IsSubmitButton="True"
                 IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"

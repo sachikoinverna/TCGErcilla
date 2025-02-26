@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Style x:Key="DatePickerFieldColeccionStyle" TargetType="material:DatePickerField">
-        <Setter Property="Title" Value="Fecha de lanzamiento"/>
+        <Setter Property="Title" Value="Fecha de lanzamiento" />
         <Setter Property="AllowClear" Value="True" />
     </Style>
 </ResourceDictionary>

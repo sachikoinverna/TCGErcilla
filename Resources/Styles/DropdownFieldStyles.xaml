@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TCGErcilla.Resources.Styles.PickerStyles"
-                        xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
-
-                    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-                    >
+<ResourceDictionary
+    x:Class="TCGErcilla.Resources.Styles.PickerStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Style x:Key="DropdownFieldColeccionFormularioCartaStyle" TargetType="material:DropdownField">
-        <Setter Property="Title" Value="Coleccion"/>
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular,
-                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"/>
+        <Setter Property="Title" Value="Coleccion" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
+        <Setter Property="WidthRequest" Value="300"/>
     </Style>
 </ResourceDictionary>

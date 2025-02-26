@@ -6,18 +6,9 @@
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups">
     <Frame
-        Padding="10"
-        BackgroundColor="AliceBlue"
-        BorderColor="DeepSkyBlue"
-        CornerRadius="20"
-        HasShadow="false"
-        HeightRequest="400"
-        WidthRequest="400">
+        Style="{StaticResource FrameColeccionesFormularioStyle}">
 
-        <VerticalStackLayout
-            Background="Lavender"
-            HeightRequest="400"
-            WidthRequest="400">
+        <VerticalStackLayout>
             <formularios:ColeccionFormularioView />
         </VerticalStackLayout>
     </Frame>

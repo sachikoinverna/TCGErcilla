@@ -11,14 +11,8 @@
     x:DataType="viewmodels:TipoProductoFormularioViewModel"
     BindingContext="{viewmodels:TipoProductoFormularioViewModel}">
     <Frame
-        Padding="10"
-        BackgroundColor="AliceBlue"
-        BorderColor="DeepSkyBlue"
-        CornerRadius="20"
-        HasShadow="false"
-        HeightRequest="400"
-        WidthRequest="400">
-        <VerticalStackLayout HeightRequest="400" WidthRequest="400">
+        Style="{StaticResource FrameTipoProductosFormularioStyle}">
+        <VerticalStackLayout HeightRequest="300" WidthRequest="500">
             <formularios:TipoProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_tipo_producto_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

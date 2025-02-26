@@ -14,10 +14,12 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:CartaFormularioViewModel">
     <StackLayout.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Appering" />
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
     </StackLayout.Behaviors>
     <VerticalStackLayout>
-        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearCartaCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -38,11 +40,7 @@
                 <validation:RequiredValidation />
             </material:TextField>
             <material:TextField
-                Title="Numero de carta"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Style="{StaticResource TextFieldNumeroColeccionCartasStyle}"
                 Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
@@ -50,7 +48,7 @@
                 Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}"
                 ItemsSource="{Binding ListaColecciones}"
                 SelectedItem="{Binding ColeccionInfo}" />
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"

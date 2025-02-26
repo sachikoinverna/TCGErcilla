@@ -11,15 +11,9 @@
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <Frame
-        Padding="10"
-        BackgroundColor="AliceBlue"
-        BorderColor="DeepSkyBlue"
-        CornerRadius="20"
-        HasShadow="false"
-        HeightRequest="400"
-        WidthRequest="400">
+        Style="{StaticResource FrameDistribuidoresFormularioStyle}">
 
-        <VerticalStackLayout HeightRequest="400" WidthRequest="400">
+        <VerticalStackLayout HeightRequest="350" WidthRequest="500">
             <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

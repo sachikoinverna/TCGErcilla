@@ -14,18 +14,16 @@
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <VerticalStackLayout>
-        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
             <material:TextField
-                Title="Nombre"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}"
+                Style="{StaticResource TextFieldNombreDistribuidoresStyle}"
                 Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"

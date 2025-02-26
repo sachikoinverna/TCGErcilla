@@ -6,8 +6,7 @@
     <Style x:Key="ImageButtonClose" TargetType="ImageButton">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Source" Value="cerrar_boton.png" />
-        <Setter Property="VerticalOptions" Value="End" />
-        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="Margin" Value="10,10,10,10"/>
         <Setter Property="HeightRequest" Value="50" />
         <Setter Property="WidthRequest" Value="50" />
     </Style>

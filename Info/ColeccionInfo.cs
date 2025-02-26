@@ -33,5 +33,9 @@ namespace TCGErcilla.Info
             };
         }
         public ColeccionInfo() { }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

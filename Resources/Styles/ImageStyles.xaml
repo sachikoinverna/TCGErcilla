@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TCGErcilla.Resources.Styles.ImageStyles">
+    <Style x:Key="ImageTiposProductoTitleStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="tipos_de_producto_titulo.png" />
+    </Style>
+    <Style x:Key="ImageProductosTitleStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="productos_titulo.png" />
+    </Style>
+    <Style x:Key="ImageCartasTitleStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="cartas_titulo.png" />
+    </Style>
+    <Style x:Key="ImageDistribuidoresTitleStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="distribuidores_titulo.png" />
+    </Style>
+    <Style x:Key="ImageColeccionesTitleStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="Source" Value="colecciones_titulo.png" />
+    </Style>
+</ResourceDictionary>

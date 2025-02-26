@@ -9,6 +9,8 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_distribuidores"
     Title=""
+        BackgroundImageSource="fondo_distribuidores.jpg"
+
     x:DataType="viewmodels:GestionDistribuidoresViewModel"
     BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
     <ContentPage.Behaviors>
@@ -17,13 +19,8 @@
     <VerticalStackLayout>
         <Button
             Margin="0,10"
-            BackgroundColor="MidnightBlue"
-            Command="{Binding AbrirMopupDistribuidorCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="28"
-            Text="Crear distribuidor"
-            WidthRequest="300" />
+            Style="{StaticResource ButtonStyleCrearDistribuidoresGestionDistribuidores}"
+            Command="{Binding AbrirMopupDistribuidorCommand}"/>
         <HorizontalStackLayout>
             <Frame Style="{StaticResource FrameDistribuidoresGestionDistribuidoresStyle}">
 
@@ -88,6 +85,7 @@
                 </StackLayout>
             </Frame>
             <Frame
+                Style="{StaticResource FrameProductosGestionDistribuidoresStyle}"
                 Padding="10"
                 BackgroundColor="AliceBlue"
                 BorderColor="DeepSkyBlue"
