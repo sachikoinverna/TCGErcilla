@@ -97,7 +97,7 @@ namespace TCGErcilla.ViewModels
             }
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
-            //_carta.I
+            //_carta
             var request = new RequestModel()
             {
                 Data = _carta,

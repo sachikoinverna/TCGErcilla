@@ -30,7 +30,7 @@ namespace TCGErcilla.Dto
         {
         }
 
-        public class ColeccionDto()
+        public class ColeccionDto
         {
             [JsonProperty("id")]
             public int Id { get; }
