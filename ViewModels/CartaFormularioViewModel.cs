@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,15 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            RutaImagen = "carta_default.png";
+            GetColecciones();
+            if (!isEditMode)
+            {
+                RutaImagen = "carta_default.png";
+            }
+            else
+            {
+              
+            }
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -120,6 +129,11 @@ namespace TCGErcilla.ViewModels
                     "ACEPTAR");
                 return false;
             }
+        }
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
         }
 
     }

@@ -14,6 +14,7 @@
     x:DataType="viewmodels:ProductoFormularioViewModel"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <VerticalStackLayout>
+        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearProductoCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -26,7 +27,7 @@
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                    Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
             <material:TextField
                 Title="Nombre"
@@ -41,7 +42,7 @@
                 Title="Pick an option"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
                                        Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding ListaColecciones}"
                 SelectedItem="{Binding ProductoInfo}" />
             <material:DropdownField
                 Title="Pick an option"
@@ -53,23 +54,13 @@
                 Title="Pick some options"
                 AccentColor="DeepSkyBlue"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}">
-                <material:MultiplePickerField.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Option 1</x:String>
-                        <x:String>Option 2</x:String>
-                        <x:String>Option 3</x:String>
-                        <x:String>Option 4</x:String>
-                        <x:String>Option 5</x:String>
-                        <x:String>Option 6</x:String>
-                    </x:Array>
-                </material:MultiplePickerField.ItemsSource>
-            </material:MultiplePickerField>
-
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
-
+                                       Glyph={x:Static m:MaterialRegular.Email}}"
+                ItemsSource="{Binding ListaColecciones}" />
+            <HorizontalStackLayout>
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
+                <Button IsVisible="{Binding IsEditMode}" />
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+            </HorizontalStackLayout>
         </input:FormView>
 
     </VerticalStackLayout>

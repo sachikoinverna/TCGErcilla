@@ -10,6 +10,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="appColors" Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary x:Name="buttonsStyles" Source="Resources/Styles/ButtonsStyles.xaml" />
+                <ResourceDictionary x:Name="datePickerFieldStyles" Source="Resources/Styles/DatePickerFieldStyles.xaml" />
+                <ResourceDictionary x:Name="stackLayoutStyles" Source="Resources/Styles/StackLayoutStyles.xaml" />
+                <ResourceDictionary x:Name="framesStyles" Source="Resources/Styles/FramesStyles.xaml" />
+                <ResourceDictionary x:Name="imageButtonsStyles" Source="Resources/Styles/ImageButtonsStyles.xaml" />
+                <ResourceDictionary x:Name="textFieldStyles" Source="Resources/Styles/TextFieldStyles.xaml" />
+                <ResourceDictionary x:Name="borderStyles" Source="Resources/Styles/BorderStyles.xaml" />
+                <ResourceDictionary x:Name="dropdownFieldStyles" Source="Resources/Styles/DropdownFieldStyles.xaml"/>
+                <ResourceDictionary x:Name="multiplePickerFieldStyles" Source="Resources/Styles/MultiplePickerFieldStyles.xaml"/>
                 <material:StyleResource BasedOn="{x:Reference appStyles}" ColorsOverride="{x:Reference appColors}" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -14,7 +14,8 @@
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding c}">
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -29,14 +30,11 @@
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                    Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
 
             <material:TextField
-                Title="Nombre"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}"
+                Style="{StaticResource TextFieldNombreColeccionStyle}"
                 Text="{Binding ColeccionInfo.Nombre}" />
             <material:TextField
                 Title="Numero de cartas"
@@ -47,22 +45,26 @@
                 Keyboard="Numeric"
                 Text="{Binding ColeccionInfo.NumeroCartas}" />
             <material:DatePickerField
-                Title="Fecha de lanzamiento"
+                Style="{StaticResource DatePickerFieldColeccionStyle}"
                 Date="{Binding ColeccionInfo.FechaLanzamiento}"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
                                        Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                Style="{StaticResource ButtonStyleCreate}" Text="Crear"/>
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleDelete}" Text="Eliminar"/>
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleCreate}"  Text="Editar"/>
+            <HorizontalStackLayout>
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}"
+                    Text="Crear" />
+                <Button
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}"
+                    Text="Eliminar" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleCreate}"
+                    Text="Editar" />
+            </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

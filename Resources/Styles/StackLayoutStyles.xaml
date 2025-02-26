@@ -2,4 +2,20 @@
 <ResourceDictionary
     x:Class="TCGErcilla.Resources.Styles.StackLayoutStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" />
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style x:Key="StackLayoutCartasGestionCartasStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="Green" />
+    </Style>
+    <Style x:Key="StackLayoutProductosGestionProductosStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="Green" />
+    </Style>
+    <Style x:Key="StackLayoutColeccionesGestionColeccionesStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="Green" />
+    </Style>
+    <Style x:Key="StackLayoutTiposProductosGestionTiposProductosStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="Green" />
+    </Style>
+    <Style x:Key="StackLayoutDistribuidoresGestionDistribuidoresStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="Green" />
+    </Style>
+</ResourceDictionary>

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,11 @@ namespace TCGErcilla.ViewModels
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
+        }
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
         }
     }
 }

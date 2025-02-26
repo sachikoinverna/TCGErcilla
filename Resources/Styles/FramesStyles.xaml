@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="TCGErcilla.Resources.Styles.FramesStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style x:Key="FrameCartasGestionCartasStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameProductosGestionProductosStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameColeccionesGestionColeccionesStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameTiposProductosGestionTiposProductosStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameDistribuidoresGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Green" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+</ResourceDictionary>

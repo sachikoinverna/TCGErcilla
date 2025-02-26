@@ -9,9 +9,18 @@
     x:Name="formulario_carta_mopup"
     Title="CartaFormularioMopup"
     x:DataType="viewmodels:CartaFormularioViewModel"
-    BackgroundImageSource="fondo_cartas.jpg"
     BindingContext="{viewmodels:CartaFormularioViewModel}">
-    <VerticalStackLayout HeightRequest="400" WidthRequest="400">
-        <formularios:CartaFormularioView BindingContext="{Binding Source={x:Reference formulario_carta_mopup}, Path=BindingContext}" />
-    </VerticalStackLayout>
+    <Frame
+        Padding="10"
+        BackgroundColor="AliceBlue"
+        BorderColor="DeepSkyBlue"
+        CornerRadius="20"
+        HasShadow="false"
+        HeightRequest="400"
+        WidthRequest="400">
+
+        <VerticalStackLayout HeightRequest="400" WidthRequest="400">
+            <formularios:CartaFormularioView BindingContext="{Binding Source={x:Reference formulario_carta_mopup}, Path=BindingContext}" />
+        </VerticalStackLayout>
+    </Frame>
 </mopups:PopupPage>

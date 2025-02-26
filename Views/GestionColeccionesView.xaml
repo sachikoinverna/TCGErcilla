@@ -20,7 +20,7 @@
         <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
 
-        <VerticalStackLayout>
+    <VerticalStackLayout>
         <Button
             Margin="0,10"
             BackgroundColor="MidnightBlue"
@@ -31,121 +31,121 @@
             Text="Crear coleccion"
             WidthRequest="300" />
         <HorizontalStackLayout>
+            <Frame Style="{StaticResource FrameColeccionesGestionColeccionesStyle}">
 
-            <VerticalStackLayout
-                Margin="30"
-                Background="WhiteSmoke"
-                HeightRequest="650"
-                HorizontalOptions="Start"
-                WidthRequest="350">
-                <Image
-                    Margin="0,20,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="colecciones_titulos.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
+                <StackLayout
+                    Margin="30"
+                    HeightRequest="650"
+                    HorizontalOptions="Start"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutColeccionesGestionColeccionesStyle}"
+                    WidthRequest="350">
+                    <Image
+                        Margin="0,20,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="colecciones_titulos.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
 
-                <CollectionView
-                    Margin="10"
-                    Background="LightGray"
-                    HeightRequest="350"
-                    ItemsSource="{Binding ListaColecciones}"
-                    SelectedItem="{Binding SelectedColeccion}"
-                    SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
-                    SelectionMode="Single"
-                    WidthRequest="300">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="info:ColeccionInfo">
-                            <Border WidthRequest="280">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        x:DataType="viewmodels:GestionColeccionesViewModel"
-                                        BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
-                                        Command="{Binding EditarColeccionCommand}"
-                                        NumberOfTapsRequired="2" />
-                                </Border.GestureRecognizers>
-                                <HorizontalStackLayout>
-                                    <ffimage:CachedImage
-                                        Aspect="AspectFill"
-                                        ErrorPlaceholder="collection_default.png"
-                                        Source="{Binding UrlImagen}"
-                                        WidthRequest="50" />
-                                    <VerticalStackLayout Margin="10">
-                                        <Label Text="{Binding Nombre}" />
-                                        <Label Text="{Binding NumeroCartas}" />
-                                        <Label Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}" />
-                                    </VerticalStackLayout>
+                    <CollectionView
+                        Margin="10"
+                        Background="LightGray"
+                        HeightRequest="350"
+                        ItemsSource="{Binding ListaColecciones}"
+                        SelectedItem="{Binding SelectedColeccion}"
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
+                        SelectionMode="Single"
+                        WidthRequest="300">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="info:ColeccionInfo">
+                                <Border WidthRequest="280">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:DataType="viewmodels:GestionColeccionesViewModel"
+                                            BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
+                                            Command="{Binding EditarColeccionCommand}"
+                                            NumberOfTapsRequired="2" />
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout>
+                                        <ffimage:CachedImage
+                                            Aspect="AspectFill"
+                                            ErrorPlaceholder="collection_default.png"
+                                            Source="{Binding UrlImagen}"
+                                            WidthRequest="50" />
+                                        <VerticalStackLayout Margin="10">
+                                            <Label Text="{Binding Nombre}" />
+                                            <Label Text="{Binding NumeroCartas}" />
+                                            <Label Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}" />
+                                        </VerticalStackLayout>
 
-                                </HorizontalStackLayout>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal" />
-                                        <VisualState Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="LightBlue" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Normal" />
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
 
 
-                </CollectionView>
-                <Button
-                    Margin="0,10"
-                    BackgroundColor="MidnightBlue"
-                    Command="{Binding MostrarCartasCommand}"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="28"
-                    IsVisible="{Binding IsCartasVisible, Converter={toolkit:InvertedBoolConverter}}"
-                    Text="Mostrar cartas"
-                    WidthRequest="300" />
-                <Button
-                    Margin="0,10"
-                    BackgroundColor="MidnightBlue"
-                    Command="{Binding OcultarCartasCommand}"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="28"
-                    IsVisible="{Binding IsCartasVisible}"
-                    Text="Ocultar cartas"
-                    WidthRequest="300" />
-                <Button
-                    Margin="0,10"
-                    BackgroundColor="AntiqueWhite"
-                    Command="{Binding MostrarProductosCommand}"
-                    CornerRadius="10"
-                    FontAttributes="Bold"
-                    FontSize="28"
-                    IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
-                    Text="Mostrar productos" />
-                <Button
-                    Margin="0,10"
-                    BackgroundColor="MidnightBlue"
-                    Command="{Binding OcultarProductosCommand}"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="28"
-                    IsVisible="{Binding IsProductosVisible}"
-                    Text="Ocultar productos"
-                    WidthRequest="300" />
-                <Button
-                    Margin="0,10"
-                    BackgroundColor="MidnightBlue"
-                    Command="{Binding EliminarColeccionCommand}"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="28"
-                    Text="Eliminar"
-                    WidthRequest="300" />
-            </VerticalStackLayout>
+                    </CollectionView>
+                    <Button
+                        Margin="0,10"
+                        BackgroundColor="MidnightBlue"
+                        Command="{Binding MostrarCartasCommand}"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        IsVisible="{Binding IsCartasVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Style="{StaticResource ButtonStyleMostrarCartasGestionColecciones}"
+                        Text="Mostrar cartas"
+                        WidthRequest="300" />
+                    <Button
+                        Margin="0,10"
+                        Style="{StaticResource ButtonStyleOcultarCartasGestionColecciones}"
+                        Command="{Binding OcultarCartasCommand}"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        IsVisible="{Binding IsCartasVisible}"
+                        Text="Ocultar cartas"
+                        WidthRequest="300" />
+                    <Button
+                        Margin="0,10"
+                        BackgroundColor="AntiqueWhite"
+                        Command="{Binding MostrarProductosCommand}"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Style="{StaticResource ButtonStyleMostrarProductosGestionColecciones}"
+                        Text="Mostrar productos" />
+                    <Button
+                        Margin="0,10"
+                        Style="{StaticResource ButtonStyleOcultarProductosGestionColecciones}"
+                        Command="{Binding OcultarProductosCommand}"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        IsVisible="{Binding IsProductosVisible}"
+                        Text="Ocultar productos"
+                        WidthRequest="300" />
+                    <Button
+                        Margin="0,10"
+                        BackgroundColor="MidnightBlue"
+                        Command="{Binding EliminarColeccionCommand}"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        Text="Eliminar"
+                        WidthRequest="300" />
+                </StackLayout>
+            </Frame>
             <VerticalStackLayout BackgroundColor="AliceBlue" IsVisible="{Binding IsProductosVisible}">
                 <Image
                     Margin="0,20,0,0"
@@ -185,53 +185,57 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-            <Frame BorderColor="DeepSkyBlue" CornerRadius="20" Padding="10" BackgroundColor="AliceBlue" HasShadow="false">
+            <Frame
+                Padding="10"
+                BackgroundColor="AliceBlue"
+                BorderColor="DeepSkyBlue"
+                CornerRadius="20"
+                HasShadow="false">
                 <VerticalStackLayout BackgroundColor="AliceBlue" IsEnabled="{Binding IsCartasVisible}">
-                <Image
-                    Margin="0,20,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="cartas_titulo.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
+                    <Image
+                        Margin="0,20,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="cartas_titulo.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
 
-                <CollectionView
-                    Margin="10"
-                    Background="LightGray"
-                    HeightRequest="350"
-                    ItemsSource="{Binding ListaCartas}"
-                    SelectedItem="{Binding SelectedCarta}"
-                    SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                    SelectionMode="Single"
-                    WidthRequest="300">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="info:CartaInfo">
-                            <Border WidthRequest="280">
-                                <HorizontalStackLayout>
-                                    <ffimage:CachedImage
-                                        Aspect="AspectFill"
-                                        ErrorPlaceholder="cartas_default.png"
-                                        Source="{Binding UrlImagen}"
-                                        WidthRequest="50" />
-                                    <VerticalStackLayout Margin="10">
-                                        <Label Text="{Binding Nombre}" />
-                                    </VerticalStackLayout>
+                    <CollectionView
+                        Margin="10"
+                        Background="LightGray"
+                        HeightRequest="350"
+                        ItemsSource="{Binding ListaCartas}"
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                        SelectionMode="Single"
+                        WidthRequest="300">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="info:CartaInfo">
+                                <Border WidthRequest="280">
+                                    <HorizontalStackLayout>
+                                        <ffimage:CachedImage
+                                            Aspect="AspectFill"
+                                            ErrorPlaceholder="cartas_default.png"
+                                            Source="{Binding UrlImagen}"
+                                            WidthRequest="50" />
+                                        <VerticalStackLayout Margin="10">
+                                            <Label Text="{Binding Nombre}" />
+                                        </VerticalStackLayout>
 
-                                </HorizontalStackLayout>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
 
 
-                </CollectionView>
+                    </CollectionView>
 
-            </VerticalStackLayout>
-    </Frame>
+                </VerticalStackLayout>
+            </Frame>
 
-    </HorizontalStackLayout>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 
 </ContentPage>

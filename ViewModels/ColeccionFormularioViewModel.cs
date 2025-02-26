@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -90,6 +91,10 @@ namespace TCGErcilla.ViewModels
                 return false;
             }
         }
-
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
+        }
     }
 }

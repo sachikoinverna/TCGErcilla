@@ -12,6 +12,8 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <VerticalStackLayout>
+        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearTipoProductoCommand}">
             <material:TextField
                 Title="Tipo"
@@ -21,9 +23,17 @@
                 Text="{Binding TipoProductoInfo.Tipo}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+            <HorizontalStackLayout>
+            <Button
+                input:FormView.IsSubmitButton="True"
+                IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonStyleCreate}" />
+            <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+            <Button
+                input:FormView.IsSubmitButton="True"
+                IsVisible="{Binding IsEditMode}"
+                Style="{StaticResource ButtonStyleEditar}" />
+            </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

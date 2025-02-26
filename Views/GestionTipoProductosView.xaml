@@ -22,170 +22,140 @@
             FontSize="28"
             Text="Crear tipo de producto"
             WidthRequest="300" />
-        <VerticalStackLayout
-            Margin="30"
-            Background="WhiteSmoke"
-            HeightRequest="650"
-            HorizontalOptions="Start"
-            WidthRequest="350">
+        <HorizontalStackLayout>
+            <Frame Style="{StaticResource FrameTiposProductosGestionTiposProductosStyle}">
 
-            <VerticalStackLayout.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity=".7"
-                    Radius="10"
-                    Offset="10,10" />
-            </VerticalStackLayout.Shadow>
+                <StackLayout
+                    Margin="30"
+                    HeightRequest="650"
+                    HorizontalOptions="Start"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutTiposProductosGestionTiposProductosStyle}"
+                    WidthRequest="350">
 
-            <Image
-                Margin="0,20,0,0"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                Source="tipos_de_producto_titulo.png"
-                VerticalOptions="Center"
-                WidthRequest="100" />
+                    <Image
+                        Margin="0,20,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="tipos_de_producto_titulo.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
 
-            <CollectionView
-                Margin="10"
-                Background="LightGray"
-                HeightRequest="350"
-                ItemsSource="{Binding ListaTiposProducto}"
-                SelectedItem="{Binding SelectedTipoProductoInfo}"
-                SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                SelectionMode="Single"
-                WidthRequest="300">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="info:TipoProductoInfo">
-                        <Border WidthRequest="280">
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    x:DataType="viewmodels:GestionTiposProductoViewModel"
-                                    BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
-                                    Command="{Binding EditarTipoProductoCommand}"
-                                    NumberOfTapsRequired="2" />
-                            </Border.GestureRecognizers>
-                            <HorizontalStackLayout>
-                                <VerticalStackLayout Margin="10">
-                                    <Label Text="{Binding Tipo}" />
-                                </VerticalStackLayout>
+                    <CollectionView
+                        Margin="10"
+                        Background="LightGray"
+                        HeightRequest="350"
+                        ItemsSource="{Binding ListaTiposProducto}"
+                        SelectedItem="{Binding SelectedTipoProductoInfo}"
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                        SelectionMode="Single"
+                        WidthRequest="300">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="info:TipoProductoInfo">
+                                <Border WidthRequest="280">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:DataType="viewmodels:GestionTiposProductoViewModel"
+                                            BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
+                                            Command="{Binding EditarTipoProductoCommand}"
+                                            NumberOfTapsRequired="2" />
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout>
+                                        <VerticalStackLayout Margin="10">
+                                            <Label Text="{Binding Tipo}" />
+                                        </VerticalStackLayout>
 
-                            </HorizontalStackLayout>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Normal" />
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="LightBlue" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Normal" />
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
 
 
-            </CollectionView>
-            <Button
-                Margin="0,10"
-                BackgroundColor="MidnightBlue"
-                Command="{Binding EditarTipoProductoCommand}"
-                CornerRadius="0"
-                FontAttributes="Bold"
-                FontSize="28"
-                Text="Editar"
-                WidthRequest="300" />
-            <Button
-                Margin="0,10"
-                BackgroundColor="MidnightBlue"
-                Command="{Binding EliminarTiposProductoCommand}"
-                CornerRadius="0"
-                FontAttributes="Bold"
-                FontSize="28"
-                Text="Eliminar"
-                WidthRequest="300" />
-        </VerticalStackLayout>
-        <VerticalStackLayout
-    Margin="30"
-    Background="WhiteSmoke"
-    HeightRequest="650"
-    HorizontalOptions="Start"
-    WidthRequest="350">
+                    </CollectionView>
+                    <Button
+                        Margin="0,10"
+                        BackgroundColor="MidnightBlue"
+                        Command="{Binding EditarTipoProductoCommand}"
+                        CornerRadius="0"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        Text="Editar"
+                        WidthRequest="300" />
+                    <Button
+                        Margin="0,10"
+                        BackgroundColor="MidnightBlue"
+                        Command="{Binding EliminarTiposProductoCommand}"
+                        CornerRadius="0"
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        Text="Eliminar"
+                        WidthRequest="300" />
+                </StackLayout>
+            </Frame>
+            <VerticalStackLayout
+                Margin="30"
+                Background="WhiteSmoke"
+                HeightRequest="650"
+                HorizontalOptions="Start"
+                WidthRequest="350">
+                <Image
+                    Margin="0,20,0,0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="tipos_de_producto_titulo.png"
+                    VerticalOptions="Center"
+                    WidthRequest="100" />
 
-            <VerticalStackLayout.Shadow>
-                <Shadow
-            Brush="Black"
-            Opacity=".7"
-            Radius="10"
-            Offset="10,10" />
-            </VerticalStackLayout.Shadow>
-
-            <Image
-        Margin="0,20,0,0"
-        HeightRequest="100"
-        HorizontalOptions="Center"
-        Source="tipos_de_producto_titulo.png"
-        VerticalOptions="Center"
-        WidthRequest="100" />
-
-            <CollectionView
-        Margin="10"
-        Background="LightGray"
-        HeightRequest="350"
-        ItemsSource="{Binding ListaDistribuidores}"
-        SelectedItem="{Binding SelectedDistribuidor}"
-        SelectionMode="Single"
-        WidthRequest="300">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="info:DistribuidorInfo">
-                        <Border WidthRequest="280">
-                            <HorizontalStackLayout>
-                                <VerticalStackLayout Margin="10">
-                                    <Label Text="{Binding Id}" />
-                                    <Label Text="{Binding Nombre}" />
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Normal" />
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="LightBlue" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                <CollectionView
+                    Margin="10"
+                    Background="LightGray"
+                    HeightRequest="350"
+                    ItemsSource="{Binding ListaDistribuidores}"
+                    SelectedItem="{Binding SelectedDistribuidor}"
+                    SelectionMode="Single"
+                    WidthRequest="300">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="info:DistribuidorInfo">
+                            <Border WidthRequest="280">
+                                <HorizontalStackLayout>
+                                    <VerticalStackLayout Margin="10">
+                                        <Label Text="{Binding Id}" />
+                                        <Label Text="{Binding Nombre}" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="LightBlue" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
 
-            </CollectionView>
-            <Button
-        Margin="0,10"
-        BackgroundColor="MidnightBlue"
-        Command="{Binding EditarDistribuidorCommand}"
-        CornerRadius="0"
-        FontAttributes="Bold"
-        FontSize="28"
-        Text="Editar"
-        WidthRequest="300" />
-            <Button
-        Margin="0,10"
-        BackgroundColor="MidnightBlue"
-        Command="{Binding EliminarDistribuidorCommand}"
-        CornerRadius="0"
-        FontAttributes="Bold"
-        FontSize="28"
-        Text="Eliminar"
-        WidthRequest="300" />
-        </VerticalStackLayout>
-
+                </CollectionView>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

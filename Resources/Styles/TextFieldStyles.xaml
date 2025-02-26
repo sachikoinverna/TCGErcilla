@@ -3,8 +3,20 @@
     x:Class="TCGErcilla.Resources.Styles.TextFieldStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
-    <Style TargetType="material:TextField">
+    <Style x:Key="TextFieldNombreCartasStyle" TargetType="material:TextField">
         <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="Blue" />
+        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
+    </Style>
+    <Style x:Key="TextFieldNombreColeccionStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="Blue" />
+        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
     </Style>
 </ResourceDictionary>

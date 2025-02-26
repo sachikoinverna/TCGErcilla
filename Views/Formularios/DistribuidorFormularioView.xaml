@@ -14,6 +14,7 @@
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <VerticalStackLayout>
+        <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
             <material:TextField
                 Title="Nombre"
@@ -24,9 +25,17 @@
                 Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+            <HorizontalStackLayout>
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
+            </HorizontalStackLayout>
         </input:FormView>
 
     </VerticalStackLayout>

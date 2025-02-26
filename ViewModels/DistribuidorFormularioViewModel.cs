@@ -79,6 +79,10 @@ namespace TCGErcilla.ViewModels
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
             }
         }
-
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
+        }
     }
 }
