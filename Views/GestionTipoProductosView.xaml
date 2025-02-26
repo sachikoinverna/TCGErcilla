@@ -8,19 +8,19 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
     x:DataType="viewmodels:GestionTiposProductoViewModel"
-            BackgroundImageSource="fondo_tipos_de_producto.jpg"
-
+    BackgroundImageSource="fondo_tipos_de_producto.jpg"
     BindingContext="{viewmodels:GestionTiposProductoViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetTiposProductoCommand}" EventName="Loaded" />
+        <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Loaded" />
+
     </ContentPage.Behaviors>
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Button
             Margin="0,10"
-            Style="{StaticResource ButtonStyleCrearTiposProductosGestionTiposProductos}"
             Command="{Binding CrearTipoProductoCommand}"
-/>
-        <HorizontalStackLayout>
+            Style="{StaticResource ButtonStyleCrearTiposProductosGestionTiposProductos}" />
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Frame Style="{StaticResource FrameTiposProductosGestionTiposProductosStyle}">
 
                 <StackLayout
@@ -28,8 +28,7 @@
                     HeightRequest="650"
                     HorizontalOptions="Start"
                     Orientation="Vertical"
-                    Style="{StaticResource StackLayoutTiposProductosGestionTiposProductosStyle}"
-                    WidthRequest="350">
+                    Style="{StaticResource StackLayoutTiposProductosGestionTiposProductosStyle}">
 
                     <Image
                         Margin="0,20,0,0"
@@ -38,30 +37,30 @@
                         Source="tipos_de_producto_titulo.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
-                    <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
+                    <Frame Style="{StaticResource FrameCollectionViewTiposProductosGestionTiposProductoStyle}" WidthRequest="350">
 
                         <CollectionView
-                        Margin="10"
-                        Background="LightGray"
-                        HeightRequest="350"
-                        ItemsSource="{Binding ListaTiposProducto}"
-                        SelectedItem="{Binding SelectedTipoProductoInfo}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                        SelectionMode="Single"
-                        WidthRequest="300">
+                            Margin="10"
+                            Background="LightGray"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaTiposProducto}"
+                            SelectedItem="{Binding SelectedTipoProductoInfo}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:TipoProductoInfo">
-                                    <Border WidthRequest="280">
-                                        <Border.GestureRecognizers>
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectTiposProductosGestionTipoProductoStyle}" WidthRequest="280">
+                                        <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
-                                            x:DataType="viewmodels:GestionTiposProductoViewModel"
-                                            BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
-                                            Command="{Binding EditarTipoProductoCommand}"
-                                            NumberOfTapsRequired="2" />
-                                        </Border.GestureRecognizers>
+                                                x:DataType="viewmodels:GestionTiposProductoViewModel"
+                                                BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
+                                                Command="{Binding EditarTipoProductoCommand}"
+                                                NumberOfTapsRequired="2" />
+                                        </Frame.GestureRecognizers>
                                         <HorizontalStackLayout>
                                             <VerticalStackLayout Margin="10">
                                                 <Label Text="{Binding Tipo}" />
@@ -78,48 +77,46 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                    </Border>
+                                    </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
 
 
                         </CollectionView>
                     </Frame>
-                    <Button
-                        Command="{Binding GetTiposProductoCommand}"
-                        Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}"/>
+                    <Button Command="{Binding GetTiposProductoCommand}" Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}" />
+                    <Button Command="{Binding GetTiposProductoCommand}" Style="{StaticResource ButtonStyleOcultarProductosGestionTiposProductos}" />
                 </StackLayout>
             </Frame>
-            <Frame Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
+            <Frame IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
                 <VerticalStackLayout
-                Margin="30"
-                Background="WhiteSmoke"
-                HeightRequest="650"
-                HorizontalOptions="Start"
-                WidthRequest="350">
+                    Margin="30"
+                    HeightRequest="650"
+                    HorizontalOptions="Start"
+                    WidthRequest="350">
                     <Image
-                    Margin="0,20,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="tipos_de_producto_titulo.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
-                    <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
+                        Margin="0,20,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="tipos_de_producto_titulo.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <Frame Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}" WidthRequest="350">
 
                         <CollectionView
-                    Margin="10"
-                    Background="LightGray"
-                    HeightRequest="350"
-                    ItemsSource="{Binding ListaDistribuidores}"
-                    SelectedItem="{Binding SelectedDistribuidor}"
-                    SelectionMode="Single"
-                    WidthRequest="300">
+                            Margin="10"
+                            Background="LightGray"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaDistribuidores}"
+                            SelectedItem="{Binding SelectedDistribuidor}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:DistribuidorInfo">
-                                    <Border WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionTipoProductoStyle}" WidthRequest="280">
                                         <HorizontalStackLayout>
                                             <VerticalStackLayout Margin="10">
                                                 <Label Text="{Binding Id}" />
@@ -136,14 +133,13 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                    </Border>
+                                    </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
 
 
                         </CollectionView>
                     </Frame>
-
                 </VerticalStackLayout>
             </Frame>
         </HorizontalStackLayout>

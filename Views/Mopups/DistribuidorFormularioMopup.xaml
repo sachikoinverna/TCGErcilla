@@ -10,8 +10,7 @@
     Title="DistribuidorFormularioMopup"
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
-    <Frame
-        Style="{StaticResource FrameDistribuidoresFormularioStyle}">
+    <Frame Style="{StaticResource FrameDistribuidoresFormularioStyle}">
 
         <VerticalStackLayout HeightRequest="350" WidthRequest="500">
             <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />

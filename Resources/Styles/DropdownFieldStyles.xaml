@@ -9,6 +9,6 @@
         <Setter Property="Title" Value="Coleccion" />
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
-        <Setter Property="WidthRequest" Value="300"/>
+        <Setter Property="WidthRequest" Value="300" />
     </Style>
 </ResourceDictionary>

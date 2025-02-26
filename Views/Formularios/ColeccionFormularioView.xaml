@@ -35,9 +35,7 @@
                     Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
 
-            <material:TextField
-                Style="{StaticResource TextFieldNombreColeccionStyle}"
-                Text="{Binding ColeccionInfo.Nombre}" />
+            <material:TextField Style="{StaticResource TextFieldNombreColeccionStyle}" Text="{Binding ColeccionInfo.Nombre}" />
             <material:TextField
                 Title="Numero de cartas"
                 AccentColor="DeepSkyBlue"
@@ -47,10 +45,10 @@
                 Keyboard="Numeric"
                 Text="{Binding ColeccionInfo.NumeroCartas}" />
             <material:DatePickerField
-                Style="{StaticResource DatePickerFieldColeccionStyle}"
                 Date="{Binding ColeccionInfo.FechaLanzamiento}"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
+                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}"
+                Style="{StaticResource DatePickerFieldColeccionStyle}" />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"

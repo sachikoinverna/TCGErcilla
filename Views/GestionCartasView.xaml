@@ -17,87 +17,107 @@
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Button
-            Style="{StaticResource ButtonStyleCrearCartasGestionCartas}"
             Margin="0,10"
             Command="{Binding CrearCartaCommand}"
             FontAttributes="Bold"
             FontSize="28"
+            Style="{StaticResource ButtonStyleCrearCartasGestionCartas}"
             Text="Crear carta"
             WidthRequest="300" />
-        <Frame
-            HeightRequest="700"
-            Style="{StaticResource FrameCartasGestionCartasStyle}"
-            WidthRequest="400">
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
 
-            <StackLayout
-                Margin="30"
-                HorizontalOptions="Start"
-                Orientation="Vertical"
-                Style="{StaticResource StackLayoutCartasGestionCartasStyle}"
-                WidthRequest="300"
-                HeightRequest="600">
-                <Image
-                    Margin="0,10,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="cartas_titulo.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
-                <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
-                <CollectionView
-                    Margin="10"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    BackgroundColor="#f2fdf8"
-                    HeightRequest="350"
-                    ItemsSource="{Binding ListaCartas}"
-                    SelectedItem="{Binding SelectedCarta}"
-                    SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_cartas}}"
-                    SelectionMode="Single"
+                <StackLayout
+                    Margin="30"
+                    HorizontalOptions="Start"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                    <Image
+                        Margin="0,10,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="cartas_titulo.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <Frame Style="{StaticResource FrameCollectionViewCartasGestionCartasStyle}">
+                        <CollectionView
+                            Margin="10"
+                            HeightRequest="350"
+                            HorizontalOptions="Center"
+                            ItemsSource="{Binding ListaCartas}"
+                            SelectedItem="{Binding SelectedCarta}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_cartas}}"
+                            SelectionMode="Single"
+                            VerticalOptions="Center"
+                            WidthRequest="300">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:CartaInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartasGestionCartasStyle}" WidthRequest="280">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                x:DataType="viewmodels:GestionCartasViewModel"
+                                                BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
+                                                Command="{Binding CrearCartaCommand}"
+                                                NumberOfTapsRequired="2" />
+                                        </Frame.GestureRecognizers>
+                                        <HorizontalStackLayout>
+                                            <ffimage:CachedImage
+                                                Aspect="AspectFill"
+                                                ErrorPlaceholder="carta_default.png"
+                                                Source="{Binding UrlImagen}"
+                                                WidthRequest="50" />
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Nombre}" />
+                                                <Label Text="{Binding NumeroColeccion}" />
+                                            </VerticalStackLayout>
+
+                                        </HorizontalStackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+
+                        </CollectionView>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+
+                <StackLayout
+                    Margin="30"
+                    HeightRequest="600"
+                    HorizontalOptions="Start"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutCartasGestionCartasStyle}"
                     WidthRequest="300">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="info:CartaInfo">
-                            <Frame WidthRequest="280" Style="{StaticResource FrameCollectionViewCartasGestionCartasStyle}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        x:DataType="viewmodels:GestionCartasViewModel"
-                                        BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
-                                        Command="{Binding CrearCartaCommand}"
-                                        NumberOfTapsRequired="2" />
-                                </Frame.GestureRecognizers>
-                                <HorizontalStackLayout>
-                                    <ffimage:CachedImage
-                                        Aspect="AspectFill"
-                                        ErrorPlaceholder="carta_default.png"
-                                        Source="{Binding UrlImagen}"
-                                        WidthRequest="50" />
-                                    <VerticalStackLayout Margin="10">
-                                        <Label Text="{Binding Nombre}" />
-                                        <Label Text="{Binding NumeroColeccion}" />
-                                    </VerticalStackLayout>
-
-                                </HorizontalStackLayout>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal" />
-                                        <VisualState Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="LightBlue" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-
-
-                </CollectionView>
-                </Frame>
-            </StackLayout>
-        </Frame>
+                    <Image
+                        Margin="0,10,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="cartas_titulo.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <Frame
+                        BackgroundColor="#f2fdf8"
+                        BorderColor="#5193d8"
+                        WidthRequest="350">
+                        <Label Text="{Binding SelectedCarta.Nombre}" />
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -95,6 +95,7 @@ namespace TCGErcilla.ViewModels
                 Route = "http://localhost:8080/cartas/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
+            await UploadImage(response.Data.ToString());
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
         [RelayCommand]

@@ -17,21 +17,19 @@
         </HorizontalStackLayout>
 
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearTipoProductoCommand}">
-            <material:TextField
-               Style="{StaticResource TextFielTipoTipoProductoStyle}"
-                Text="{Binding TipoProductoInfo.Tipo}">
+            <material:TextField Style="{StaticResource TextFielTipoTipoProductoStyle}" Text="{Binding TipoProductoInfo.Tipo}">
                 <validation:RequiredValidation />
             </material:TextField>
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Button
-                input:FormView.IsSubmitButton="True"
-                IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                Style="{StaticResource ButtonStyleCreate}" />
-            <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
-            <Button
-                input:FormView.IsSubmitButton="True"
-                IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleEditar}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
             </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>

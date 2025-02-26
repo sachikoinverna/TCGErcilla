@@ -39,15 +39,13 @@
             <material:TextField Style="{StaticResource TextFieldNombreCartasStyle}" Text="{Binding CartaInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <material:TextField
-                Style="{StaticResource TextFieldNumeroColeccionCartasStyle}"
-                Text="{Binding CartaInfo.NumeroColeccion}">
+            <material:TextField Style="{StaticResource TextFieldNumeroColeccionCartasStyle}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
-                Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}"
                 ItemsSource="{Binding ListaColecciones}"
-                SelectedItem="{Binding ColeccionInfo}" />
+                SelectedItem="{Binding ColeccionInfo}"
+                Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}" />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"

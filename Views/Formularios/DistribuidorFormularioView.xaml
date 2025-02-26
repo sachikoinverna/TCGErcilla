@@ -18,9 +18,7 @@
             <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
         </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
-            <material:TextField
-                Style="{StaticResource TextFieldNombreDistribuidoresStyle}"
-                Text="{Binding DistribuidorInfo.Nombre}">
+            <material:TextField Style="{StaticResource TextFieldNombreDistribuidoresStyle}" Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">

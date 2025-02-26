@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups">
-    <Frame
-        Style="{StaticResource FrameColeccionesFormularioStyle}">
+    <Frame Style="{StaticResource FrameColeccionesFormularioStyle}">
 
         <VerticalStackLayout>
             <formularios:ColeccionFormularioView />

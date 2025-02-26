@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Newtonsoft.Json;
@@ -96,13 +97,16 @@ namespace TCGErcilla.ViewModels
             }
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
+            //_carta.I
             var request = new RequestModel()
             {
                 Data = _carta,
                 Method = "POST",
-                Route = "http://localhost:8080/cartas/crear"
+                Route = "http://192.168.20.102:8080/cartas/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
+            await UploadImage(response.Data.ToString());
+            await CerrarMopup();
          //   await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
 
