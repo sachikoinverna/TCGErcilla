@@ -44,8 +44,9 @@
                         Source="colecciones_titulos.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
+                    <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
 
-                    <CollectionView
+                        <CollectionView
                         Margin="10"
                         Background="LightGray"
                         HeightRequest="350"
@@ -54,48 +55,49 @@
                         SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
                         SelectionMode="Single"
                         WidthRequest="300">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="info:ColeccionInfo">
-                                <Border WidthRequest="280">
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:ColeccionInfo">
+                                    <Border WidthRequest="280">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
                                             x:DataType="viewmodels:GestionColeccionesViewModel"
                                             BindingContext="{Binding Source={x:Reference gestion_colecciones}, Path=BindingContext}"
                                             Command="{Binding EditarColeccionCommand}"
                                             NumberOfTapsRequired="2" />
-                                    </Border.GestureRecognizers>
-                                    <HorizontalStackLayout>
-                                        <ffimage:CachedImage
+                                        </Border.GestureRecognizers>
+                                        <HorizontalStackLayout>
+                                            <ffimage:CachedImage
                                             Aspect="AspectFill"
                                             ErrorPlaceholder="collection_default.png"
                                             Source="{Binding UrlImagen}"
                                             WidthRequest="50" />
-                                        <VerticalStackLayout Margin="10">
-                                            <Label Text="{Binding Nombre}" />
-                                            <Label Text="{Binding NumeroCartas}" />
-                                            <Label Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}" />
-                                        </VerticalStackLayout>
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Nombre}" />
+                                                <Label Text="{Binding NumeroCartas}" />
+                                                <Label Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}" />
+                                            </VerticalStackLayout>
 
-                                    </HorizontalStackLayout>
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup Name="CommonStates">
-                                            <VisualState Name="Normal" />
-                                            <VisualState Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="LightBlue" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                        </HorizontalStackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                    </CollectionView>
+                        </CollectionView>
+                    </Frame>
                     <Button
                         Margin="0,10"
                         Command="{Binding MostrarCartasCommand}"

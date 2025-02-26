@@ -38,8 +38,9 @@
                         Source="tipos_de_producto_titulo.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
+                    <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
 
-                    <CollectionView
+                        <CollectionView
                         Margin="10"
                         Background="LightGray"
                         HeightRequest="350"
@@ -48,62 +49,64 @@
                         SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
                         SelectionMode="Single"
                         WidthRequest="300">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="info:TipoProductoInfo">
-                                <Border WidthRequest="280">
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:TipoProductoInfo">
+                                    <Border WidthRequest="280">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
                                             x:DataType="viewmodels:GestionTiposProductoViewModel"
                                             BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
                                             Command="{Binding EditarTipoProductoCommand}"
                                             NumberOfTapsRequired="2" />
-                                    </Border.GestureRecognizers>
-                                    <HorizontalStackLayout>
-                                        <VerticalStackLayout Margin="10">
-                                            <Label Text="{Binding Tipo}" />
-                                        </VerticalStackLayout>
+                                        </Border.GestureRecognizers>
+                                        <HorizontalStackLayout>
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Tipo}" />
+                                            </VerticalStackLayout>
 
-                                    </HorizontalStackLayout>
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup Name="CommonStates">
-                                            <VisualState Name="Normal" />
-                                            <VisualState Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="LightBlue" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                        </HorizontalStackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                    </CollectionView>
+                        </CollectionView>
+                    </Frame>
                     <Button
                         Command="{Binding GetTiposProductoCommand}"
                         Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}"/>
                 </StackLayout>
             </Frame>
             <Frame Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
-            <VerticalStackLayout
+                <VerticalStackLayout
                 Margin="30"
                 Background="WhiteSmoke"
                 HeightRequest="650"
                 HorizontalOptions="Start"
                 WidthRequest="350">
-                <Image
+                    <Image
                     Margin="0,20,0,0"
                     HeightRequest="100"
                     HorizontalOptions="Center"
                     Source="tipos_de_producto_titulo.png"
                     VerticalOptions="Center"
                     WidthRequest="100" />
+                    <Frame WidthRequest="350" BorderColor="#5193d8" BackgroundColor="#f2fdf8">
 
-                <CollectionView
+                        <CollectionView
                     Margin="10"
                     Background="LightGray"
                     HeightRequest="350"
@@ -111,35 +114,37 @@
                     SelectedItem="{Binding SelectedDistribuidor}"
                     SelectionMode="Single"
                     WidthRequest="300">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="info:DistribuidorInfo">
-                            <Border WidthRequest="280">
-                                <HorizontalStackLayout>
-                                    <VerticalStackLayout Margin="10">
-                                        <Label Text="{Binding Id}" />
-                                        <Label Text="{Binding Nombre}" />
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal" />
-                                        <VisualState Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="LightBlue" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:DistribuidorInfo">
+                                    <Border WidthRequest="280">
+                                        <HorizontalStackLayout>
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Id}" />
+                                                <Label Text="{Binding Nombre}" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                </CollectionView>
-            </VerticalStackLayout>
+                        </CollectionView>
+                    </Frame>
+
+                </VerticalStackLayout>
             </Frame>
         </HorizontalStackLayout>
     </VerticalStackLayout>
