@@ -73,7 +73,7 @@ namespace TCGErcilla.ViewModels
         {
        
             var _carta = new CartaDto();
-            
+
             if (IsEditMode)
             {
                 _carta.Id = CartaInfo.Id;
@@ -81,13 +81,17 @@ namespace TCGErcilla.ViewModels
             else
             {
                 _carta.Id = null;
+
             }
-          
-            _carta.Nombre = CartaInfo.Nombre;
-            _carta.UrlImagen = CartaInfo.UrlImagen;
-            //_carta.Coleccion ;
-            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
-            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
+            ColeccionInfo Coleccion = CartaInfo.SelectedColeccion;
+            ColeccionDto ColeccionDto = new ColeccionDto();
+            ColeccionDto.Id = Coleccion.Id;
+                _carta.Nombre = CartaInfo.Nombre;
+                _carta.UrlImagen = CartaInfo.UrlImagen;
+                _carta.NumeroColeccion = CartaInfo.NumeroColeccion;
+                _carta.Coleccion = ColeccionDto;
+            
+             //_carta.Coleccion.Id = CartaInfo.Coleccion.Id;
             var request = new RequestModel()
             {
                 Data = _carta,
