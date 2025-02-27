@@ -19,11 +19,12 @@ namespace TCGErcilla.Dto
         [JsonProperty("url_imagen")]
         public string UrlImagen { get; set; }
         [JsonProperty("idColeccion")]
-        public ColeccionDto1 Coleccion { get; set; }
-        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen)
+        public ColeccionDto Coleccion { get; set; }
+        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen,ColeccionDto coleccion)
         {
             Id = id;
             Nombre = nombre;
+            Coleccion = coleccion;
             NumeroColeccion = numeroColeccion;
             UrlImagen = urlImagen;
         }
@@ -32,16 +33,6 @@ namespace TCGErcilla.Dto
         {
         }
         
-        public class ColeccionDto1
-        {
-            [JsonProperty("id")]
-            public int Id { get; set; }
-            public ColeccionDto1(int id)
-            {
-                Id = id;
-            }
-
-        }
     }
 
 }

@@ -107,10 +107,22 @@
                         Command="{Binding OcultarProductosCommand}"
                         IsVisible="{Binding IsProductosVisible}"
                         Style="{StaticResource ButtonStyleOcultarProductosGestionColecciones}" />
-
+                    <Button
+                        Margin="0,10"
+                        Command="{Binding MostrarReportesCommand}"
+                        IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Style="{StaticResource ButtonStyleMostrarProductosGestionColecciones}" />
+                    <Button
+                        Margin="0,10"
+                        Command="{Binding OcultarReportesCommand}"
+                        IsVisible="{Binding IsReportesVisible}"
+                        Style="{StaticResource ButtonStyleOcultarProductosGestionColecciones}" />
                 </StackLayout>
             </Frame>
-            <Frame Padding="10" Style="{StaticResource FrameProductosGestionColeccionesStyle}">
+            <Frame
+                Padding="10"
+                IsVisible="{Binding IsProductosVisible}"
+                Style="{StaticResource FrameProductosGestionColeccionesStyle}">
                 <StackLayout
                     IsVisible="{Binding IsProductosVisible}"
                     Orientation="Vertical"
@@ -148,13 +160,17 @@
                     </Frame>
                 </StackLayout>
             </Frame>
-            <Frame Padding="10" Style="{StaticResource FrameCartasGestionColeccionesStyle}">
+            <Frame
+                Padding="10"
+                IsVisible="{Binding IsCartasVisible}"
+                Style="{StaticResource FrameCartasGestionColeccionesStyle}">
                 <StackLayout
                     IsEnabled="{Binding IsCartasVisible}"
+                    IsVisible="{Binding IsCartasVisible}"
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutCartasGestionColeccionesStyle}">
                     <Image Style="{StaticResource ImageCartasTitleStyle}" />
-                    <Frame Style="{StaticResource FrameCollectionViewCartasGestionColeccionStyle}">
+                    <Frame IsVisible="{Binding IsCartasVisible}" Style="{StaticResource FrameCollectionViewCartasGestionColeccionStyle}">
                         <CollectionView
                             Margin="10"
                             HeightRequest="350"
@@ -167,7 +183,10 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:CartaInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}" WidthRequest="280">
+                                    <Frame
+                                        IsVisible="{Binding IsCartasVisible}"
+                                        Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}"
+                                        WidthRequest="280">
                                         <HorizontalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
@@ -188,7 +207,86 @@
                     </Frame>
                 </StackLayout>
             </Frame>
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
 
+                <StackLayout
+                    Margin="30"
+                    HorizontalOptions="Start"
+                    IsVisible="{Binding IsReportesVisible}"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                    <Frame
+                        BackgroundColor="#f2fdf8"
+                        BorderColor="#5193d8"
+                        IsVisible="{Binding IsReportesVisible}"
+                        WidthRequest="350">
+                        <material:TabView>
+
+                            <material:TabItem Title="Tab One">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Margin="5" Orientation="Horizontal">
+                                            <Entry
+                                                Placeholder="Correo"
+                                                Text="{Binding FiltroCorreo}"
+                                                WidthRequest="200" />
+                                            <Button
+                                                Margin="5"
+                                                Command="{Binding GetPDFCommand}"
+                                                Text="BUSCAR" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+
+                            <material:TabItem Title="Tab Two">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Second Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+                            <material:TabItem Title="Tab Three">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Third Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+                        </material:TabView>
+
+
+
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
+
+                <!--  CONTENEDOR PARA EL VISOR PDF  -->
+                <StackLayout
+                    Margin="20"
+                    BackgroundColor="WhiteSmoke"
+                    HeightRequest="550"
+                    IsVisible="{Binding IsReportesVisible}"
+                    Orientation="Vertical"
+                    WidthRequest="550">
+
+                    <StackLayout.Shadow>
+                        <Shadow
+                            Brush="Black"
+                            Opacity=".7"
+                            Radius="20"
+                            Offset="10,10" />
+                    </StackLayout.Shadow>
+                    <WebView
+                        Margin="10"
+                        HeightRequest="500"
+                        Source="{Binding UrlPDF}"
+                        WidthRequest="500" />
+                </StackLayout>
+            </Frame>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 

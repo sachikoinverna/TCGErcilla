@@ -23,14 +23,46 @@ namespace TCGErcilla.ViewModels
         private DistribuidorInfo selectedDistribuidor;
         [ObservableProperty]
         private bool isProductosVisible;
+        [ObservableProperty]
+        private bool isReportesVisible;
+        [RelayCommand]
+        public void EstadoInicial()
+        {
+            IsProductosVisible = false;
+            IsReportesVisible = false;
+        }
+        [RelayCommand]
+        public void MostrarProductos()
+        {
+            IsProductosVisible = true;
+            IsReportesVisible = false;
+        }
+        [RelayCommand]
+        public void OcultarProductos()
+        {
+            IsProductosVisible = false;
+            IsReportesVisible = true;
+        }
+        [RelayCommand]
+        public void MostrarReportes()
+        {
+            IsProductosVisible = true;
+            IsReportesVisible = false;
+        }
+        [RelayCommand]
+        public void OcultarReportes()
+        {
+            IsProductosVisible = false;
+            IsReportesVisible = true;
+        }
         [RelayCommand]
         public async void GetDistribuidores()
         {
             RequestModel request = new RequestModel()
             {
                Method = "GET",
-               Route = "http://localhost:8080/distribuidores/todos"
-                //Route = "http://192.168.20.102:8080/distribuidores/todos"
+               //Route = "http://localhost:8080/distribuidores/todos"
+               Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

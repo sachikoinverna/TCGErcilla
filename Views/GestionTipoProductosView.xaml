@@ -7,6 +7,8 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
+        xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+
     x:DataType="viewmodels:GestionTiposProductoViewModel"
     BackgroundImageSource="fondo_tipos_de_producto.jpg"
     BindingContext="{viewmodels:GestionTiposProductoViewModel}">
@@ -83,12 +85,14 @@
 
                         </CollectionView>
                     </Frame>
-                    <Button Command="{Binding GetTiposProductoCommand}" Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}" />
-                    <Button Command="{Binding GetTiposProductoCommand}" Style="{StaticResource ButtonStyleOcultarProductosGestionTiposProductos}" />
+                    <Button IsEnabled="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}" Command="{Binding }" Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}" />
+                    <Button IsEnabled="{Binding IsProductosVisible}" Command="{Binding OcultarProductosCommand}" Style="{StaticResource ButtonStyleOcultarProductosGestionTiposProductos}" />
+                    <Button IsEnabled="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}" Command="{Binding GetTiposProductoCommand}" Text="Mostrar reportes" />
+                    <Button IsEnabled="{Binding IsReportesVisible}" Command="{Binding OcU}" Text="Ocultar reportes"/>
                 </StackLayout>
             </Frame>
-            <Frame IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
-                <StackLayout Style="{StaticResource StackLayoutProductosGestionTiposProductosStyle}">
+            <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
+                <StackLayout IsVisible="{Binding IsProductosVisible}" Style="{StaticResource StackLayoutProductosGestionTiposProductosStyle}">
                     <Image
                         Margin="0,20,0,0"
                         HeightRequest="100"
@@ -96,7 +100,7 @@
                         Source="tipos_de_producto_titulo.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
-                    <Frame Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}" WidthRequest="350">
+                    <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}" WidthRequest="350">
 
                         <CollectionView
                             Margin="10"
@@ -134,6 +138,80 @@
 
                         </CollectionView>
                     </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportesVisible}">
+
+                <StackLayout
+Margin="30"
+HorizontalOptions="Start"
+Orientation="Vertical"
+                    IsVisible="{Binding IsReportesVisible}"
+Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                    <Frame
+    BackgroundColor="#f2fdf8"
+    BorderColor="#5193d8"
+    WidthRequest="350"
+                        IsVisible="{Binding IsReportesVisible}">
+                        <material:TabView>
+
+                            <material:TabItem Title="Tab One">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal" Margin="5">
+                                            <Entry Placeholder="Correo" WidthRequest="200" Text="{Binding FiltroCorreo}"/>
+                                            <Button Text="BUSCAR" Margin="5" Command="{Binding GetPDFCommand}"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+
+                            <material:TabItem Title="Tab Two">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Second Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+                            <material:TabItem Title="Tab Three">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Third Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+                        </material:TabView>
+
+
+
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportesVisible}">
+
+                <!--  CONTENEDOR PARA EL VISOR PDF  -->
+                <StackLayout
+        Margin="20"
+        BackgroundColor="WhiteSmoke"
+        HeightRequest="550"
+        Orientation="Vertical"
+                    IsVisible="{Binding IsReportesVisible}"
+        WidthRequest="550">
+
+                    <StackLayout.Shadow>
+                        <Shadow
+                Brush="Black"
+                Opacity=".7"
+                Radius="20"
+                Offset="10,10" />
+                    </StackLayout.Shadow>
+                    <WebView
+            Margin="10"
+            HeightRequest="500"
+            Source="{Binding UrlPDF}"
+            WidthRequest="500" />
                 </StackLayout>
             </Frame>
         </HorizontalStackLayout>

@@ -18,16 +18,7 @@ namespace TCGErcilla.Info
         [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
         [JsonProperty("idColeccion")]
-        public ColeccionInfo1 Coleccion { get;}
-        public class ColeccionInfo1
-        {
-            [JsonProperty("id")]
-            public int Id { get; set; }
-            public ColeccionInfo1 (int id)
-            {
-                Id = id;
-            }
-        }
+        public ColeccionInfo Coleccion { get; set; }
         public object Clone()
         {
             return new CartaInfo
@@ -35,7 +26,8 @@ namespace TCGErcilla.Info
                 Id = this.Id,
                 Nombre = this.Nombre,
                 NumeroColeccion = this.NumeroColeccion,
-                UrlImagen = this.UrlImagen
+                UrlImagen = this.UrlImagen,
+                Coleccion = this.Coleccion
             };
         }
     }

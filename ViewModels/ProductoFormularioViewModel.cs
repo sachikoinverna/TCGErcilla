@@ -41,7 +41,6 @@ namespace TCGErcilla.ViewModels
         public ProductoFormularioViewModel()
         {
             ProductoInfo productoInfo = new ProductoInfo();
-            //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -59,8 +58,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/colecciones/todas"
-                //Route = "http://192.168.20.102:8080/colecciones/todas"
+                //Route = "http://localhost:8080/colecciones/todas"
+                Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

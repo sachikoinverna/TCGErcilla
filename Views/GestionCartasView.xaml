@@ -9,6 +9,8 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_cartas"
     Title=""
+        xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+
     x:DataType="viewmodels:GestionCartasViewModel"
     BackgroundImageSource="fondo_cartas.jpg"
     BindingContext="{viewmodels:GestionCartasViewModel}">
@@ -91,12 +93,19 @@
 
 
                         </CollectionView>
+                        
+
                     </Frame>
+                    <Button Text="Mostrar detalles de la coleccion" Command="{Binding MostrarColeccionCommand}" IsVisible="{Binding IsColeccionInfoVisible, Converter={toolkit:InvertedBoolConverter}}"/>
+                    <Button Text="Mostrar informe" Command="{Binding MostrarInformesCommand}" IsVisible="{Binding IsReportsVisible, Converter={toolkit:InvertedBoolConverter}}"/>
+                    <Button Text="Ocultar detalles de la coleccion" Command="{Binding OcultarColeccionCommand}" IsVisible="{Binding IsColeccionInfoVisible}"/>
+                    <Button Text="Ocultar informe" Command="{Binding OcultarReportsCommand}" IsVisible="{Binding IsReportsVisible}"/>
                 </StackLayout>
             </Frame>
-            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsColeccionInfoVisible}" >
 
                 <StackLayout
+                    IsVisible="{Binding IsColeccionInfoVisible}"
                     Margin="30"
                     HeightRequest="600"
                     HorizontalOptions="Start"
@@ -113,11 +122,80 @@
                     <Frame
                         BackgroundColor="#f2fdf8"
                         BorderColor="#5193d8"
+                         IsVisible="{Binding IsColeccionInfoVisible}"
                         WidthRequest="350">
                         <Label Text="{Binding SelectedCarta.Nombre}" />
                     </Frame>
                 </StackLayout>
             </Frame>
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportsVisible}">
+
+                <StackLayout
+        Margin="30"
+                    IsVisible="{Binding IsReportsVisible}"
+        HorizontalOptions="Start"
+        Orientation="Vertical"
+        Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                    <Frame
+            BackgroundColor="#f2fdf8"
+                        IsVisible="{Binding IsReportsVisible}"
+            BorderColor="#5193d8"
+            WidthRequest="350" >
+                        <material:TabView>
+
+                            <material:TabItem Title="Tab One">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal" Margin="5">
+                                            <Entry Placeholder="Correo" WidthRequest="200" Text="{Binding FiltroCorreo}"/>
+                                            <Button Text="BUSCAR" Margin="5" Command="{Binding GetPDFCommand}"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+
+                            <material:TabItem Title="Tab Two">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Second Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+
+                            <material:TabItem Title="Tab Three">
+                                <material:TabItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Label Text="Third Tab" />
+                                    </DataTemplate>
+                                </material:TabItem.ContentTemplate>
+                            </material:TabItem>
+                        </material:TabView>
+
+
+
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportsVisible}">
+
+                <!--  CONTENEDOR PARA EL VISOR PDF  -->
+                <StackLayout
+                Margin="20"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="550"
+                Orientation="Vertical"
+                WidthRequest="550"
+                    IsVisible="{Binding IsReportsVisible}">
+
+                    <WebView
+                    Margin="10"
+                    HeightRequest="500"
+                    Source="{Binding UrlPDF}"
+                    WidthRequest="500" />
+                </StackLayout>
+            </Frame>
+                
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

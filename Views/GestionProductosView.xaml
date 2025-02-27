@@ -12,6 +12,7 @@
     xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
+
     x:DataType="viewmodels:GestionProductosViewModel"
     BackgroundImageSource="fondo_productos.jpg"
     BindingContext="{viewmodels:GestionProductosViewModel}">
@@ -57,14 +58,14 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="info:ProductoInfo">
-                                <Border WidthRequest="280">
-                                    <Border.GestureRecognizers>
+                                <Frame Style="{Binding FrameCollectionViewObjectProductoGestionProductosStyle}">
+                                    <Frame.GestureRecognizers>
                                         <TapGestureRecognizer
                                             x:DataType="viewmodels:GestionProductosViewModel"
                                             BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
                                             Command="{Binding EditarProductoCommand}"
                                             NumberOfTapsRequired="2" />
-                                    </Border.GestureRecognizers>
+                                    </Frame.GestureRecognizers>
                                     <HorizontalStackLayout>
                                         <ffimage:CachedImage
                                             Aspect="AspectFill"
@@ -86,7 +87,7 @@
                                             </VisualState>
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
-                                </Border>
+                                </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
 
@@ -94,6 +95,77 @@
                     </CollectionView>
                 </Frame>
 
+            </StackLayout>
+        </Frame>
+        <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+
+            <StackLayout
+Margin="30"
+HorizontalOptions="Start"
+Orientation="Vertical"
+Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                <Frame
+    BackgroundColor="#f2fdf8"
+    BorderColor="#5193d8"
+    WidthRequest="350">
+                    <material:TabView>
+
+                        <material:TabItem Title="Tab One">
+                            <material:TabItem.ContentTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal" Margin="5">
+                                        <Entry Placeholder="Correo" WidthRequest="200" Text="{Binding FiltroCorreo}"/>
+                                        <Button Text="BUSCAR" Margin="5" Command="{Binding GetPDFCommand}"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </material:TabItem.ContentTemplate>
+                        </material:TabItem>
+
+
+                        <material:TabItem Title="Tab Two">
+                            <material:TabItem.ContentTemplate>
+                                <DataTemplate>
+                                    <Label Text="Second Tab" />
+                                </DataTemplate>
+                            </material:TabItem.ContentTemplate>
+                        </material:TabItem>
+
+                        <material:TabItem Title="Tab Three">
+                            <material:TabItem.ContentTemplate>
+                                <DataTemplate>
+                                    <Label Text="Third Tab" />
+                                </DataTemplate>
+                            </material:TabItem.ContentTemplate>
+                        </material:TabItem>
+                    </material:TabView>
+
+
+
+                </Frame>
+            </StackLayout>
+        </Frame>
+        <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+
+            <!--  CONTENEDOR PARA EL VISOR PDF  -->
+            <StackLayout
+        Margin="20"
+        BackgroundColor="WhiteSmoke"
+        HeightRequest="550"
+        Orientation="Vertical"
+        WidthRequest="550">
+
+                <StackLayout.Shadow>
+                    <Shadow
+                Brush="Black"
+                Opacity=".7"
+                Radius="20"
+                Offset="10,10" />
+                </StackLayout.Shadow>
+                <WebView
+            Margin="10"
+            HeightRequest="500"
+            Source="{Binding UrlPDF}"
+            WidthRequest="500" />
             </StackLayout>
         </Frame>
     </VerticalStackLayout>

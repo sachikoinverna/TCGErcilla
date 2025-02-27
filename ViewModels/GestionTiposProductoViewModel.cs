@@ -23,13 +23,16 @@ namespace TCGErcilla.ViewModels
         private TipoProductoInfo selectedTipoProductoInfo;
         [ObservableProperty]
         private bool isProductosVisible;
+        [ObservableProperty]
+        private bool isReportesVisible;
         [RelayCommand]
         public void EstadoInicial()
         {
             IsProductosVisible = false;
+            IsReportesVisible = false;
         }
         [RelayCommand]
-        private void OcultarProductos()
+        private void MostrarProductos()
         {
             if (SelectedTipoProductoInfo == null)
             {
@@ -45,6 +48,16 @@ namespace TCGErcilla.ViewModels
             {
             }
         }
+        [RelayCommand]
+        private void OcultarProductos()
+        {
+            IsProductosVisible = false;
+        }
+        [RelayCommand]
+        private void OcultarInforme()
+        {
+
+        }
             [RelayCommand]
             public async void GetTiposProducto()
         {
@@ -52,8 +65,8 @@ namespace TCGErcilla.ViewModels
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/tipo_producto_todos"
-                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                //Route = "http://localhost:8080/tipo_producto_todos"
+                Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

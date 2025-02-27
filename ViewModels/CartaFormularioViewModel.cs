@@ -18,7 +18,7 @@ using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
-    //[QueryProperty(nameof(CartaInfo), "CartaInfo")]
+    [QueryProperty(nameof(CartaInfo), "CartaInfo")]
 
     public partial class CartaFormularioViewModel: ObservableObject
     {
@@ -69,8 +69,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/colecciones/todas"
-                //Route = "http://192.168.20.102:8080/colecciones/todas"
+                //Route = "http://localhost:8080/colecciones/todas"
+                Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -87,8 +87,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task CrearCarta()
         {
-            var coleccion = new ColeccionDto();
-            await Debug.Write("Nombre:"+CartaInfo.Coleccion.);
+       
             var _carta = new CartaDto();
             
             if (IsEditMode)
@@ -99,9 +98,11 @@ namespace TCGErcilla.ViewModels
             {
                 _carta.Id = null;
             }
+          
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
-            _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
+            _carta.Coleccion = CartaInfo.Coleccion;
+           // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
             var request = new RequestModel()
             {
                 Data = _carta,
