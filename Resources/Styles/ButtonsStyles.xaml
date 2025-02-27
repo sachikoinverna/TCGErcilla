@@ -146,7 +146,6 @@
         <Setter Property="Text" Value="Crear carta" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="28" />
 
@@ -160,7 +159,6 @@
         <Setter Property="Text" Value="Crear productos" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="28" />
 
@@ -174,7 +172,6 @@
         <Setter Property="Text" Value="Crear coleccion" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="28" />
 
@@ -188,7 +185,6 @@
         <Setter Property="Text" Value="Crear distribuidor" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="28" />
 
@@ -202,7 +198,6 @@
         <Setter Property="Text" Value="Crear tipo de producto" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="28" />
 

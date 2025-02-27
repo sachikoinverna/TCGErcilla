@@ -29,7 +29,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/cartas/todas"
+                Route = "http://localhost:8080/cartas/todas"
+                //Route = "http://192.168.20.102:8080/cartas/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

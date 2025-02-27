@@ -17,7 +17,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="100" />
-        <Setter Property="Source" Value="productos_titulo.png" />
+        <Setter Property="Source" Value="productos_titulos.png" />
     </Style>
     <Style x:Key="ImageCartasTitleStyle" TargetType="Image">
         <Setter Property="Margin" Value="0,20,0,0" />
@@ -41,6 +41,6 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="100" />
-        <Setter Property="Source" Value="colecciones_titulo.png" />
+        <Setter Property="Source" Value="colecciones_titulos.png" />
     </Style>
 </ResourceDictionary>

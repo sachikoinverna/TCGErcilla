@@ -7,7 +7,11 @@
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
     <Style x:Key="MultiplePickerFieldDistribuidoresFormularioProductoStyle" TargetType="material:DropdownField">
         <Setter Property="Title" Value="Distribuidores" />
-        <Setter Property="AccentColor" Value="DeepSkyBlue" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="Blue" />
+        <Setter Property="WidthRequest" Value="300" />
+
         <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
     </Style>
 </ResourceDictionary>

@@ -14,7 +14,7 @@ namespace TCGErcilla
         {
             var window = base.CreateWindow(activationState);
 
-            const int newWidth = 1200;
+            const int newWidth = 1300;
             const int newHeight = 850;
 
             window.Width = newWidth;

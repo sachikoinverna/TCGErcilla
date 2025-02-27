@@ -25,11 +25,9 @@
 
                 <StackLayout
                     Margin="30"
-                    HeightRequest="650"
                     HorizontalOptions="Start"
                     Orientation="Vertical"
-                    Style="{StaticResource StackLayoutDistribuidoresGestionDistribuidoresStyle}"
-                    WidthRequest="350">
+                    Style="{StaticResource StackLayoutDistribuidoresGestionDistribuidoresStyle}">
                     <Image
                         Margin="0,20,0,0"
                         HeightRequest="100"
@@ -37,14 +35,10 @@
                         Source="distribuidores_titulo.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
-                    <Frame
-                        BackgroundColor="#f2fdf8"
-                        BorderColor="#5193d8"
-                        WidthRequest="350">
+                    <Frame Style="{StaticResource FrameCollectionViewDistribuidoresGestionDistribuidoresStyle}">
 
                         <CollectionView
                             Margin="10"
-                            Background="LightGray"
                             HeightRequest="350"
                             ItemsSource="{Binding ListaDistribuidores}"
                             SelectedItem="{Binding SelectedDistribuidor}"
@@ -55,7 +49,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:DistribuidorInfo">
-                                    <Frame WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectDistribuidoresGestionDistribuidoresStyle}">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionDistribuidoresViewModel"
@@ -97,40 +91,39 @@
                         Source="productos_titulos.png"
                         VerticalOptions="Center"
                         WidthRequest="100" />
+                    <Frame Style="{StaticResource FrameCollectionViewProductosGestionDistribuidoresStyle}">
+                        <CollectionView
+                            Margin="10"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaCartas}"
+                            SelectedItem="{Binding SelectedCarta}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:CartaInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionDistribuidoresStyle}">
+                                        <HorizontalStackLayout>
+                                            <ffimage:CachedImage
+                                                Aspect="AspectFill"
+                                                ErrorPlaceholder="cartas_default.png"
+                                                Source="{Binding UrlImagen}"
+                                                WidthRequest="50" />
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Nombre}" />
+                                            </VerticalStackLayout>
 
-                    <CollectionView
-                        Margin="10"
-                        Background="LightGray"
-                        HeightRequest="350"
-                        ItemsSource="{Binding ListaCartas}"
-                        SelectedItem="{Binding SelectedCarta}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                        SelectionMode="Single"
-                        WidthRequest="300">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="info:CartaInfo">
-                                <Border WidthRequest="280">
-                                    <HorizontalStackLayout>
-                                        <ffimage:CachedImage
-                                            Aspect="AspectFill"
-                                            ErrorPlaceholder="cartas_default.png"
-                                            Source="{Binding UrlImagen}"
-                                            WidthRequest="50" />
-                                        <VerticalStackLayout Margin="10">
-                                            <Label Text="{Binding Nombre}" />
-                                        </VerticalStackLayout>
-
-                                    </HorizontalStackLayout>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                    </CollectionView>
-
+                        </CollectionView>
+                    </Frame>
                 </VerticalStackLayout>
             </Frame>
         </HorizontalStackLayout>

@@ -32,36 +32,24 @@
                     Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
             <material:TextField
-                Title="Nombre"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
-                Text="{Binding ProductoInfo.Nombre}">
+                Text="{Binding ProductoInfo.Nombre}" Style="{StaticResource TextFieldNombreProductosStyle}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
-                Title="Pick an option"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding ListaColecciones}"
-                SelectedItem="{Binding ProductoInfo}" />
-            <material:DropdownField
-                Title="Pick an option"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
+                Style="{StaticResource DropdownFieldColeccionFormularioProductoStyle }"
                 ItemsSource="{Binding ListaColecciones}"
                 SelectedItem="{Binding ColeccionInfo}" />
+            <material:DropdownField
+    Style="{StaticResource DropdownFieldTipoProductoFormularioProductoStyle }"
+    ItemsSource="{Binding ListaTipoProducto}"
+    SelectedItem="{Binding TipoProductoInfo}" />
             <material:MultiplePickerField
-                Title="Pick some options"
-                AccentColor="DeepSkyBlue"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}"
-                ItemsSource="{Binding ListaColecciones}" />
+                Style="{StaticResource MultiplePickerFieldDistribuidoresFormularioProductoStyle}"
+                ItemsSource="{Binding ListaColecciones}"  />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-                <Button IsVisible="{Binding IsEditMode}" />
-                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource ButtonStyleCreate}" />
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleEditar}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}"/>
             </HorizontalStackLayout>
         </input:FormView>
 

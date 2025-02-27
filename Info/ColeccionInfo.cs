@@ -32,6 +32,15 @@ namespace TCGErcilla.Info
                 UrlImagen = this.UrlImagen
             };
         }
+        public ColeccionInfo(int id, string nombre, int numeroCartas, DateTime fechaLanzamiento, string urlImagen)
+        {
+            Id = id;
+            Nombre = nombre;
+            NumeroCartas = numeroCartas;
+            FechaLanzamiento = fechaLanzamiento;
+            UrlImagen = urlImagen;
+        }
+
         public ColeccionInfo() { }
         public override string ToString()
         {

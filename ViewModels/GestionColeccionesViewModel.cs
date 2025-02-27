@@ -130,7 +130,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/colecciones/todas"
+                 Route = "http://192.168.1.136:8080/colecciones/todas"
+                // Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -169,6 +170,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
+               
                     Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);

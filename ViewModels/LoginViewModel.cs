@@ -44,7 +44,7 @@ namespace TCGErcilla.ViewModels
             string rol = payload["admin"].ToString();
             Debug.WriteLine("Payload: " + rol);
             await App.Current.MainPage.DisplayAlert("ÉXITO", "Login correcto. El rol es: " + rol, "EMPEZAR");
-            if (rol.Equals("true"))
+            if (rol.Equals("true") || rol.Equals("True"))
             {
                 await MostrarMainPage();
             }

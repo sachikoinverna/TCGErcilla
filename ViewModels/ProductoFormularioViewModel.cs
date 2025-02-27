@@ -29,7 +29,15 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
         [ObservableProperty]
+        private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
+        [ObservableProperty]
+        private ObservableCollection<TipoProductoInfo> listaTipoProducto = new ObservableCollection<TipoProductoInfo>();
+        [ObservableProperty]
         private ColeccionInfo coleccionInfo;
+        [ObservableProperty]
+        private DistribuidorInfo distribuidorInfo;
+        [ObservableProperty]
+        private TipoProductoInfo tipoProductoInfo;
         public ProductoFormularioViewModel()
         {
             ProductoInfo productoInfo = new ProductoInfo();
@@ -51,7 +59,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/colecciones/todas"
+                Route = "http://localhost:8080/colecciones/todas"
+                //Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -61,6 +70,50 @@ namespace TCGErcilla.ViewModels
                 {
                     ListaColecciones =
                 JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
+            }
+        }
+        [RelayCommand]
+        public async void GetTiposProducto()
+        {
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                Data = string.Empty,
+                Route = "http://localhost:8080/tipo_producto_todos"
+                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaTipoProducto =
+                       JsonConvert.DeserializeObject<ObservableCollection<TipoProductoInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
+            }
+        }
+        [RelayCommand]
+        public async void GetDistribuidores()
+        {
+
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                Route = "http://localhost:8080/distribuidores/todos"
+                //Route = "http://192.168.20.102:8080/distribuidores/todos"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaDistribuidores =
+                JsonConvert.DeserializeObject<ObservableCollection<DistribuidorInfo>>(response.Data.ToString());
                 }
                 catch (Exception ex) { }
             }
@@ -76,6 +129,8 @@ namespace TCGErcilla.ViewModels
                 IsEditMode = false;
             //}
             //RutaImagen = "producto_default.png";
+            GetDistribuidores();
+            GetColecciones();
         }
         [RelayCommand]
         public async Task CrearProducto()

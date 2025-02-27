@@ -41,7 +41,6 @@
 
                         <CollectionView
                             Margin="10"
-                            Background="LightGray"
                             HeightRequest="350"
                             ItemsSource="{Binding ListaTiposProducto}"
                             SelectedItem="{Binding SelectedTipoProductoInfo}"
@@ -89,11 +88,7 @@
                 </StackLayout>
             </Frame>
             <Frame IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
-                <VerticalStackLayout
-                    Margin="30"
-                    HeightRequest="650"
-                    HorizontalOptions="Start"
-                    WidthRequest="350">
+                <StackLayout Style="{StaticResource StackLayoutProductosGestionTiposProductosStyle}">
                     <Image
                         Margin="0,20,0,0"
                         HeightRequest="100"
@@ -105,9 +100,8 @@
 
                         <CollectionView
                             Margin="10"
-                            Background="LightGray"
                             HeightRequest="350"
-                            ItemsSource="{Binding ListaDistribuidores}"
+                            ItemsSource="{Binding ListaTiposProducto}"
                             SelectedItem="{Binding SelectedDistribuidor}"
                             SelectionMode="Single"
                             WidthRequest="300">
@@ -140,7 +134,7 @@
 
                         </CollectionView>
                     </Frame>
-                </VerticalStackLayout>
+                </StackLayout>
             </Frame>
         </HorizontalStackLayout>
     </VerticalStackLayout>

@@ -6,22 +6,49 @@
     <Style x:Key="StackLayoutCartasGestionCartasStyle" TargetType="StackLayout">
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
     </Style>
     <Style x:Key="StackLayoutProductosGestionProductosStyle" TargetType="StackLayout">
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
     </Style>
     <Style x:Key="StackLayoutColeccionesGestionColeccionesStyle" TargetType="StackLayout">
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
+    </Style>
+    <Style x:Key="StackLayoutProductosGestionColeccionesStyle" TargetType="StackLayout">
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
+    </Style>
+    <Style x:Key="StackLayoutCartasGestionColeccionesStyle" TargetType="StackLayout">
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
     </Style>
     <Style x:Key="StackLayoutTiposProductosGestionTiposProductosStyle" TargetType="StackLayout">
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
+    </Style>
+    <Style x:Key="StackLayoutProductosGestionTiposProductosStyle" TargetType="StackLayout">
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
     </Style>
     <Style x:Key="StackLayoutDistribuidoresGestionDistribuidoresStyle" TargetType="StackLayout">
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="HeightRequest" Value="600" />
+        <Setter Property="Orientation" Value="Vertical"/>
+
     </Style>
 
 </ResourceDictionary>

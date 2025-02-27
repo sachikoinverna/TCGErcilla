@@ -30,22 +30,11 @@
             <Frame Style="{StaticResource FrameColeccionesGestionColeccionesStyle}">
 
                 <StackLayout
-                    Margin="30"
-                    HeightRequest="650"
                     HorizontalOptions="Start"
                     Orientation="Vertical"
-                    Style="{StaticResource StackLayoutColeccionesGestionColeccionesStyle}"
-                    WidthRequest="350">
-                    <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="colecciones_titulos.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
-                    <Frame
-                        Style="{StaticResource FrameCollectionViewColeccionGestionColeccionStyle}"
-                        WidthRequest="350">
+                    Style="{StaticResource StackLayoutColeccionesGestionColeccionesStyle}">
+                    <Image Style="{StaticResource ImageColeccionesTitleStyle}" />
+                    <Frame Style="{StaticResource FrameCollectionViewColeccionGestionColeccionStyle}">
 
                         <CollectionView
                             Margin="10"
@@ -60,7 +49,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ColeccionInfo">
-                                    <Frame WidthRequest="280" Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}" WidthRequest="280">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionColeccionesViewModel"
@@ -121,35 +110,32 @@
 
                 </StackLayout>
             </Frame>
-            <Frame Style="{StaticResource FrameProductosGestionColeccionesStyle}">
-            <VerticalStackLayout BackgroundColor="AliceBlue" IsVisible="{Binding IsProductosVisible}">
-                <Image
-                    Margin="0,20,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="productos_titulos.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
-                    <Frame WidthRequest="350" Style="{StaticResource FrameCollectionViewProductosGestionColeccionStyle}">
+            <Frame Padding="10" Style="{StaticResource FrameProductosGestionColeccionesStyle}">
+                <StackLayout
+                    IsVisible="{Binding IsProductosVisible}"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutProductosGestionColeccionesStyle}">
+                    <Image Style="{StaticResource ImageProductosTitleStyle}" />
+                    <Frame Style="{StaticResource FrameCollectionViewProductosGestionColeccionStyle}">
                         <CollectionView
-                    Margin="10"
-                    HeightRequest="350"
-                    ItemsSource="{Binding ListaProductos}"
-                    SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                    SelectionMode="Single"
-                    WidthRequest="300">
+                            Margin="10"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaProductos}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ProductoInfo">
-                                    <Frame WidthRequest="280" Style="{StaticResource FrameCollectionViewObjectProductoGestionColeccionesStyle}">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductoGestionColeccionesStyle}" WidthRequest="280">
                                         <HorizontalStackLayout>
                                             <ffimage:CachedImage
-                                        Aspect="AspectFill"
-                                        ErrorPlaceholder="product_default.png"
-                                        Source="{Binding UrlImagen}"
-                                        WidthRequest="50" />
+                                                Aspect="AspectFill"
+                                                ErrorPlaceholder="product_default.png"
+                                                Source="{Binding UrlImagen}"
+                                                WidthRequest="50" />
                                             <VerticalStackLayout Margin="10">
                                                 <Label Text="{Binding Nombre}" />
                                             </VerticalStackLayout>
@@ -160,52 +146,47 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </Frame>
-                </VerticalStackLayout>
+                </StackLayout>
             </Frame>
-            <Frame
-                Padding="10"
-                Style="{StaticResource FrameCartasGestionColeccionesStyle}">
-                <VerticalStackLayout IsEnabled="{Binding IsCartasVisible}">
-                    <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="cartas_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
+            <Frame Padding="10" Style="{StaticResource FrameCartasGestionColeccionesStyle}">
+                <StackLayout
+                    IsEnabled="{Binding IsCartasVisible}"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutCartasGestionColeccionesStyle}">
+                    <Image Style="{StaticResource ImageCartasTitleStyle}" />
                     <Frame Style="{StaticResource FrameCollectionViewCartasGestionColeccionStyle}">
-                    <CollectionView
-                        Margin="10"
-                        HeightRequest="350"
-                        ItemsSource="{Binding ListaCartas}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                        SelectionMode="Single"
-                        WidthRequest="300">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="info:CartaInfo">
-                                    <Frame WidthRequest="280" Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
-                                    <HorizontalStackLayout>
-                                        <ffimage:CachedImage
-                                            Aspect="AspectFill"
-                                            ErrorPlaceholder="cartas_default.png"
-                                            Source="{Binding UrlImagen}"
-                                            WidthRequest="50" />
-                                        <VerticalStackLayout Margin="10">
-                                            <Label Text="{Binding Nombre}" />
-                                        </VerticalStackLayout>
+                        <CollectionView
+                            Margin="10"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaCartas}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:CartaInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}" WidthRequest="280">
+                                        <HorizontalStackLayout>
+                                            <ffimage:CachedImage
+                                                Aspect="AspectFill"
+                                                ErrorPlaceholder="cartas_default.png"
+                                                Source="{Binding UrlImagen}"
+                                                WidthRequest="50" />
+                                            <VerticalStackLayout Margin="10">
+                                                <Label Text="{Binding Nombre}" />
+                                            </VerticalStackLayout>
 
-                                    </HorizontalStackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                    </CollectionView>
+                        </CollectionView>
                     </Frame>
-                </VerticalStackLayout>
+                </StackLayout>
             </Frame>
 
         </HorizontalStackLayout>

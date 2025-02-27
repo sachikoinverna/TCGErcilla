@@ -135,33 +135,40 @@
     </Style>
     <!--WidthRequest="350"-->
     <!--  //Collection  -->
-    <Style x:Key="FrameCollectionViewProductosGestionDistribuidoresStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="#e993aa" />
-        <Setter Property="BorderColor" Value="#b74b6d" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="WidthRequest" Value="350" />
-    </Style>
     <Style x:Key="FrameCollectionViewCartasGestionCartasStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="WidthRequest" Value="350" />
+        <Setter Property="WidthRequest" Value="280" />
     </Style>
     <Style x:Key="FrameCollectionViewProductosGestionTiposProductoStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="#fef698" />
         <Setter Property="BorderColor" Value="#ffcc03" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="WidthRequest" Value="350" />
+        <Setter Property="WidthRequest" Value="280" />
+    </Style>
+    <Style x:Key="FrameCollectionViewDistribuidoresGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="WidthRequest" Value="280" />
+    </Style>
+    <Style x:Key="FrameCollectionViewProductosGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#fef698" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="WidthRequest" Value="280" />
     </Style>
     <Style x:Key="FrameCollectionViewTiposProductosGestionTiposProductoStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="WidthRequest" Value="350" />
+        <Setter Property="WidthRequest" Value="280" />
 
     </Style>
 
@@ -188,8 +195,14 @@
     </Style>
     <!--  //ObjectCollection  -->
     <Style x:Key="FrameCollectionViewObjectProductosGestionDistribuidoresStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="#e993aa" />
-        <Setter Property="BorderColor" Value="#b74b6d" />
+        <Setter Property="BackgroundColor" Value="#fef698" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="FrameCollectionViewObjectDistribuidoresGestionDistribuidoresStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderColor" Value="#5193d8" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="HasShadow" Value="False" />
     </Style>

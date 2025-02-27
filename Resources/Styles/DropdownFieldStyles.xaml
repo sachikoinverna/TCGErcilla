@@ -11,4 +11,16 @@
         <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
+    <Style x:Key="DropdownFieldColeccionFormularioProductoStyle" TargetType="material:DropdownField">
+        <Setter Property="Title" Value="Coleccion" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
+        <Setter Property="WidthRequest" Value="300" />
+    </Style>
+    <Style x:Key="DropdownFieldTipoProductoFormularioProductoStyle" TargetType="material:DropdownField">
+        <Setter Property="Title" Value="Tipo de producto" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Expand_circle_down}}" />
+        <Setter Property="WidthRequest" Value="300" />
+    </Style>
 </ResourceDictionary>

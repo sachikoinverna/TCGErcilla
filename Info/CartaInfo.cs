@@ -17,6 +17,17 @@ namespace TCGErcilla.Info
         public int NumeroColeccion { get; set; }
         [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
+        [JsonProperty("idColeccion")]
+        public ColeccionInfo1 Coleccion { get;}
+        public class ColeccionInfo1
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+            public ColeccionInfo1 (int id)
+            {
+                Id = id;
+            }
+        }
         public object Clone()
         {
             return new CartaInfo

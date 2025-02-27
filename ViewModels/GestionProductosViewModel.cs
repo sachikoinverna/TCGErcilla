@@ -24,12 +24,13 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private bool isDistribuidoresVisible;
         [RelayCommand]
-        public async void GetProductos()
+        public async void GetProductos() 
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/productos/todos"
+                Route = "http://localhost:8080/productos/todos"
+                //Route = "http://192.168.20.102:8080/productos/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -44,10 +45,10 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
-        public async Task AbrirMopupDistribuidor()
+        public async Task CrearProducto()
         {
 
-            await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
+            await MopupService.Instance.PushAsync(new ProductoFormularioMopup());
         }
         [RelayCommand]
         public async Task EditarProducto()

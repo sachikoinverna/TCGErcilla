@@ -69,7 +69,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/colecciones/todas"
+                Route = "http://localhost:8080/colecciones/todas"
+                //Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -86,7 +87,10 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task CrearCarta()
         {
+            var coleccion = new ColeccionDto();
+            await Debug.Write("Nombre:"+CartaInfo.Coleccion.);
             var _carta = new CartaDto();
+            
             if (IsEditMode)
             {
                 _carta.Id = CartaInfo.Id;
@@ -97,7 +101,7 @@ namespace TCGErcilla.ViewModels
             }
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
-            //_carta
+            _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
             var request = new RequestModel()
             {
                 Data = _carta,

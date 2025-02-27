@@ -21,13 +21,12 @@
     <VerticalStackLayout>
         <Button
             Margin="0,10"
-            Command="{Binding AbrirMopupDistribuidorCommand}"
+            Command="{Binding CrearProductoCommand}"
             Style="{StaticResource ButtonStyleCrearProductoGestionProductos}" />
         <Frame Style="{StaticResource FrameProductosGestionProductosStyle}">
 
             <StackLayout
                 Margin="30"
-                HeightRequest="650"
                 HorizontalOptions="Start"
                 Orientation="Vertical"
                 Style="{StaticResource StackLayoutProductosGestionProductosStyle}"
@@ -47,7 +46,6 @@
 
                     <CollectionView
                         Margin="10"
-                        Background="LightGray"
                         HeightRequest="350"
                         ItemsSource="{Binding ListaProductos}"
                         SelectedItem="{Binding SelectedProducto}"
