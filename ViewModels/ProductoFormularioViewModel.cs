@@ -75,8 +75,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/tipo_producto_todos"
-                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                //Route = "http://localhost:8080/tipo_producto_todos"
+                Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -123,6 +123,7 @@ namespace TCGErcilla.ViewModels
                 IsEditMode = false;
             //}
             //RutaImagen = "producto_default.png";
+            GetTiposProducto();
             GetDistribuidores();
             GetColecciones();
         }

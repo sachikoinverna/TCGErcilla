@@ -24,26 +24,19 @@
             Margin="0,10"
             Command="{Binding CrearProductoCommand}"
             Style="{StaticResource ButtonStyleCrearProductoGestionProductos}" />
-        <Frame Style="{StaticResource FrameProductosGestionProductosStyle}">
+        <HorizontalStackLayout>
+            <Frame Style="{StaticResource FrameProductosGestionProductosStyle}">
 
             <StackLayout
                 Margin="30"
                 HorizontalOptions="Start"
                 Orientation="Vertical"
-                Style="{StaticResource StackLayoutProductosGestionProductosStyle}"
-                WidthRequest="350">
+                Style="{StaticResource StackLayoutProductosGestionProductosStyle}">
 
                 <Image
-                    Margin="0,20,0,0"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="productos_titulos.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
+                    Style="{StaticResource ImageProductosTitleStyle}" />
                 <Frame
-                    BackgroundColor="#f2fdf8"
-                    BorderColor="#5193d8"
-                    WidthRequest="350">
+                    Style="{StaticResource FrameCollectionViewProductoGestionProductoStyle}">
 
                     <CollectionView
                         Margin="10"
@@ -94,17 +87,22 @@
 
                     </CollectionView>
                 </Frame>
-
-            </StackLayout>
+                    <Button Command="{Binding MostrarDistribuidoresCommand}" Text="Mostrar distribuidores" IsVisible="{Binding IsDistribuidoresVisible, Converter={toolkit:InvertedBoolConverter}}"/>
+                    <Button Command="{Binding OcultarDistribuidoresCommand}" Text="Ocultar distribuidores" IsVisible="{Binding IsDistribuidoresVisible}"/>
+                    <Button Command="{Binding MostrarReportesCommand}" Text="Mostrar reportes" IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"/>
+                    <Button Command="{Binding OcultarReportesCommand}" Text="Ocultar reportes" IsVisible="{Binding IsReportesVisible}"/>
+                </StackLayout>
         </Frame>
-        <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+            <Frame  IsVisible="{ Binding IsDistribuidoresVisible }" Style="{StaticResource FrameCartasGestionCartasStyle}">
 
             <StackLayout
 Margin="30"
+                IsVisible="{ Binding IsReportesVisible }"
 HorizontalOptions="Start"
 Orientation="Vertical"
 Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
                 <Frame
+                    IsVisible="{ Binding IsReportesVisible }"
     BackgroundColor="#f2fdf8"
     BorderColor="#5193d8"
     WidthRequest="350">
@@ -144,7 +142,7 @@ Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
                 </Frame>
             </StackLayout>
         </Frame>
-        <Frame Style="{StaticResource FrameCartasGestionCartasStyle}">
+            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{ Binding IsReportesVisible }">
 
             <!--  CONTENEDOR PARA EL VISOR PDF  -->
             <StackLayout
@@ -152,6 +150,7 @@ Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
         BackgroundColor="WhiteSmoke"
         HeightRequest="550"
         Orientation="Vertical"
+                IsVisible="{ Binding IsReportesVisible }"
         WidthRequest="550">
 
                 <StackLayout.Shadow>
@@ -168,5 +167,6 @@ Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
             WidthRequest="500" />
             </StackLayout>
         </Frame>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -23,7 +23,7 @@ namespace TCGErcilla.ViewModels
     public partial class CartaFormularioViewModel: ObservableObject
     {
         [ObservableProperty]
-        private CartaInfo cartaInfo;
+        public CartaInfo cartaInfo;
 
         [ObservableProperty]
         private string rutaImagen;
@@ -36,15 +36,6 @@ namespace TCGErcilla.ViewModels
         public void EstablecerValoresIniciales()
         {
             GetColecciones();
-            if (!isEditMode)
-            {
-                CartaInfo = new CartaInfo();
-                RutaImagen = "carta_default.png";
-            }
-            else
-            {
-                RutaImagen = "carta_default.png";
-            }
         }
         [RelayCommand]
         public async void SeleccionarImagen()

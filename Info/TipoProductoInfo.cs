@@ -31,5 +31,9 @@ namespace TCGErcilla.Info
                 Tipo = this.Tipo
             };
         }
+        public override string ToString()
+        {
+            return Tipo;
+        }
     }
 }

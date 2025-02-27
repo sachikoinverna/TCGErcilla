@@ -33,12 +33,7 @@
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutDistribuidoresGestionDistribuidoresStyle}">
                     <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="distribuidores_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
+                        Style="{StaticResource ImageDistribuidoresTitleStyle}"/>
                     <Frame Style="{StaticResource FrameCollectionViewDistribuidoresGestionDistribuidoresStyle}">
 
                         <CollectionView
@@ -93,12 +88,7 @@
             <Frame Style="{StaticResource FrameProductosGestionDistribuidoresStyle}" IsVisible="{Binding IsProductosVisible}">
                 <VerticalStackLayout IsVisible="{Binding IsProductosVisible}">
                     <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="productos_titulos.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
+                        Style="{StaticResource ImageProductosTitleStyle}" />
                     <Frame Style="{StaticResource FrameCollectionViewProductosGestionDistribuidoresStyle}" IsVisible="{Binding IsProductosVisible}">
                         <CollectionView
                             Margin="10"

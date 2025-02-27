@@ -46,6 +46,10 @@
     Style="{StaticResource DropdownFieldTipoProductoFormularioProductoStyle }"
     ItemsSource="{Binding ListaTipoProducto}"
     SelectedItem="{Binding TipoProductoInfo}" />
+            <material:DropdownField
+Style="{StaticResource DropdownFieldDistribuidorFormularioProductoStyle }"
+ItemsSource="{Binding ListaDistribuidores}"
+SelectedItem="{Binding DistribuidorInfo}" />
             <material:MultiplePickerField
                 Style="{StaticResource MultiplePickerFieldDistribuidoresFormularioProductoStyle}"
                 ItemsSource="{Binding ListaColecciones}"  />

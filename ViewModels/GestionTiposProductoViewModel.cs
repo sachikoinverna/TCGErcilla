@@ -20,6 +20,8 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private ObservableCollection<TipoProductoInfo> listaTiposProducto = new ObservableCollection<TipoProductoInfo>();
         [ObservableProperty]
+        private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
+        [ObservableProperty]
         private TipoProductoInfo selectedTipoProductoInfo;
         [ObservableProperty]
         private bool isProductosVisible;
@@ -32,21 +34,43 @@ namespace TCGErcilla.ViewModels
             IsReportesVisible = false;
         }
         [RelayCommand]
-        private void MostrarProductos()
+        public async Task MostrarProductos()
         {
             if (SelectedTipoProductoInfo == null)
             {
                 App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
                 return;
             }
-            // if (SelectedColeccion .Gastos.Count > 0)
-            // {
-            //    IsCartasVisible = false;
-            //   IsProductosVisible = true;
-            //}
             else
             {
+                IsProductosVisible = true;
+                IsReportesVisible = false;
+                RequestModel request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/productos/todos"
+                };
+
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                if (response.Success.Equals(0))
+                {
+                    try
+                    {
+                        ListaProductos =
+                          JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
             }
+        }
+        [RelayCommand]
+        public async Task MostrarInforme()
+        {
+                IsProductosVisible = false;
+                IsReportesVisible = true;
         }
         [RelayCommand]
         private void OcultarProductos()
@@ -56,6 +80,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         private void OcultarInforme()
         {
+            IsReportesVisible = false;
 
         }
             [RelayCommand]

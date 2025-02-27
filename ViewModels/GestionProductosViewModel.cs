@@ -41,7 +41,7 @@ namespace TCGErcilla.ViewModels
         public void OcultarReportes()
         {
             IsReportesVisible = false;
-            IsDistribuidoresVisible = true;
+            IsDistribuidoresVisible = false;
         }
         [RelayCommand]
         public void MostrarDistribuidores()
@@ -52,7 +52,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void OcultarDistribuidores()
         {
-            IsReportesVisible = true;
+            IsReportesVisible = false;
             IsDistribuidoresVisible = false;
         }
         [RelayCommand]

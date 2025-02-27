@@ -4,11 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:info="clr-namespace:TCGErcilla.Info"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     Title=""
-        xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-
     x:DataType="viewmodels:GestionTiposProductoViewModel"
     BackgroundImageSource="fondo_tipos_de_producto.jpg"
     BindingContext="{viewmodels:GestionTiposProductoViewModel}">
@@ -27,19 +26,13 @@
 
                 <StackLayout
                     Margin="30"
-                    HeightRequest="650"
-                    HorizontalOptions="Start"
+                    HorizontalOptions="Center"
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutTiposProductosGestionTiposProductosStyle}">
 
                     <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="tipos_de_producto_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
-                    <Frame Style="{StaticResource FrameCollectionViewTiposProductosGestionTiposProductoStyle}" WidthRequest="350">
+                       Style="{StaticResource ImageTiposProductoTitleStyle}"/>
+                    <Frame Style="{StaticResource FrameCollectionViewTiposProductosGestionTiposProductoStyle}">
 
                         <CollectionView
                             Margin="10"
@@ -54,7 +47,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:TipoProductoInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectTiposProductosGestionTipoProductoStyle}" WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectTiposProductosGestionTipoProductoStyle}" >
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionTiposProductoViewModel"
@@ -85,39 +78,47 @@
 
                         </CollectionView>
                     </Frame>
-                    <Button IsEnabled="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}" Command="{Binding }" Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}" />
-                    <Button IsEnabled="{Binding IsProductosVisible}" Command="{Binding OcultarProductosCommand}" Style="{StaticResource ButtonStyleOcultarProductosGestionTiposProductos}" />
-                    <Button IsEnabled="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}" Command="{Binding GetTiposProductoCommand}" Text="Mostrar reportes" />
-                    <Button IsEnabled="{Binding IsReportesVisible}" Command="{Binding OcU}" Text="Ocultar reportes"/>
+                    <Button
+                        Command="{Binding MostrarProductosCommand}"
+                        IsEnabled="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Style="{StaticResource ButtonStyleMostrarProductosGestionTiposProductos}" />
+                    <Button
+                        Command="{Binding OcultarProductosCommand}"
+                        IsEnabled="{Binding IsProductosVisible}"
+                        Style="{StaticResource ButtonStyleOcultarProductosGestionTiposProductos}" />
+                    <Button
+                        Command="{Binding GetTiposProductoCommand}"
+                        IsEnabled="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Text="Mostrar reportes" />
+                    <Button
+                        Command="{Binding OcultarInformeCommand}"
+                        IsEnabled="{Binding IsReportesVisible}"
+                        Text="Ocultar reportes" />
                 </StackLayout>
             </Frame>
             <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
                 <StackLayout IsVisible="{Binding IsProductosVisible}" Style="{StaticResource StackLayoutProductosGestionTiposProductosStyle}">
                     <Image
-                        Margin="0,20,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="tipos_de_producto_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
-                    <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}" WidthRequest="350">
+                        Style="{StaticResource ImageProductosTitleStyle}" />
+                    <Frame
+                        IsVisible="{Binding IsProductosVisible}"
+                        Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}"
+                        WidthRequest="350">
 
                         <CollectionView
                             Margin="10"
                             HeightRequest="350"
-                            ItemsSource="{Binding ListaTiposProducto}"
-                            SelectedItem="{Binding SelectedDistribuidor}"
+                            ItemsSource="{Binding ListaProductos}"
                             SelectionMode="Single"
                             WidthRequest="300">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="info:DistribuidorInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionTipoProductoStyle}" WidthRequest="280">
+                                <DataTemplate x:DataType="info:ProductoInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionTipoProductoStyle}" >
                                         <HorizontalStackLayout>
                                             <VerticalStackLayout Margin="10">
-                                                <Label Text="{Binding Id}" />
                                                 <Label Text="{Binding Nombre}" />
                                             </VerticalStackLayout>
                                         </HorizontalStackLayout>
@@ -140,27 +141,33 @@
                     </Frame>
                 </StackLayout>
             </Frame>
-            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportesVisible}">
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
 
                 <StackLayout
-Margin="30"
-HorizontalOptions="Start"
-Orientation="Vertical"
+                    Margin="30"
+                    HorizontalOptions="Start"
                     IsVisible="{Binding IsReportesVisible}"
-Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
                     <Frame
-    BackgroundColor="#f2fdf8"
-    BorderColor="#5193d8"
-    WidthRequest="350"
-                        IsVisible="{Binding IsReportesVisible}">
+                        BackgroundColor="#f2fdf8"
+                        BorderColor="#5193d8"
+                        IsVisible="{Binding IsReportesVisible}"
+                        WidthRequest="350">
                         <material:TabView>
 
                             <material:TabItem Title="Tab One">
                                 <material:TabItem.ContentTemplate>
                                     <DataTemplate>
-                                        <StackLayout Orientation="Horizontal" Margin="5">
-                                            <Entry Placeholder="Correo" WidthRequest="200" Text="{Binding FiltroCorreo}"/>
-                                            <Button Text="BUSCAR" Margin="5" Command="{Binding GetPDFCommand}"/>
+                                        <StackLayout Margin="5" Orientation="Horizontal">
+                                            <Entry
+                                                Placeholder="Correo"
+                                                Text="{Binding FiltroCorreo}"
+                                                WidthRequest="200" />
+                                            <Button
+                                                Margin="5"
+                                                Command="{Binding GetPDFCommand}"
+                                                Text="BUSCAR" />
                                         </StackLayout>
                                     </DataTemplate>
                                 </material:TabItem.ContentTemplate>
@@ -189,29 +196,29 @@ Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
                     </Frame>
                 </StackLayout>
             </Frame>
-            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{Binding IsReportesVisible}">
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
 
                 <!--  CONTENEDOR PARA EL VISOR PDF  -->
                 <StackLayout
-        Margin="20"
-        BackgroundColor="WhiteSmoke"
-        HeightRequest="550"
-        Orientation="Vertical"
+                    Margin="20"
+                    BackgroundColor="WhiteSmoke"
+                    HeightRequest="550"
                     IsVisible="{Binding IsReportesVisible}"
-        WidthRequest="550">
+                    Orientation="Vertical"
+                    WidthRequest="550">
 
                     <StackLayout.Shadow>
                         <Shadow
-                Brush="Black"
-                Opacity=".7"
-                Radius="20"
-                Offset="10,10" />
+                            Brush="Black"
+                            Opacity=".7"
+                            Radius="20"
+                            Offset="10,10" />
                     </StackLayout.Shadow>
                     <WebView
-            Margin="10"
-            HeightRequest="500"
-            Source="{Binding UrlPDF}"
-            WidthRequest="500" />
+                        Margin="10"
+                        HeightRequest="500"
+                        Source="{Binding UrlPDF}"
+                        WidthRequest="500" />
                 </StackLayout>
             </Frame>
         </HorizontalStackLayout>

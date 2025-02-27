@@ -17,7 +17,7 @@ namespace TCGErcilla.Dto
         [JsonProperty("numero_cartas")]
         public int NumeroCartas { get; set; }
         [JsonProperty("fecha_lanzamiento")]
-        public DateTime FechaLanzamiento { get; set; }
+        public DateTime FechaLanzamiento { get; set; } = DateTime.Now;
         [JsonProperty("url_imagen")]
         public string UrlImagen { get; set; }
 

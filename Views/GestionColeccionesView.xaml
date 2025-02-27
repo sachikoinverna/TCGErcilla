@@ -31,6 +31,8 @@
 
                 <StackLayout
                     HorizontalOptions="Start"
+                                        Margin="30"
+
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutColeccionesGestionColeccionesStyle}">
                     <Image Style="{StaticResource ImageColeccionesTitleStyle}" />
@@ -49,7 +51,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ColeccionInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}" WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}" >
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionColeccionesViewModel"
@@ -141,7 +143,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ProductoInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductoGestionColeccionesStyle}" WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductoGestionColeccionesStyle}">
                                         <HorizontalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
@@ -185,8 +187,7 @@
                                 <DataTemplate x:DataType="info:CartaInfo">
                                     <Frame
                                         IsVisible="{Binding IsCartasVisible}"
-                                        Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}"
-                                        WidthRequest="280">
+                                        Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
                                         <HorizontalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"

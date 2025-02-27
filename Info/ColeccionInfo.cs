@@ -18,7 +18,7 @@ namespace TCGErcilla.Info
         public int NumeroCartas { get; set; }
         [Newtonsoft.Json.JsonConverter(typeof(DateConverter))]
         [JsonProperty("fechaLanzamiento")]
-        public DateTime FechaLanzamiento { get; set; }
+        public DateTime FechaLanzamiento { get; set; } = DateTime.Now;
         [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
         public object Clone()

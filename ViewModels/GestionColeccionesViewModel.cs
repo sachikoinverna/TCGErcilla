@@ -32,20 +32,37 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private bool isReportesVisible;
         [RelayCommand]
-        public void MostrarCartas()
+        public async Task MostrarCartas()
         {
             if (SelectedColeccion == null)
             {
                 App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
                 return;
             }
-            //if (SelectedColeccion .Gastos.Count > 0)
-            //{
-             //   IsProductosVisible = false;
-              //  IsCartasVisible = true;
-            //}
             else
             {
+                IsProductosVisible = false;
+                IsCartasVisible = true;
+                IsReportesVisible = false;
+                RequestModel request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://192.168.20.102:8080/cartas/todas"
+                };
+
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                if (response.Success.Equals(0))
+                {
+                    try
+                    {
+                        ListaProductos =
+                          JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
             }
         }
         [RelayCommand]
@@ -71,40 +88,37 @@ namespace TCGErcilla.ViewModels
             IsReportesVisible = false;
         }
         [RelayCommand]
-        public void MostrarProductos()
+        public async Task MostrarProductos()
         {
             if (SelectedColeccion == null)
             {
-                IsReportesVisible = false;   
                 App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
                 return;
             }
-            // if (SelectedColeccion .Gastos.Count > 0)
-            // {
-            //    IsCartasVisible = false;
-            //   IsProductosVisible = true;
-            //}
-            //RequestModel request = new RequestModel()
-            //{
-               // Method = "GET",
-              //  Route = "http://192.168.20.102:8080/colecciones/todas"
-            //};
-
-           // ResponseModel response = await APIService.ExecuteRequest(request);
-            //if (response.Success.Equals(0))
-            ///{
-               // try
-                //{
-                 //   ListaProductos =
-                  //     JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
-                //}
-                //catch (Exception ex)
-                //{
-
-                //}
-            //}
             else
             {
+                IsProductosVisible = true;
+                IsCartasVisible= false;
+                IsReportesVisible = false;
+                RequestModel request = new RequestModel()
+            {
+             Method = "GET",
+              Route = "http://192.168.20.102:8080/productos/todos"
+            };
+
+                 ResponseModel response = await APIService.ExecuteRequest(request);
+                if (response.Success.Equals(0))
+                {
+                 try
+                {
+                   ListaProductos =
+                     JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                }
+                }
             }
         }
         [RelayCommand]

@@ -41,19 +41,19 @@ namespace TCGErcilla.ViewModels
         public void OcultarProductos()
         {
             IsProductosVisible = false;
-            IsReportesVisible = true;
+            IsReportesVisible = false;
         }
         [RelayCommand]
         public void MostrarReportes()
         {
-            IsProductosVisible = true;
-            IsReportesVisible = false;
+            IsProductosVisible = false;
+            IsReportesVisible = true;
         }
         [RelayCommand]
         public void OcultarReportes()
         {
             IsProductosVisible = false;
-            IsReportesVisible = true;
+            IsReportesVisible = false;
         }
         [RelayCommand]
         public async void GetDistribuidores()

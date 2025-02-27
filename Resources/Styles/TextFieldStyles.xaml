@@ -10,7 +10,6 @@
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFieldNombreColeccionStyle" TargetType="material:TextField">
@@ -18,7 +17,6 @@
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFieldNombreDistribuidoresStyle" TargetType="material:TextField">
@@ -26,7 +24,6 @@
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFieldNombreProductosStyle" TargetType="material:TextField">
@@ -34,7 +31,6 @@
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFielTipoTipoProductoStyle" TargetType="material:TextField">
@@ -42,23 +38,20 @@
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFieldNumeroCartaCartasStyle" TargetType="material:TextField">
-        <Setter Property="Title" Value="Tipo" />
+        <Setter Property="Title" Value="Numero de carta" />
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
     <Style x:Key="TextFieldNumeroCartasColeccionesStyle" TargetType="material:TextField">
-        <Setter Property="Title" Value="Tipo" />
+        <Setter Property="Title" Value="Numero de cartas" />
         <Setter Property="BorderColor" Value="Blue" />
         <Setter Property="AllowClear" Value="True" />
         <Setter Property="AccentColor" Value="Blue" />
-        <Setter Property="Icon" Value="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static m:MaterialRegular.Edit}}" />
         <Setter Property="WidthRequest" Value="300" />
     </Style>
 </ResourceDictionary>

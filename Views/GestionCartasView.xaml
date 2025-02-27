@@ -35,12 +35,7 @@
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
                     <Image
-                        Margin="0,10,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="cartas_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
+                        Style="{StaticResource ImageCartasTitleStyle}" />
                     <Frame Style="{StaticResource FrameCollectionViewCartasGestionCartasStyle}">
                         <CollectionView
                             Margin="10"
@@ -57,12 +52,13 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:CartaInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartasGestionCartasStyle}" WidthRequest="280">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartasGestionCartasStyle}" >
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionCartasViewModel"
                                                 BindingContext="{Binding Source={x:Reference gestion_cartas}, Path=BindingContext}"
                                                 Command="{Binding CrearCartaCommand}"
+                                                CommandParameter="{Binding SelectedCarta}"
                                                 NumberOfTapsRequired="2" />
                                         </Frame.GestureRecognizers>
                                         <HorizontalStackLayout>
@@ -113,12 +109,7 @@
                     Style="{StaticResource StackLayoutCartasGestionCartasStyle}"
                     WidthRequest="300">
                     <Image
-                        Margin="0,10,0,0"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        Source="cartas_titulo.png"
-                        VerticalOptions="Center"
-                        WidthRequest="100" />
+                        Style="{StaticResource ImageCartasTitleStyle}"/>
                     <Frame
                         BackgroundColor="#f2fdf8"
                         BorderColor="#5193d8"
