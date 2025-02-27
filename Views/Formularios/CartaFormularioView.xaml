@@ -44,7 +44,8 @@
             </material:TextField>
             <material:DropdownField
                 ItemsSource="{Binding ListaColecciones}"
-                SelectedItem="{Binding CartaInfo.Coleccion}"
+                TextColor="Black"
+                SelectedItem="{Binding CartaInfo.SelectedColeccion, Mode=TwoWay}"
                 Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}" />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button

@@ -17,21 +17,24 @@ namespace TCGErcilla.Dto
         public string Nombre { get; set; }
         [JsonProperty("numeroColeccion")]
         public int NumeroColeccion { get; set; }
-        [JsonProperty("url_imagen")]
+        [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
         [JsonProperty("idColeccion")]
         public ColeccionDto Coleccion { get; set; }
-        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen,ColeccionDto coleccion)
+
+        public string NombreColeccion { get; set; }
+        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen)
         {
             Id = id;
             Nombre = nombre;
-            Coleccion = coleccion;
             NumeroColeccion = numeroColeccion;
             UrlImagen = urlImagen;
+           
         }
 
         public CartaDto()
         {
+            
         }
         
     }
