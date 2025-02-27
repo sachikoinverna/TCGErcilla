@@ -37,11 +37,7 @@
 
             <material:TextField Style="{StaticResource TextFieldNombreColeccionStyle}" Text="{Binding ColeccionInfo.Nombre}" />
             <material:TextField
-                Title="Numero de cartas"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Style="{StaticResource TextFieldNumeroCartasColeccionesStyle}"
                 Keyboard="Numeric"
                 Text="{Binding ColeccionInfo.NumeroCartas}" />
             <material:DatePickerField

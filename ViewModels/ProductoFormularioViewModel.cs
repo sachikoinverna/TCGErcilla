@@ -38,10 +38,6 @@ namespace TCGErcilla.ViewModels
         private DistribuidorInfo distribuidorInfo;
         [ObservableProperty]
         private TipoProductoInfo tipoProductoInfo;
-        public ProductoFormularioViewModel()
-        {
-            ProductoInfo productoInfo = new ProductoInfo();
-        }
         [RelayCommand]
         public async void SeleccionarImagen()
         {
@@ -79,7 +75,6 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Data = string.Empty,
                 Route = "http://localhost:8080/tipo_producto_todos"
                 //Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
@@ -102,8 +97,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/distribuidores/todos"
-                //Route = "http://192.168.20.102:8080/distribuidores/todos"
+                //Route = "http://localhost:8080/distribuidores/todos"
+                Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -135,13 +130,15 @@ namespace TCGErcilla.ViewModels
         public async Task CrearProducto()
         {
             var _producto = new ProductoDto();
-            //if (ProductoInfo.Id != null)
-            //{
-              //  _producto.Id = ProductoInfo.Id;
-            //}
-           // _producto.Nombre = ProductoInfo.Nombre;
-            //_producto.UrlImagen = ProductoInfo.UrlImagen;
-            //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
+            if (IsEditMode)
+            {
+                _producto.Id = ProductoInfo.Id;
+            }
+            else
+            {
+                _producto.Id = null;
+            }
+           _producto.Nombre = ProductoInfo.Nombre;
             var request = new RequestModel()
             {
                 Data = _producto,
@@ -151,6 +148,7 @@ namespace TCGErcilla.ViewModels
             ResponseModel response = await APIService.ExecuteRequest(request);
             await UploadImage(response.Data.ToString());
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            CerrarMopup();
         }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)

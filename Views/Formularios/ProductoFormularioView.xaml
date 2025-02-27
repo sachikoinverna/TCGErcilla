@@ -13,6 +13,9 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:ProductoFormularioViewModel"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
+    <StackLayout.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
+    </StackLayout.Behaviors>
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="EndAndExpand">
             <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />

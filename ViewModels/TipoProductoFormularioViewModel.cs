@@ -24,7 +24,6 @@ namespace TCGErcilla.ViewModels
         public TipoProductoFormularioViewModel()
         {
             TipoProductoInfo = new TipoProductoInfo();
-            //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
         }
         [RelayCommand]
         public void EstablecerValoresIniciales()
@@ -55,6 +54,7 @@ namespace TCGErcilla.ViewModels
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
+            CerrarMopup();
         }
         [RelayCommand]
         public async Task CerrarMopup()

@@ -31,14 +31,6 @@ namespace TCGErcilla.ViewModels
         private bool isEditMode;
         [ObservableProperty]
         private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
-        [ObservableProperty]
-        private ColeccionInfo coleccionInfo;
-
-        public CartaFormularioViewModel()
-        {
-            CartaInfo = new CartaInfo();
-            RutaImagen = "carta_default.png";
-        }
 
         [RelayCommand]
         public void EstablecerValoresIniciales()
@@ -46,11 +38,12 @@ namespace TCGErcilla.ViewModels
             GetColecciones();
             if (!isEditMode)
             {
+                CartaInfo = new CartaInfo();
                 RutaImagen = "carta_default.png";
             }
             else
             {
-              
+                RutaImagen = "carta_default.png";
             }
         }
         [RelayCommand]
@@ -101,8 +94,9 @@ namespace TCGErcilla.ViewModels
           
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
-            _carta.Coleccion = CartaInfo.Coleccion;
-           // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
+            //_carta.Coleccion ;
+            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
+            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
             var request = new RequestModel()
             {
                 Data = _carta,
@@ -111,6 +105,18 @@ namespace TCGErcilla.ViewModels
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await UploadImage(response.Data.ToString());
+            _carta.Id = Convert.ToInt32(response.Data);
+            _carta.UrlImagen = CartaInfo.UrlImagen;
+            string extension = Path.GetExtension(RutaImagen);
+            _carta.UrlImagen = "https://www.dropbox.com/home/Aplicaciones/TCGErcilla/cards/?preview=" + response.Data.ToString + extension;
+
+            var request2 = new RequestModel()
+            {
+                Data = _carta,
+                Method = "POST",
+                Route = "http://192.168.20.102:8080/cartas/crear"
+            };
+            ResponseModel response2 = await APIService.ExecuteRequest(request2);
             await CerrarMopup();
          //   await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }

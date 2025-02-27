@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Info;
 
 namespace TCGErcilla.Dto
 {

@@ -39,7 +39,7 @@
             <material:TextField Style="{StaticResource TextFieldNombreCartasStyle}" Text="{Binding CartaInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <material:TextField Style="{StaticResource TextFieldNumeroColeccionCartasStyle}" Text="{Binding CartaInfo.NumeroColeccion}">
+            <material:TextField Style="{StaticResource TextFieldNumeroCartaCartasStyle}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField

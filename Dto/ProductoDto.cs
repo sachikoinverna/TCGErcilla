@@ -15,8 +15,6 @@ namespace TCGErcilla.Dto
         public int? Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
-        [JsonProperty("fecha_lanzamiento")]
-        public DateTime FechaLanzamiento { get; set; }
         [JsonProperty("url_imagen")]
         public string UrlImagen { get; set; }
         [JsonProperty("producto_distribuidor")]
