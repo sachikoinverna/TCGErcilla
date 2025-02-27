@@ -86,6 +86,7 @@ namespace TCGErcilla.ViewModels
             ColeccionInfo Coleccion = CartaInfo.SelectedColeccion;
             ColeccionDto ColeccionDto = new ColeccionDto();
             ColeccionDto.Id = Coleccion.Id;
+                   //hola
                 _carta.Nombre = CartaInfo.Nombre;
                 _carta.UrlImagen = CartaInfo.UrlImagen;
                 _carta.NumeroColeccion = CartaInfo.NumeroColeccion;
