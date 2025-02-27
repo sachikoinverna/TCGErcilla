@@ -8,6 +8,7 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_distribuidores"
     Title=""
+    xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     x:DataType="viewmodels:GestionDistribuidoresViewModel"
     BindingContext="{viewmodels:GestionDistribuidoresViewModel}">
     <ContentPage.Behaviors>
@@ -108,6 +109,50 @@
                 Text="Eliminar"
                 WidthRequest="300" />
         </VerticalStackLayout>
+        <Frame BorderColor="DeepSkyBlue" CornerRadius="20" Padding="10" BackgroundColor="AliceBlue" HasShadow="false">
+            <VerticalStackLayout BackgroundColor="AliceBlue" IsEnabled="{Binding IsCartasVisible}">
+                <Image
+                Margin="0,20,0,0"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="cartas_titulo.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
 
+                <CollectionView
+                Margin="10"
+                Background="LightGray"
+                HeightRequest="350"
+                ItemsSource="{Binding ListaCartas}"
+                SelectedItem="{Binding SelectedCarta}"
+                SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                SelectionMode="Single"
+                WidthRequest="300">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="info:CartaInfo">
+                            <Border WidthRequest="280">
+                                <HorizontalStackLayout>
+                                    <ffimage:CachedImage
+                                    Aspect="AspectFill"
+                                    ErrorPlaceholder="cartas_default.png"
+                                    Source="{Binding UrlImagen}"
+                                    WidthRequest="50" />
+                                    <VerticalStackLayout Margin="10">
+                                        <Label Text="{Binding Nombre}" />
+                                    </VerticalStackLayout>
+
+                                </HorizontalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

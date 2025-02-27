@@ -9,6 +9,7 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_cartas"
     Title=""
+    BackgroundImageSource="fondo_cartas.jpg"
     x:DataType="viewmodels:GestionCartasViewModel"
     BindingContext="{viewmodels:GestionCartasViewModel}">
     <ContentPage.Behaviors>

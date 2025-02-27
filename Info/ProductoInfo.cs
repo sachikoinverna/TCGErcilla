@@ -29,10 +29,10 @@ namespace TCGErcilla.Info
 
         public class TipoProductoInfo
         {
-            [JsonProperty ("id")]   
+            [JsonProperty("id")]
             public int Id { get; set; }
             [JsonProperty("tipo")]
-            public string tipo {  get; set; }
+            public string tipo { get; set; }
 
 
         }
@@ -52,11 +52,10 @@ namespace TCGErcilla.Info
         {
             [JsonProperty("id")]
             public int Id { get; set; }
-            [JsonProperty ("nombre")]
+            [JsonProperty("nombre")]
             public string Nombre { get; set; }
 
         }
-
 
         public object Clone()
         {
