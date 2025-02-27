@@ -10,7 +10,9 @@
     Title="TipoProductoFormularioMopup"
     x:DataType="viewmodels:TipoProductoFormularioViewModel"
     BindingContext="{viewmodels:TipoProductoFormularioViewModel}">
-    <VerticalStackLayout HeightRequest="400" WidthRequest="400">
-        <formularios:TipoProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_tipo_producto_mopup}, Path=BindingContext}" />
-    </VerticalStackLayout>
+    <Frame Style="{StaticResource FrameTipoProductosFormularioStyle}">
+        <VerticalStackLayout HeightRequest="300" WidthRequest="500">
+            <formularios:TipoProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_tipo_producto_mopup}, Path=BindingContext}" />
+        </VerticalStackLayout>
+    </Frame>
 </mopups:PopupPage>

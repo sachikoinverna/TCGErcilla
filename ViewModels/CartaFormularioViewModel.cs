@@ -1,7 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -14,7 +18,7 @@ using TCGErcilla.Utils;
 
 namespace TCGErcilla.ViewModels
 {
-    //[QueryProperty(nameof(CartaInfo), "CartaInfo")]
+    [QueryProperty(nameof(CartaInfo), "CartaInfo")]
 
     public partial class CartaFormularioViewModel: ObservableObject
     {
@@ -25,17 +29,22 @@ namespace TCGErcilla.ViewModels
         private string rutaImagen;
         [ObservableProperty]
         private bool isEditMode;
-
-        public CartaFormularioViewModel()
-        {
-            CartaInfo = new CartaInfo();
-            RutaImagen = "carta_default.png";
-        }
+        [ObservableProperty]
+        private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
 
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            RutaImagen = "carta_default.png";
+            GetColecciones();
+            if (!isEditMode)
+            {
+                CartaInfo = new CartaInfo();
+                RutaImagen = "carta_default.png";
+            }
+            else
+            {
+                RutaImagen = "carta_default.png";
+            }
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -47,9 +56,33 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
+        public async void GetColecciones()
+        {
+
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                //Route = "http://localhost:8080/colecciones/todas"
+                Route = "http://192.168.20.102:8080/colecciones/todas"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaColecciones =
+                JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
+            }
+        }
+        [RelayCommand]
         public async Task CrearCarta()
         {
+       
             var _carta = new CartaDto();
+            
             if (IsEditMode)
             {
                 _carta.Id = CartaInfo.Id;
@@ -58,15 +91,33 @@ namespace TCGErcilla.ViewModels
             {
                 _carta.Id = null;
             }
+          
             _carta.Nombre = CartaInfo.Nombre;
             _carta.UrlImagen = CartaInfo.UrlImagen;
+            //_carta.Coleccion ;
+            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
+            // _carta.Coleccion.Id = CartaInfo.Coleccion.Id;
             var request = new RequestModel()
             {
                 Data = _carta,
                 Method = "POST",
-                Route = "http://localhost:8080/cartas/crear"
+                Route = "http://192.168.20.102:8080/cartas/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
+            await UploadImage(response.Data.ToString());
+            _carta.Id = Convert.ToInt32(response.Data);
+            _carta.UrlImagen = CartaInfo.UrlImagen;
+            string extension = Path.GetExtension(RutaImagen);
+            _carta.UrlImagen = "https://www.dropbox.com/home/Aplicaciones/TCGErcilla/cards/?preview=" + response.Data.ToString + extension;
+
+            var request2 = new RequestModel()
+            {
+                Data = _carta,
+                Method = "POST",
+                Route = "http://192.168.20.102:8080/cartas/crear"
+            };
+            ResponseModel response2 = await APIService.ExecuteRequest(request2);
+            await CerrarMopup();
          //   await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
 
@@ -93,6 +144,11 @@ namespace TCGErcilla.ViewModels
                     "ACEPTAR");
                 return false;
             }
+        }
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
         }
 
     }

@@ -13,7 +13,13 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:ProductoFormularioViewModel"
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
+    <StackLayout.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
+    </StackLayout.Behaviors>
     <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearProductoCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -26,50 +32,28 @@
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                    Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
             <material:TextField
-                Title="Nombre"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
-                Text="{Binding ProductoInfo.Nombre}">
+                Text="{Binding ProductoInfo.Nombre}" Style="{StaticResource TextFieldNombreProductosStyle}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
-                Title="Pick an option"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding Items}"
-                SelectedItem="{Binding ProductoInfo}" />
+                Style="{StaticResource DropdownFieldColeccionFormularioProductoStyle }"
+                ItemsSource="{Binding ListaColecciones}"
+                SelectedItem="{Binding ColeccionInfo}" />
             <material:DropdownField
-                Title="Pick an option"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Expand_circle_down}}"
-                ItemsSource="{Binding Items}"
-                SelectedItem="{Binding ProductoInfo}" />
+    Style="{StaticResource DropdownFieldTipoProductoFormularioProductoStyle }"
+    ItemsSource="{Binding ListaTipoProducto}"
+    SelectedItem="{Binding TipoProductoInfo}" />
             <material:MultiplePickerField
-                Title="Pick some options"
-                AccentColor="DeepSkyBlue"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}">
-                <material:MultiplePickerField.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Option 1</x:String>
-                        <x:String>Option 2</x:String>
-                        <x:String>Option 3</x:String>
-                        <x:String>Option 4</x:String>
-                        <x:String>Option 5</x:String>
-                        <x:String>Option 6</x:String>
-                    </x:Array>
-                </material:MultiplePickerField.ItemsSource>
-            </material:MultiplePickerField>
-
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
-
+                Style="{StaticResource MultiplePickerFieldDistribuidoresFormularioProductoStyle}"
+                ItemsSource="{Binding ListaColecciones}"  />
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource ButtonStyleCreate}" />
+                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleEditar}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}"/>
+            </HorizontalStackLayout>
         </input:FormView>
 
     </VerticalStackLayout>

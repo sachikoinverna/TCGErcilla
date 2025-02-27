@@ -9,10 +9,11 @@
     x:Name="formulario_distribuidor_mopup"
     Title="DistribuidorFormularioMopup"
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
-    Background="Peru"
-    BindingContext="{viewmodels:DistribuidorFormularioViewModel}"
-    CloseWhenBackgroundIsClicked="True">
-    <VerticalStackLayout HeightRequest="400" WidthRequest="400">
-        <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />
-    </VerticalStackLayout>
+    BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
+    <Frame Style="{StaticResource FrameDistribuidoresFormularioStyle}">
+
+        <VerticalStackLayout HeightRequest="350" WidthRequest="500">
+            <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />
+        </VerticalStackLayout>
+    </Frame>
 </mopups:PopupPage>

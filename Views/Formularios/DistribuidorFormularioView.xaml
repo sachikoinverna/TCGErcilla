@@ -14,19 +14,24 @@
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearDistribuidorCommand}">
-            <material:TextField
-                Title="Nombre"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Catching_pokemon}}"
-                Text="{Binding DistribuidorInfo.Nombre}">
+            <material:TextField Style="{StaticResource TextFieldNombreDistribuidoresStyle}" Text="{Binding DistribuidorInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
+            </HorizontalStackLayout>
         </input:FormView>
 
     </VerticalStackLayout>

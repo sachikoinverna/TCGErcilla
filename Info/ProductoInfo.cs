@@ -23,10 +23,6 @@ namespace TCGErcilla.Info
         [JsonProperty("distribuidores")]
         public HashSet<DistribuidorInfo> Distribuidores { get; set; }
 
-
-
-
-
         public class TipoProductoInfo
         {
             [JsonProperty("id")]

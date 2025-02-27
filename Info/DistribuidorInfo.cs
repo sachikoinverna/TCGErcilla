@@ -25,5 +25,9 @@ namespace TCGErcilla.Info
                 Nombre = this.Nombre
             };
         }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

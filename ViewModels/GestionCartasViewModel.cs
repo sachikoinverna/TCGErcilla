@@ -22,6 +22,72 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<CartaInfo> listaCartas = new ObservableCollection<CartaInfo>();
         [ObservableProperty]
         private CartaInfo selectedCarta;
+        [ObservableProperty]
+        private bool isColeccionInfoVisible;
+        [ObservableProperty]
+        private bool isReportsVisible;
+        [RelayCommand]
+        public void EstadoInicial()
+        {
+            IsColeccionInfoVisible = false;
+            IsReportsVisible = false;
+        }
+        [RelayCommand]
+        private void OcultarColeccion()
+        {
+            IsColeccionInfoVisible = false;
+        }
+        [RelayCommand]
+        private void OcultarReports()
+        {
+            IsReportsVisible = false;
+        }
+        [RelayCommand]
+        public void MostrarColeccion()
+        {
+            if (SelectedCarta == null)
+            {
+                IsColeccionInfoVisible = true;
+                IsReportsVisible = false;
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+            // if (SelectedColeccion .Gastos.Count > 0)
+            // {
+            //    IsCartasVisible = false;
+            //   IsProductosVisible = true;
+            //}
+            //RequestModel request = new RequestModel()
+            //{
+            // Method = "GET",
+            //  Route = "http://192.168.20.102:8080/colecciones/todas"
+            //};
+
+            // ResponseModel response = await APIService.ExecuteRequest(request);
+            //if (response.Success.Equals(0))
+            ///{
+            // try
+            //{
+            //   ListaProductos =
+            //     JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            //}
+            else
+            {
+            }
+        }
+        [RelayCommand]
+        public void MostrarInformes()
+        {
+                IsReportsVisible = true;
+
+                IsColeccionInfoVisible = false;
+
+        }
         [RelayCommand]
         public async void GetCartas()
         {
@@ -29,7 +95,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/cartas/todas"
+                //Route = "http://localhost:8080/cartas/todas"
+               Route = "http://192.168.20.102:8080/cartas/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

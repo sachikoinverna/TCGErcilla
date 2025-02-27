@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +12,7 @@ using TCGErcilla.Info;
 using TCGErcilla.Models;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
+using static System.Net.WebRequestMethods;
 
 namespace TCGErcilla.ViewModels
 {
@@ -56,14 +58,26 @@ namespace TCGErcilla.ViewModels
             }
             _coleccion.Nombre = ColeccionInfo.Nombre;
             _coleccion.FechaLanzamiento = ColeccionInfo.FechaLanzamiento;
-            _coleccion.UrlImagen = ColeccionInfo.UrlImagen;
             var request = new RequestModel()
             {
                 Data = _coleccion,
                 Method = "POST",
-                Route = "http://localhost:8080/cartas/crear"
+                Route = "http://192.168.20.102:8080/colecciones/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
+            await UploadImage(response.Data.ToString());
+            _coleccion.Id = Convert.ToInt32(response.Data);
+            string extension = Path.GetExtension(RutaImagen);
+            _coleccion.UrlImagen = "https://www.dropbox.com/home/Aplicaciones/TCGErcilla/collections/?preview=" + response.Data.ToString + extension;
+
+            var request2 = new RequestModel()
+            {
+                Data = _coleccion,
+                Method = "POST",
+                Route = "http://192.168.20.102:8080/colecciones/crear"
+            };
+            ResponseModel response2 = await APIService.ExecuteRequest(request2);
+            await CerrarMopup();
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
         [RelayCommand]
@@ -90,6 +104,10 @@ namespace TCGErcilla.ViewModels
                 return false;
             }
         }
-
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
+        }
     }
 }

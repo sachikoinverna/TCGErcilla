@@ -12,18 +12,25 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
+
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearTipoProductoCommand}">
-            <material:TextField
-                Title="Tipo"
-                AccentColor="DeepSkyBlue"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Account_box}}"
-                Text="{Binding TipoProductoInfo.Tipo}">
+            <material:TextField Style="{StaticResource TextFielTipoTipoProductoStyle}" Text="{Binding TipoProductoInfo.Tipo}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" />
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
+            </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

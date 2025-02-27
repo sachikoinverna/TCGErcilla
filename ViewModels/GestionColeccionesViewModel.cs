@@ -29,6 +29,8 @@ namespace TCGErcilla.ViewModels
         private bool isCartasVisible;
         [ObservableProperty]
         private bool isProductosVisible;
+        [ObservableProperty]
+        private bool isReportesVisible;
         [RelayCommand]
         public void MostrarCartas()
         {
@@ -51,46 +53,29 @@ namespace TCGErcilla.ViewModels
         {
             IsProductosVisible = false;
             IsCartasVisible = false;
+            IsReportesVisible = false;
         }
         [RelayCommand]
         private void OcultarProductos()
         {
-            if (SelectedColeccion == null)
-            {
-                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
-                return;
-            }
-            // if (SelectedColeccion .Gastos.Count > 0)
-            // {
-            //    IsCartasVisible = false;
-            //   IsProductosVisible = true;
-            //}
-            else
-            {
-            }
+            IsProductosVisible = false;
         }
         [RelayCommand]
         private void OcultarCartas()
         {
-            if (SelectedColeccion == null)
-            {
-                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
-                return;
-            }
-            // if (SelectedColeccion .Gastos.Count > 0)
-            // {
-            //    IsCartasVisible = false;
-            //   IsProductosVisible = true;
-            //}
-            else
-            {
-            }
+            IsCartasVisible = false;
+        }
+        [RelayCommand]
+        private void OcultarReportes()
+        {
+            IsReportesVisible = false;
         }
         [RelayCommand]
         public void MostrarProductos()
         {
             if (SelectedColeccion == null)
             {
+                IsReportesVisible = false;   
                 App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
                 return;
             }
@@ -123,6 +108,13 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
+        public void MostrarReportes()
+        {
+            IsReportesVisible = true;
+            IsProductosVisible = false;
+            IsCartasVisible = false;
+        }
+        [RelayCommand]
         public async void GetColecciones()
         {
 
@@ -130,7 +122,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://192.168.20.102:8080/colecciones/todas"
+                 //Route = "http://192.168.1.136:8080/colecciones/todas"
+                 Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -157,7 +150,7 @@ namespace TCGErcilla.ViewModels
         {
             var mopup = new ColeccionFormularioMopup();
             var vm = new ColeccionFormularioViewModel();
-           // vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
+            vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
         }
@@ -169,6 +162,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
+               
                     Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);

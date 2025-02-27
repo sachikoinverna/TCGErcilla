@@ -17,6 +17,9 @@
         <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
     </StackLayout.Behaviors>
     <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
         <input:FormView Spacing="20" SubmitCommand="{Binding CrearCartaCommand}">
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -30,31 +33,30 @@
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                    Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
 
-            <material:TextField
-                Title="Nombre"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
-                Text="{Binding CartaInfo.Nombre}">
+            <material:TextField Style="{StaticResource TextFieldNombreCartasStyle}" Text="{Binding CartaInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <material:TextField
-                Title="Numero de carta"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
-                Text="{Binding CartaInfo.NumeroColeccion}">
+            <material:TextField Style="{StaticResource TextFieldNumeroCartaCartasStyle}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
             </material:TextField>
-            <Button IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" />
-            <Button Command="{Binding CrearCartaCommand}" IsVisible="{Binding IsEditMode}" />
-            <Button IsVisible="{Binding IsEditMode}" />
-            <ImageButton input:FormView.IsSubmitButton="True" BorderColor="Orange" BorderWidth="3"  Source="fondo_cartas.jpg"/>
+            <material:DropdownField
+                ItemsSource="{Binding ListaColecciones}"
+                SelectedItem="{Binding CartaInfo.Coleccion}"
+                Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}" />
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+            </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

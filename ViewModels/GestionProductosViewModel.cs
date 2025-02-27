@@ -23,12 +23,45 @@ namespace TCGErcilla.ViewModels
         private ProductoInfo selectedProducto;
         [ObservableProperty]
         private bool isDistribuidoresVisible;
+        [ObservableProperty]
+        private bool isReportesVisible;
         [RelayCommand]
-        public async void GetProductos()
+        public void EstablecerValoresIniciales()
+        {
+            IsReportesVisible = false;
+            IsDistribuidoresVisible = false;
+        }
+        [RelayCommand]
+        public void MostrarReportes()
+        {
+            IsReportesVisible = true;
+            IsDistribuidoresVisible = false;
+        }
+        [RelayCommand]
+        public void OcultarReportes()
+        {
+            IsReportesVisible = false;
+            IsDistribuidoresVisible = true;
+        }
+        [RelayCommand]
+        public void MostrarDistribuidores()
+        {
+            IsReportesVisible = false;
+            IsDistribuidoresVisible = true;
+        }
+        [RelayCommand]
+        public void OcultarDistribuidores()
+        {
+            IsReportesVisible = true;
+            IsDistribuidoresVisible = false;
+        }
+        [RelayCommand]
+        public async void GetProductos() 
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
+                //Route = "http://localhost:8080/productos/todos"
                 Route = "http://192.168.20.102:8080/productos/todos"
             };
 
@@ -44,10 +77,10 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
-        public async Task AbrirMopupDistribuidor()
+        public async Task CrearProducto()
         {
 
-            await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
+            await MopupService.Instance.PushAsync(new ProductoFormularioMopup());
         }
         [RelayCommand]
         public async Task EditarProducto()

@@ -21,14 +21,51 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<TipoProductoInfo> listaTiposProducto = new ObservableCollection<TipoProductoInfo>();
         [ObservableProperty]
         private TipoProductoInfo selectedTipoProductoInfo;
-
+        [ObservableProperty]
+        private bool isProductosVisible;
+        [ObservableProperty]
+        private bool isReportesVisible;
         [RelayCommand]
-        public async void GetTiposProducto()
+        public void EstadoInicial()
+        {
+            IsProductosVisible = false;
+            IsReportesVisible = false;
+        }
+        [RelayCommand]
+        private void MostrarProductos()
+        {
+            if (SelectedTipoProductoInfo == null)
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                return;
+            }
+            // if (SelectedColeccion .Gastos.Count > 0)
+            // {
+            //    IsCartasVisible = false;
+            //   IsProductosVisible = true;
+            //}
+            else
+            {
+            }
+        }
+        [RelayCommand]
+        private void OcultarProductos()
+        {
+            IsProductosVisible = false;
+        }
+        [RelayCommand]
+        private void OcultarInforme()
+        {
+
+        }
+            [RelayCommand]
+            public async void GetTiposProducto()
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
                 Data = string.Empty,
+                //Route = "http://localhost:8080/tipo_producto_todos"
                 Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 

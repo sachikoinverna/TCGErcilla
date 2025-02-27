@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Mopups.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,11 +26,18 @@ namespace TCGErcilla.ViewModels
         private string rutaImagen;
         [ObservableProperty]
         private bool isEditMode;
-        public ProductoFormularioViewModel()
-        {
-            ProductoInfo productoInfo = new ProductoInfo();
-            //RutaImagen = "http://localhost:8081/dropbox/download/imagen_bonita.png";
-        }
+        [ObservableProperty]
+        private ObservableCollection<ColeccionInfo> listaColecciones = new ObservableCollection<ColeccionInfo>();
+        [ObservableProperty]
+        private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
+        [ObservableProperty]
+        private ObservableCollection<TipoProductoInfo> listaTipoProducto = new ObservableCollection<TipoProductoInfo>();
+        [ObservableProperty]
+        private ColeccionInfo coleccionInfo;
+        [ObservableProperty]
+        private DistribuidorInfo distribuidorInfo;
+        [ObservableProperty]
+        private TipoProductoInfo tipoProductoInfo;
         [RelayCommand]
         public async void SeleccionarImagen()
         {
@@ -35,6 +45,71 @@ namespace TCGErcilla.ViewModels
             if (file != null)
             {
                 RutaImagen = file.FullPath;
+            }
+        }
+        [RelayCommand]
+        public async void GetColecciones()
+        {
+
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                //Route = "http://localhost:8080/colecciones/todas"
+                Route = "http://192.168.20.102:8080/colecciones/todas"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaColecciones =
+                JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
+            }
+        }
+        [RelayCommand]
+        public async void GetTiposProducto()
+        {
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                Route = "http://localhost:8080/tipo_producto_todos"
+                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaTipoProducto =
+                       JsonConvert.DeserializeObject<ObservableCollection<TipoProductoInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
+            }
+        }
+        [RelayCommand]
+        public async void GetDistribuidores()
+        {
+
+            RequestModel request = new RequestModel()
+            {
+                Method = "GET",
+                //Route = "http://localhost:8080/distribuidores/todos"
+                Route = "http://192.168.20.102:8080/distribuidores/todos"
+            };
+
+            ResponseModel response = await APIService.ExecuteRequest(request);
+            if (response.Success.Equals(0))
+            {
+                try
+                {
+                    ListaDistribuidores =
+                JsonConvert.DeserializeObject<ObservableCollection<DistribuidorInfo>>(response.Data.ToString());
+                }
+                catch (Exception ex) { }
             }
         }
         [RelayCommand]
@@ -48,18 +123,22 @@ namespace TCGErcilla.ViewModels
                 IsEditMode = false;
             //}
             //RutaImagen = "producto_default.png";
+            GetDistribuidores();
+            GetColecciones();
         }
         [RelayCommand]
         public async Task CrearProducto()
         {
             var _producto = new ProductoDto();
-            //if (ProductoInfo.Id != null)
-            //{
-              //  _producto.Id = ProductoInfo.Id;
-            //}
-           // _producto.Nombre = ProductoInfo.Nombre;
-            //_producto.UrlImagen = ProductoInfo.UrlImagen;
-            //_producto.FechaLanzamiento = ProductoInfo.FechaLanzamiento;
+            if (IsEditMode)
+            {
+                _producto.Id = ProductoInfo.Id;
+            }
+            else
+            {
+                _producto.Id = null;
+            }
+           _producto.Nombre = ProductoInfo.Nombre;
             var request = new RequestModel()
             {
                 Data = _producto,
@@ -67,7 +146,9 @@ namespace TCGErcilla.ViewModels
                 Route = "http://localhost:8080/cartas/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
+            await UploadImage(response.Data.ToString());
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            CerrarMopup();
         }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
@@ -92,6 +173,11 @@ namespace TCGErcilla.ViewModels
                     "ACEPTAR");
                 return false;
             }
+        }
+        [RelayCommand]
+        public async Task CerrarMopup()
+        {
+            await MopupService.Instance.PopAllAsync();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Info;
 
 namespace TCGErcilla.Dto
 {
@@ -18,11 +19,13 @@ namespace TCGErcilla.Dto
         public int NumeroColeccion { get; set; }
         [JsonProperty("url_imagen")]
         public string UrlImagen { get; set; }
-
-        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen)
+        [JsonProperty("idColeccion")]
+        public ColeccionDto Coleccion { get; set; }
+        public CartaDto(int id, string nombre, int numeroColeccion,string urlImagen,ColeccionDto coleccion)
         {
             Id = id;
             Nombre = nombre;
+            Coleccion = coleccion;
             NumeroColeccion = numeroColeccion;
             UrlImagen = urlImagen;
         }
@@ -30,5 +33,7 @@ namespace TCGErcilla.Dto
         public CartaDto()
         {
         }
+        
     }
+
 }

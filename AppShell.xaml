@@ -7,8 +7,7 @@
     xmlns:local="clr-namespace:TCGErcilla"
     xmlns:views="clr-namespace:TCGErcilla.Views"
     Title="TCGErcilla"
-    BackgroundColor="Red"
-    >
+    BackgroundColor="Red">
     <TabBar>
         <ShellContent
             x:Name="LoginPage"

@@ -14,7 +14,10 @@
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <VerticalStackLayout>
-        <input:FormView Spacing="20" SubmitCommand="{Binding c}">
+        <HorizontalStackLayout HorizontalOptions="EndAndExpand">
+            <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
+        </HorizontalStackLayout>
+        <input:FormView Spacing="20" SubmitCommand="{Binding CrearColeccionCommand}">
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -29,40 +32,35 @@
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
-                    Text="Seleccionar imagen" />
+                    Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
 
+            <material:TextField Style="{StaticResource TextFieldNombreColeccionStyle}" Text="{Binding ColeccionInfo.Nombre}" />
             <material:TextField
-                Title="Nombre"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Email}}"
-                Text="{Binding ColeccionInfo.Nombre}" />
-            <material:TextField
-                Title="Numero de cartas"
-                AccentColor="DeepSkyBlue"
-                AllowClear="True"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Edit}}"
+                Style="{StaticResource TextFieldNumeroCartasColeccionesStyle}"
                 Keyboard="Numeric"
                 Text="{Binding ColeccionInfo.NumeroCartas}" />
             <material:DatePickerField
-                Title="Fecha de lanzamiento"
                 Date="{Binding ColeccionInfo.FechaLanzamiento}"
                 Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}" />
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                Style="{StaticResource ButtonStyleCreate}" />
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleDelete}" />
-            <Button
-                Command="{Binding CrearCartaCommand}"
-                IsVisible="{Binding IsEditMode}"
-                Style="{StaticResource ButtonStyleCreate}" />
+                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}"
+                Style="{StaticResource DatePickerFieldColeccionStyle}" />
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}"
+                    Text="Crear" />
+                <Button
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}"
+                    Text="Eliminar" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleCreate}"
+                    Text="Editar" />
+            </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
 </StackLayout>

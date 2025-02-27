@@ -4,7 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
-    <Style x:Key="DatePickerFieldStyle1" TargetType="material:DatePickerField">
+    <Style x:Key="DatePickerFieldColeccionStyle" TargetType="material:DatePickerField">
+        <Setter Property="Title" Value="Fecha de lanzamiento" />
         <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="Blue"/>
+        <Setter Property="BorderColor" Value="Blue"/>
+        <Setter Property="WidthRequest" Value="300"/>
     </Style>
 </ResourceDictionary>
