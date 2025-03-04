@@ -13,6 +13,9 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:ColeccionFormularioViewModel"
     BindingContext="{viewmodels:ColeccionFormularioViewModel}">
+    <StackLayout.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
+    </StackLayout.Behaviors>
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="EndAndExpand">
             <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
@@ -25,7 +28,7 @@
                 VerticalOptions="Center">
 
                 <ffimage:CachedImage
-                    ErrorPlaceholder="coleccion_default.png"
+                    ErrorPlaceholder="collection_default.png"
                     HeightRequest="130"
                     Source="{Binding RutaImagen}"
                     WidthRequest="130" />
@@ -36,30 +39,28 @@
             </HorizontalStackLayout>
 
             <material:TextField Style="{StaticResource TextFieldNombreColeccionStyle}" Text="{Binding ColeccionInfo.Nombre}" />
-            <material:TextField
-                Style="{StaticResource TextFieldNumeroCartasColeccionesStyle}"
-                Keyboard="Numeric"
-                Text="{Binding ColeccionInfo.NumeroCartas}" />
-            <material:DatePickerField
-                Date="{Binding ColeccionInfo.FechaLanzamiento}"
-                Icon="{FontImageSource FontFamily=MaterialRegular,
-                                       Glyph={x:Static m:MaterialRegular.Calendar_month}}"
-                Style="{StaticResource DatePickerFieldColeccionStyle}" />
+            <material:TextField Style="{StaticResource TextFieldNumeroCartasColeccionesStyle}" Text="{Binding ColeccionInfo.NumeroCartas}">
+                <validation:DigitsOnlyValidation />
+                <validation:RequiredValidation />
+            </material:TextField>
+            <material:DatePickerField  Date="{Binding ColeccionInfo.FechaLanzamiento}" Style="{StaticResource DatePickerFieldColeccionStyle}">
+                <validation:RequiredValidation />
+
+            </material:DatePickerField>
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                    Style="{StaticResource ButtonStyleCreate}"
-                    Text="Crear" />
-                <Button
-                    IsVisible="{Binding IsEditMode}"
-                    Style="{StaticResource ButtonStyleDelete}"
-                    Text="Eliminar" />
+                    Style="{StaticResource ButtonStyleCreate}"/>
+                
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
-                    Style="{StaticResource ButtonStyleCreate}"
-                    Text="Editar" />
+                    Style="{StaticResource ButtonStyleEditar}" />
+                <Button
+    Command="{Binding EliminarColeccionCommand}"
+    IsVisible="{Binding IsEditMode}"
+    Style="{StaticResource ButtonStyleDelete}" />
             </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>

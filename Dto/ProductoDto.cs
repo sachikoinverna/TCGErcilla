@@ -15,9 +15,13 @@ namespace TCGErcilla.Dto
         public int? Id { get; set; }
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
-        [JsonProperty("url_imagen")]
+        [JsonProperty("idTipo")]
+        public TipoProductoDto TipoProducto { get; set; }
+        [JsonProperty("idColeccion")]
+        public ColeccionDto Coleccion { get; set; }
+        [JsonProperty("urlImagen")]
         public string UrlImagen { get; set; }
-        [JsonProperty("producto_distribuidor")]
+        [JsonProperty("distribuidores")]
         public ObservableCollection<DistribuidorDto> Distribuidores { get; set; }
         public ProductoDto(int id, string nombre, string urlImagen)
         {
@@ -29,26 +33,8 @@ namespace TCGErcilla.Dto
         public ProductoDto()
         {
         }
-        
-        public class ColeccionDto
-        {
-            [JsonProperty("id")]
-            public int Id { get; }
-            public ColeccionDto(int id)
-            {
-                Id = id;
-            }
 
-        }
-        public class TipoProductoDto
-        {
-            [JsonProperty("id")]
-            public int Id { get; }
-            public TipoProductoDto(int id)
-            {
-                Id = id;
-            }
 
-        }
+
     }
 }

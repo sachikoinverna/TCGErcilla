@@ -15,6 +15,7 @@ using TCGErcilla.Services;
 namespace TCGErcilla.ViewModels
 {
     [QueryProperty(nameof(DistribuidorInfo), "DistribuidorInfo")]
+    [QueryProperty(nameof(IsEditMode), "IsEditMode")]
 
     public partial class DistribuidorFormularioViewModel : ObservableObject
     {
@@ -24,16 +25,12 @@ namespace TCGErcilla.ViewModels
         private bool isEditMode;
         [ObservableProperty]
         private string rutaImagen;
-        public DistribuidorFormularioViewModel()
-        {
-            DistribuidorInfo = new DistribuidorInfo();
-        }
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            if (!isEditMode)
+           if (!IsEditMode)
             {
-                DistribuidorInfo distribuidor = new DistribuidorInfo();
+                DistribuidorInfo = new DistribuidorInfo();
             }
         }
         [RelayCommand]
@@ -54,31 +51,49 @@ namespace TCGErcilla.ViewModels
             {
                 Data = _distribuidor,
                 Method = "POST",
-                Route = "http://192.168.20.102:8080/distribuidores/crear"
+                Route = "http://localhost:8080/distribuidores/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
-            CerrarMopup();
+            await CerrarMopup();
+            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
 
         }
         [RelayCommand]
         public async Task EliminarDistribuidor()
         {
-            if ( DistribuidorInfo.Id != null)
             {
                 var request = new RequestModel()
                 {
                     Data = DistribuidorInfo.Id,
                     Method = "POST",
-                    Route = "http://192.168.20.102:8080/distribuidores/eliminar"
+                    Route = "http://localhost:8080/distribuidores/eliminar" + DistribuidorInfo.Id
+
+                    //Route = "http://192.168.20.102:8080/distribuidores/eliminar" +DistribuidorInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
+                await CerrarMopup();
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
             }
         }
         [RelayCommand]
         public async Task CerrarMopup()
         {
             await MopupService.Instance.PopAllAsync();
+            var currentPage = Shell.Current.CurrentPage as ContentPage;
+            if (currentPage != null)
+            {
+
+                var viewModel = currentPage.BindingContext as GestionDistribuidoresViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.GetDistribuidores();
+                    OnPropertyChanged(nameof(viewModel.ListaDistribuidores));
+
+                }
+
+            }
         }
     }
 }

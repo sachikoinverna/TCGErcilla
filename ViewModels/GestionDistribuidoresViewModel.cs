@@ -20,22 +20,86 @@ namespace TCGErcilla.ViewModels
         [ObservableProperty]
         private ObservableCollection<DistribuidorInfo> listaDistribuidores = new ObservableCollection<DistribuidorInfo>();
         [ObservableProperty]
+        private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
+        [ObservableProperty]
         private DistribuidorInfo selectedDistribuidor;
         [ObservableProperty]
         private bool isProductosVisible;
         [ObservableProperty]
         private bool isReportesVisible;
+        [ObservableProperty]
+        private bool isDistribuidoresVisible;
+        [ObservableProperty]
+        private string urlPDF;
+
+        [ObservableProperty]
+        private string filtroNombre; 
+
+        [RelayCommand]
+        public void GetPDF()
+        {
+            UrlPDF = "http://localhost:8082/report/getReportDistribuidoresByNombre/"+FiltroNombre;
+
+            // UrlPDF = "http://localhost:8080/report/getReport2/" + FiltroNombre;
+        }
+
         [RelayCommand]
         public void EstadoInicial()
         {
             IsProductosVisible = false;
             IsReportesVisible = false;
+            IsDistribuidoresVisible = true;
         }
         [RelayCommand]
-        public void MostrarProductos()
+        public async Task MostrarProductos()
         {
-            IsProductosVisible = true;
+            if (SelectedDistribuidor != null)
+            {
+                RequestModel request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://localhost:8080/productos/buscar_distribuidor/" + SelectedDistribuidor.Id
+                    //Route = "http://192.168.20.102:8080/distribuidores/todos"
+                };
+
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                if (response.Success.Equals(0))
+                {
+                    try
+                    {
+                        ListaProductos =
+                           JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                    }
+                }
+                IsProductosVisible = true;
+                IsReportesVisible = false;
+            } else {
+
+
+                    App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar un producto", "Aceptar");
+                    return;
+                
+            }
+        }
+        [RelayCommand]
+        public void MostrarDistribuidores()
+        {
+                IsDistribuidoresVisible = true;
+                IsProductosVisible = false;
+                IsReportesVisible = false;
+            
+        }
+        [RelayCommand]
+        public void OcultarDistribuidores()
+        {
+            IsDistribuidoresVisible = false;
+            IsProductosVisible = false;
             IsReportesVisible = false;
+
         }
         [RelayCommand]
         public void OcultarProductos()
@@ -46,12 +110,17 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void MostrarReportes()
         {
+            UrlPDF = "http://localhost:8082/report/getReportDistribuidoresAll";
+            IsDistribuidoresVisible = false;
+
             IsProductosVisible = false;
             IsReportesVisible = true;
         }
         [RelayCommand]
         public void OcultarReportes()
         {
+            IsDistribuidoresVisible = false;
+
             IsProductosVisible = false;
             IsReportesVisible = false;
         }
@@ -61,8 +130,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                Method = "GET",
-               //Route = "http://localhost:8080/distribuidores/todos"
-               Route = "http://192.168.20.102:8080/distribuidores/todos"
+               Route = "http://localhost:8080/distribuidores/todos"
+               //Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -73,14 +142,20 @@ namespace TCGErcilla.ViewModels
                     ListaDistribuidores =
                        JsonConvert.DeserializeObject<ObservableCollection<DistribuidorInfo>>(response.Data.ToString());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                }
             }
         }
         [RelayCommand]
         public async Task AbrirMopupDistribuidor()
         {
-
-            await MopupService.Instance.PushAsync(new DistribuidorFormularioMopup());
+            var mopup = new DistribuidorFormularioMopup();
+            var vm = new DistribuidorFormularioViewModel();
+            vm.IsEditMode = false;
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
         [RelayCommand]
         public async Task EditarDistribuidor()
@@ -88,22 +163,9 @@ namespace TCGErcilla.ViewModels
             var mopup = new DistribuidorFormularioMopup();
             var vm = new DistribuidorFormularioViewModel();
             vm.DistribuidorInfo = (DistribuidorInfo)SelectedDistribuidor.Clone();
+            vm.IsEditMode = true;
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
-        }
-        [RelayCommand]
-        public async Task EliminarDistribuidor()
-        {
-            if (SelectedDistribuidor.Id != null)
-            {
-                var request = new RequestModel()
-                {
-                    Method = "GET",
-                    Route = "http://192.168.20.102:8080/distribuidores/borrar/" + SelectedDistribuidor.Id
-                };
-                ResponseModel response = await APIService.ExecuteRequest(request);
-                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-            }
         }
     }
 }

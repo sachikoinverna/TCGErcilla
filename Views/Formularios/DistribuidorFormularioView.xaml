@@ -26,11 +26,12 @@
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
                     Style="{StaticResource ButtonStyleCreate}" />
-                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
                     Style="{StaticResource ButtonStyleEditar}" />
+                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+
             </HorizontalStackLayout>
         </input:FormView>
 

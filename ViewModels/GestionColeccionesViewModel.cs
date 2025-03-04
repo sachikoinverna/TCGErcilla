@@ -31,36 +31,84 @@ namespace TCGErcilla.ViewModels
         private bool isProductosVisible;
         [ObservableProperty]
         private bool isReportesVisible;
+        [ObservableProperty]
+        private bool isColeccionesVisible;
+        [ObservableProperty]
+        private string urlPDF; 
+
+        [ObservableProperty]
+        private string filtroNombre; 
+        [ObservableProperty]
+        private DateTime filtroFechaDesde;
+        [ObservableProperty]
+        private DateTime filtroFechaHasta;
+        [RelayCommand]
+        public void GetPDFNombre()
+        {
+            UrlPDF = "http://localhost:8082/report/getReportColeccionesByNombre/" + FiltroNombre;
+        }
+
+        [RelayCommand]
+        public void GetPDFechas()
+        {
+            if (FiltroFechaDesde != null && FiltroFechaHasta != null)
+            {
+                if (FiltroFechaHasta > FiltroFechaDesde)
+                {
+                    string fechaJasperDesde = FiltroFechaDesde.ToString("yyyy-MM-dd");
+                    string fechaJasperHasta = FiltroFechaHasta.ToString("yyyy-MM-dd");
+
+                    UrlPDF = "http://localhost:8082/report/getReportColeccionesByFechas/" + fechaJasperDesde + "/" + fechaJasperHasta;
+                }else if(FiltroFechaHasta == FiltroFechaDesde)
+                {
+                    App.Current.MainPage.DisplayAlert("Atencion", "Las fechas no deben ser iguales.", "Aceptar");
+
+                }else if (FiltroFechaHasta < FiltroFechaDesde)
+                {
+                    App.Current.MainPage.DisplayAlert("Atencion", "El campo 'Fecha desde' no debe ser mayor que el campo 'Fecha hasta'", "Aceptar");
+
+                }
+            }
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar dos fechas", "Aceptar");
+
+            }
+        }
         [RelayCommand]
         public async Task MostrarCartas()
         {
             if (SelectedColeccion == null)
             {
-                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una coleccion", "Aceptar");
                 return;
             }
             else
             {
-                IsProductosVisible = false;
-                IsCartasVisible = true;
-                IsReportesVisible = false;
-                RequestModel request = new RequestModel()
+                if (SelectedColeccion.Id != 0)
                 {
-                    Method = "GET",
-                    Route = "http://192.168.20.102:8080/cartas/todas"
-                };
-
-                ResponseModel response = await APIService.ExecuteRequest(request);
-                if (response.Success.Equals(0))
-                {
-                    try
+                    IsProductosVisible = false;
+                    IsCartasVisible = true;
+                    IsReportesVisible = false;
+                    RequestModel request = new RequestModel()
                     {
-                        ListaProductos =
-                          JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
-                    }
-                    catch (Exception ex)
-                    {
+                        Method = "GET",
+                        Route = "http://localhost:8080/cartas/buscarPorColeccionId/" + SelectedColeccion.Id
+                    };
 
+                    ResponseModel response = await APIService.ExecuteRequest(request);
+                    if (response.Success.Equals(0))
+                    {
+                        try
+                        {
+                            ListaCartas =
+                              JsonConvert.DeserializeObject<ObservableCollection<CartaInfo>>(response.Data.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+
+                        }
                     }
                 }
             }
@@ -68,6 +116,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void EstadoInicial()
         {
+            IsColeccionesVisible = false;
             IsProductosVisible = false;
             IsCartasVisible = false;
             IsReportesVisible = false;
@@ -88,42 +137,65 @@ namespace TCGErcilla.ViewModels
             IsReportesVisible = false;
         }
         [RelayCommand]
-        public async Task MostrarProductos()
+        private void OcultarColecciones()
+        {
+            IsColeccionesVisible = false;
+        }
+        [RelayCommand]
+        public async void MostrarProductos()
         {
             if (SelectedColeccion == null)
             {
-                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una coleccion", "Aceptar");
                 return;
             }
             else
             {
-                IsProductosVisible = true;
-                IsCartasVisible= false;
-                IsReportesVisible = false;
-                RequestModel request = new RequestModel()
-            {
-             Method = "GET",
-              Route = "http://192.168.20.102:8080/productos/todos"
-            };
+                if (SelectedColeccion.Id != 0)
+                {
+                    IsProductosVisible = true;
+                    IsCartasVisible = false;
+                    IsReportesVisible = false;
+                    RequestModel request = new RequestModel()
+                    {
+                        Method = "GET",
+                        Route = "http://localhost:8080/productos/buscar/coleccion/" + SelectedColeccion.Id
+                    };
 
-                 ResponseModel response = await APIService.ExecuteRequest(request);
-                if (response.Success.Equals(0))
-                {
-                 try
-                {
-                   ListaProductos =
-                     JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
-                }
-                catch (Exception ex)
-                {
+                    ResponseModel response = await APIService.ExecuteRequest(request);
+                    if (response.Success.Equals(0))
+                    {
+                        try
+                        {
+                            ListaProductos =
+                              JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
 
-                }
+
+                        }
+                    }
                 }
             }
         }
         [RelayCommand]
+        public void MostrarColecciones()
+        {
+            GetColecciones();
+            IsColeccionesVisible = true;
+
+            IsReportesVisible = false;
+            IsProductosVisible = false;
+            IsCartasVisible = false;
+        }
+        [RelayCommand]
         public void MostrarReportes()
         {
+            UrlPDF = "http://localhost:8082/report/getReportColeccionesAll";
+            IsColeccionesVisible = false;
+
             IsReportesVisible = true;
             IsProductosVisible = false;
             IsCartasVisible = false;
@@ -136,8 +208,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                 //Route = "http://192.168.1.136:8080/colecciones/todas"
-                 Route = "http://192.168.20.102:8080/colecciones/todas"
+                 Route = "http://localhost:8080/colecciones/todas"
+                 //Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -150,6 +222,8 @@ namespace TCGErcilla.ViewModels
                 }
                 catch (Exception ex)
                 {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+
 
                 }
             }
@@ -157,7 +231,11 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task CrearColeccion()
         {
-            await MopupService.Instance.PushAsync(new ColeccionFormularioMopup());
+            var mopup = new ColeccionFormularioMopup();
+            var vm = new ColeccionFormularioViewModel();
+            vm.IsEditMode = false;
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
         [RelayCommand]
         public async Task EditarColeccion()
@@ -165,23 +243,9 @@ namespace TCGErcilla.ViewModels
             var mopup = new ColeccionFormularioMopup();
             var vm = new ColeccionFormularioViewModel();
             vm.ColeccionInfo = (ColeccionInfo)SelectedColeccion.Clone();
+            vm.IsEditMode = true;
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
-        }
-        [RelayCommand]
-        public async Task EliminarColeccion()
-        {
-            if (SelectedColeccion != null)
-            {
-                var request = new RequestModel()
-                {
-                    Method = "GET",
-               
-                    Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
-                };
-                ResponseModel response = await APIService.ExecuteRequest(request);
-              //  await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-            }
         }
     }
 }

@@ -23,13 +23,30 @@ namespace TCGErcilla.ViewModels
         private ObservableCollection<ProductoInfo> listaProductos = new ObservableCollection<ProductoInfo>();
         [ObservableProperty]
         private TipoProductoInfo selectedTipoProductoInfo;
+
         [ObservableProperty]
         private bool isProductosVisible;
         [ObservableProperty]
+        private bool isTipoProductosVisible;
+        [ObservableProperty]
         private bool isReportesVisible;
+        [ObservableProperty]
+        private string urlPDF; // Para source del webview (endpoint)
+
+        [ObservableProperty]
+        private string filtroNombre; // Capturar el texto del correo
+
+        [RelayCommand]
+        public void GetPDF()
+        {
+            UrlPDF = "http://localhost:8082/report/getReportTiposProductoByNombre/" + FiltroNombre;
+        }
+
+
         [RelayCommand]
         public void EstadoInicial()
         {
+            IsTipoProductosVisible = false;
             IsProductosVisible = false;
             IsReportesVisible = false;
         }
@@ -38,30 +55,37 @@ namespace TCGErcilla.ViewModels
         {
             if (SelectedTipoProductoInfo == null)
             {
-                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar una persona", "Aceptar");
+                App.Current.MainPage.DisplayAlert("Atencion", "Debes seleccionar un tipo de producto", "Aceptar");
                 return;
             }
             else
             {
-                IsProductosVisible = true;
-                IsReportesVisible = false;
-                RequestModel request = new RequestModel()
+                if (SelectedTipoProductoInfo.Id != 0)
                 {
-                    Method = "GET",
-                    Route = "http://192.168.20.102:8080/productos/todos"
-                };
-
-                ResponseModel response = await APIService.ExecuteRequest(request);
-                if (response.Success.Equals(0))
-                {
-                    try
+                    IsProductosVisible = true;
+                    IsReportesVisible = false;
+                    IsTipoProductosVisible = true;
+                    RequestModel request = new RequestModel()
                     {
-                        ListaProductos =
-                          JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
-                    }
-                    catch (Exception ex)
-                    {
+                        Method = "GET",
+                        Route = "http://localhost:8080/productos/buscar/tipo_producto/" + SelectedTipoProductoInfo.Id
 
+                        // Route = "http://192.168.20.102:8080/productos/buscar/tipo_producto/" + SelectedTipoProductoInfo.Id
+                    };
+
+                    ResponseModel response = await APIService.ExecuteRequest(request);
+                    if (response.Success.Equals(0))
+                    {
+                        try
+                        {
+                            ListaProductos =
+                              JsonConvert.DeserializeObject<ObservableCollection<ProductoInfo>>(response.Data.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+
+                        }
                     }
                 }
             }
@@ -69,8 +93,24 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task MostrarInforme()
         {
+            UrlPDF = "http://localhost:8082/report/getReportTiposProductoAll";
                 IsProductosVisible = false;
                 IsReportesVisible = true;
+            IsTipoProductosVisible = false;
+
+        }
+        [RelayCommand]
+        private void OcultarTipoProducto()
+        {
+            IsTipoProductosVisible = false;
+        }
+        [RelayCommand]
+        public async Task MostrarTipoProducto()
+        {
+            GetTiposProducto();            IsProductosVisible = false;
+            IsReportesVisible = false;
+            IsTipoProductosVisible = true;
+
         }
         [RelayCommand]
         private void OcultarProductos()
@@ -90,8 +130,8 @@ namespace TCGErcilla.ViewModels
             {
                 Method = "GET",
                 Data = string.Empty,
-                //Route = "http://localhost:8080/tipo_producto_todos"
-                Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                Route = "http://localhost:8080/tipo_producto/todos"
+                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -103,14 +143,20 @@ namespace TCGErcilla.ViewModels
                     ListaTiposProducto =
                        JsonConvert.DeserializeObject<ObservableCollection<TipoProductoInfo>>(response.Data.ToString());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                }
             }
         }
         [RelayCommand]
         public async Task CrearTipoProducto()
         {
-
-            await MopupService.Instance.PushAsync(new TipoProductoFormularioMopup());
+            var mopup = new TipoProductoFormularioMopup();
+            var vm = new TipoProductoFormularioViewModel();
+            vm.IsEditMode = false;
+            mopup.BindingContext = vm;
+            await MopupService.Instance.PushAsync(mopup);
         }
         [RelayCommand]
         public async Task EditarTipoProducto()
@@ -121,20 +167,6 @@ namespace TCGErcilla.ViewModels
             vm.IsEditMode = true;
             mopup.BindingContext = vm;
             await MopupService.Instance.PushAsync(mopup);
-        }
-        [RelayCommand]
-        public async Task EliminarTiposProducto()
-        {
-            if (SelectedTipoProductoInfo != null)
-            {
-                var request = new RequestModel()
-                {
-                    Method = "GET",
-                    Route = "http://192.168.20.102:8080/tipo_producto/borrar/" + SelectedTipoProductoInfo.Id
-                };
-                ResponseModel response = await APIService.ExecuteRequest(request);
-                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-            }
         }
     }
 }

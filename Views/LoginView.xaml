@@ -15,7 +15,7 @@
         <WebView
             x:Name="navegador"
             Grid.Column="0"
-            Source="http://192.168.20.102:5001/">
+            Source="http://localhost:5001/">
             <WebView.Behaviors>
                 <toolkit:EventToCommandBehavior
                     BindingContext="{Binding Source={x:Reference login_view}, Path=BindingContext}"
@@ -24,10 +24,5 @@
                     EventName="Navigated" />
             </WebView.Behaviors>
         </WebView>
-
-        <Button
-            Grid.Row="1"
-            Command="{Binding MostrarMainPageCommand}"
-            Text="Ir a Main" />
     </Grid>
 </ContentPage>

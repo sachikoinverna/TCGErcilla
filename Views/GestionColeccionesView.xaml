@@ -6,35 +6,58 @@
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     xmlns:info="clr-namespace:TCGErcilla.Info"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:Name="gestion_colecciones"
     Title=""
     x:DataType="viewmodels:GestionColeccionesViewModel"
-    BackgroundImageSource="fondo_colecciones.jpg"
+    BackgroundColor="#E6E6FA"
     BindingContext="{viewmodels:GestionColeccionesViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetColeccionesCommand}" EventName="Loaded" />
         <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Loaded" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetColeccionesCommand}" EventName="Loaded"/>
+
     </ContentPage.Behaviors>
-
     <VerticalStackLayout>
-        <Button
-            Margin="0,10"
-            Command="{Binding CrearColeccionCommand}"
-            Style="{StaticResource ButtonStyleCrearColeccionesGestionColecciones}" />
-        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Frame Style="{StaticResource FrameColeccionesGestionColeccionesStyle}">
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
 
-                <StackLayout
-                    HorizontalOptions="Start"
-                                        Margin="30"
+            <Button
+                Command="{Binding MostrarColeccionesCommand}"
+                IsVisible="{Binding IsColeccionesVisible, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonMostrarColeccionesGestionColecciones}" />
+            <Button
+                Command="{Binding OcultarColeccionesCommand}"
+                IsVisible="{Binding IsColeccionesVisible}"
+                Style="{StaticResource ButtonStyleOcultarColeccionesGestionColecciones}" />
 
-                    Orientation="Vertical"
-                    Style="{StaticResource StackLayoutColeccionesGestionColeccionesStyle}">
+
+            <Button
+                Command="{Binding MostrarReportesCommand}"
+                IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonMostrarInformesGestionColecciones}" />
+            <Button
+                Command="{Binding OcultarReportesCommand}"
+                IsVisible="{Binding IsReportesVisible}"
+                Style="{StaticResource ButtonStyleOcultarInformesGestionColecciones}" />
+            <Button Command="{Binding CrearColeccionCommand}" Style="{StaticResource ButtonStyleCrearColeccionesGestionColecciones}" />
+
+        </StackLayout>
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
+
+            <Frame IsVisible="{Binding IsColeccionesVisible}" Style="{StaticResource FrameColeccionesGestionColeccionesStyle}">
+
+                <StackLayout IsVisible="{Binding IsColeccionesVisible}" Orientation="Vertical">
                     <Image Style="{StaticResource ImageColeccionesTitleStyle}" />
                     <Frame Style="{StaticResource FrameCollectionViewColeccionGestionColeccionStyle}">
 
@@ -43,7 +66,7 @@
                             HeightRequest="350"
                             ItemsSource="{Binding ListaColecciones}"
                             SelectedItem="{Binding SelectedColeccion}"
-                            SelectionChangedCommandParameter="{Binding Source={x:Reference gestion_colecciones}}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
                             SelectionMode="Single"
                             WidthRequest="300">
                             <CollectionView.ItemsLayout>
@@ -51,7 +74,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ColeccionInfo">
-                                    <Frame Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}" >
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectColeccionGestionColeccionesStyle}">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 x:DataType="viewmodels:GestionColeccionesViewModel"
@@ -59,19 +82,44 @@
                                                 Command="{Binding EditarColeccionCommand}"
                                                 NumberOfTapsRequired="2" />
                                         </Frame.GestureRecognizers>
-                                        <HorizontalStackLayout>
+                                        <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
                                                 ErrorPlaceholder="collection_default.png"
                                                 Source="{Binding UrlImagen}"
-                                                WidthRequest="50" />
-                                            <VerticalStackLayout Margin="10">
-                                                <Label Text="{Binding Nombre}" />
-                                                <Label Text="{Binding NumeroCartas}" />
-                                                <Label Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}" />
-                                            </VerticalStackLayout>
+                                                WidthRequest="200" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ColeccionNombreTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
 
-                                        </HorizontalStackLayout>
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ColeccionNombre2TitleStyleColecciones}"
+                                                Text="{Binding Nombre}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ColeccionNumeroCartasTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ColeccionNumeroCartas2TitleStyleColecciones}"
+                                                Text="{Binding NumeroCartas}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource FechaColeccionTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource FechaColeccion2TitleStyleColecciones}"
+                                                Text="{Binding FechaLanzamiento, StringFormat='{0:dd/MM/yyyy}'}"
+                                                VerticalOptions="Center" />
+
+                                        </VerticalStackLayout>
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup Name="CommonStates">
                                                 <VisualState Name="Normal" />
@@ -90,34 +138,20 @@
                         </CollectionView>
                     </Frame>
                     <Button
-                        Margin="0,10"
                         Command="{Binding MostrarCartasCommand}"
                         IsVisible="{Binding IsCartasVisible, Converter={toolkit:InvertedBoolConverter}}"
                         Style="{StaticResource ButtonStyleMostrarCartasGestionColecciones}" />
                     <Button
-                        Margin="0,10"
                         Command="{Binding OcultarCartasCommand}"
                         IsVisible="{Binding IsCartasVisible}"
                         Style="{StaticResource ButtonStyleOcultarCartasGestionColecciones}" />
                     <Button
-                        Margin="0,10"
                         Command="{Binding MostrarProductosCommand}"
                         IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
                         Style="{StaticResource ButtonStyleMostrarProductosGestionColecciones}" />
                     <Button
-                        Margin="0,10"
                         Command="{Binding OcultarProductosCommand}"
                         IsVisible="{Binding IsProductosVisible}"
-                        Style="{StaticResource ButtonStyleOcultarProductosGestionColecciones}" />
-                    <Button
-                        Margin="0,10"
-                        Command="{Binding MostrarReportesCommand}"
-                        IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"
-                        Style="{StaticResource ButtonStyleMostrarProductosGestionColecciones}" />
-                    <Button
-                        Margin="0,10"
-                        Command="{Binding OcultarReportesCommand}"
-                        IsVisible="{Binding IsReportesVisible}"
                         Style="{StaticResource ButtonStyleOcultarProductosGestionColecciones}" />
                 </StackLayout>
             </Frame>
@@ -144,17 +178,44 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:ProductoInfo">
                                     <Frame Style="{StaticResource FrameCollectionViewObjectProductoGestionColeccionesStyle}">
-                                        <HorizontalStackLayout>
+                                        <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
                                                 ErrorPlaceholder="product_default.png"
                                                 Source="{Binding UrlImagen}"
-                                                WidthRequest="50" />
-                                            <VerticalStackLayout Margin="10">
-                                                <Label Text="{Binding Nombre}" />
-                                            </VerticalStackLayout>
+                                                WidthRequest="200" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoNombreTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
 
-                                        </HorizontalStackLayout>
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoNombre2TitleStyleColecciones}"
+                                                Text="{Binding Nombre}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoColeccionTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoColeccion2TitleStyleColecciones}"
+                                                Text="{Binding SelectedColeccion}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoTipoProductoTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoTipoProducto2TitleStyleColecciones}"
+                                                Text="{Binding SelectedTipoProducto}"
+                                                VerticalOptions="Center" />
+
+                                        </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -177,7 +238,6 @@
                             Margin="10"
                             HeightRequest="350"
                             ItemsSource="{Binding ListaCartas}"
-                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
                             SelectionMode="Single"
                             WidthRequest="300">
                             <CollectionView.ItemsLayout>
@@ -185,20 +245,18 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:CartaInfo">
-                                    <Frame
-                                        IsVisible="{Binding IsCartasVisible}"
-                                        Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
-                                        <HorizontalStackLayout>
+                                    <Frame  Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
+                                        <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
-                                                ErrorPlaceholder="cartas_default.png"
+                                                ErrorPlaceholder="carta_default.png"
                                                 Source="{Binding UrlImagen}"
-                                                WidthRequest="50" />
-                                            <VerticalStackLayout Margin="10">
-                                                <Label Text="{Binding Nombre}" />
-                                            </VerticalStackLayout>
-
-                                        </HorizontalStackLayout>
+                                                WidthRequest="200" />
+                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNombreTitleStyleColecciones}"/>
+                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Nombre}" Style="{StaticResource CartaNombreTitleStyleColeccion}"/>
+                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNumeroTitleStyleColecciones}"/>
+                                            <Label Text="{Binding NumeroColeccion}" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNumeroCartaTitleStyleColeccion}"/>
+                                        </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -208,7 +266,7 @@
                     </Frame>
                 </StackLayout>
             </Frame>
-            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameBoxFiltersGestionColeccionesStyle}">
 
                 <StackLayout
                     Margin="30"
@@ -216,79 +274,39 @@
                     IsVisible="{Binding IsReportesVisible}"
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
-                    <Frame
-                        BackgroundColor="#f2fdf8"
-                        BorderColor="#5193d8"
-                        IsVisible="{Binding IsReportesVisible}"
-                        WidthRequest="350">
-                        <material:TabView>
+                    <input:FormView Spacing="20" SubmitCommand="{Binding GetPDFNombreCommand}">
 
-                            <material:TabItem Title="Tab One">
-                                <material:TabItem.ContentTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Margin="5" Orientation="Horizontal">
-                                            <Entry
-                                                Placeholder="Correo"
-                                                Text="{Binding FiltroCorreo}"
-                                                WidthRequest="200" />
-                                            <Button
-                                                Margin="5"
-                                                Command="{Binding GetPDFCommand}"
-                                                Text="BUSCAR" />
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </material:TabItem.ContentTemplate>
-                            </material:TabItem>
+                        <material:TextField Style="{StaticResource TextFieldNombreColeccionesBuscarStyle}" Text="{Binding FiltroNombre}">
+                            <validation:RequiredValidation />
 
+                        </material:TextField>
+                        <Button input:FormView.IsSubmitButton="True" Style="{StaticResource ButtonStyleBuscar}" />
+                    </input:FormView>
+                    <input:FormView Spacing="20" SubmitCommand="{Binding GetPDFechasCommand}">
 
-                            <material:TabItem Title="Tab Two">
-                                <material:TabItem.ContentTemplate>
-                                    <DataTemplate>
-                                        <Label Text="Second Tab" />
-                                    </DataTemplate>
-                                </material:TabItem.ContentTemplate>
-                            </material:TabItem>
+                        <Label Style="{StaticResource ColeccionFechaDeLanzamientoColeccionTitleStyleColecciones}" />
+                        <material:DatePickerField Date="{Binding FiltroFechaDesde, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource DatePicker1FieldColeccionesStyle}">
+                            <validation:RequiredValidation />
+                        </material:DatePickerField>
+                        <material:DatePickerField Date="{Binding FiltroFechaHasta, StringFormat='{0:dd/MM/yyyy}'}}" Style="{StaticResource DatePicker2FieldColeccionesStyle}">
+                            <validation:RequiredValidation />
 
-                            <material:TabItem Title="Tab Three">
-                                <material:TabItem.ContentTemplate>
-                                    <DataTemplate>
-                                        <Label Text="Third Tab" />
-                                    </DataTemplate>
-                                </material:TabItem.ContentTemplate>
-                            </material:TabItem>
-                        </material:TabView>
+                        </material:DatePickerField>
+                        <Button input:FormView.IsSubmitButton="True" Style="{StaticResource ButtonStyleBuscar}" />
+                    </input:FormView>
 
+                </StackLayout>
+            </Frame>
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameBoxGestionColeccionesStyle}">
 
-
+                <!--  CONTENEDOR PARA EL VISOR PDF  -->
+                <StackLayout IsVisible="{Binding IsReportesVisible}" Orientation="Vertical">
+                    <Frame Style="{StaticResource FrameBoxNavegadorStyle}">
+                        <WebView Margin="10" Source="{Binding UrlPDF}" />
                     </Frame>
                 </StackLayout>
             </Frame>
-            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
-
-                <!--  CONTENEDOR PARA EL VISOR PDF  -->
-                <StackLayout
-                    Margin="20"
-                    BackgroundColor="WhiteSmoke"
-                    HeightRequest="550"
-                    IsVisible="{Binding IsReportesVisible}"
-                    Orientation="Vertical"
-                    WidthRequest="550">
-
-                    <StackLayout.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Opacity=".7"
-                            Radius="20"
-                            Offset="10,10" />
-                    </StackLayout.Shadow>
-                    <WebView
-                        Margin="10"
-                        HeightRequest="500"
-                        Source="{Binding UrlPDF}"
-                        WidthRequest="500" />
-                </StackLayout>
-            </Frame>
-        </HorizontalStackLayout>
+        </StackLayout>
     </VerticalStackLayout>
 
 </ContentPage>

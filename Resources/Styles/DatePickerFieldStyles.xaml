@@ -7,8 +7,22 @@
     <Style x:Key="DatePickerFieldColeccionStyle" TargetType="material:DatePickerField">
         <Setter Property="Title" Value="Fecha de lanzamiento" />
         <Setter Property="AllowClear" Value="True" />
-        <Setter Property="AccentColor" Value="Blue"/>
-        <Setter Property="BorderColor" Value="Blue"/>
-        <Setter Property="WidthRequest" Value="300"/>
+        <Setter Property="AccentColor" Value="Blue" />
+        <Setter Property="BorderColor" Value="Blue" />
+        <Setter Property="WidthRequest" Value="300" />
+    </Style>
+    <Style x:Key="DatePicker1FieldColeccionesStyle" TargetType="material:DatePickerField">
+        <Setter Property="Title" Value="Fecha de lanzamiento desde" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+    </Style>
+    <Style x:Key="DatePicker2FieldColeccionesStyle" TargetType="material:DatePickerField">
+        <Setter Property="Title" Value="Fecha de lanzamiento hasta" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
     </Style>
 </ResourceDictionary>

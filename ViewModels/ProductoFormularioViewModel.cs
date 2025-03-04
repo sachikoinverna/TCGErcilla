@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TCGErcilla.Dto;
 using TCGErcilla.Info;
 using TCGErcilla.Models;
@@ -18,6 +19,8 @@ using TCGErcilla.Utils;
 namespace TCGErcilla.ViewModels
 {
     [QueryProperty(nameof(ProductoInfo), "ProductoInfo")]
+    [QueryProperty(nameof(IsEditMode), "IsEditMode")]
+
     public partial class ProductoFormularioViewModel: ObservableObject
     {
         [ObservableProperty]
@@ -48,14 +51,14 @@ namespace TCGErcilla.ViewModels
             }
         }
         [RelayCommand]
-        public async void GetColecciones()
+        public async Task GetColecciones()
         {
 
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                //Route = "http://localhost:8080/colecciones/todas"
-                Route = "http://192.168.20.102:8080/colecciones/todas"
+                Route = "http://localhost:8080/colecciones/todas"
+                //Route = "http://192.168.20.102:8080/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -66,17 +69,20 @@ namespace TCGErcilla.ViewModels
                     ListaColecciones =
                 JsonConvert.DeserializeObject<ObservableCollection<ColeccionInfo>>(response.Data.ToString());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                }
             }
         }
         [RelayCommand]
-        public async void GetTiposProducto()
+        public async Task GetTiposProducto()
         {
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                //Route = "http://localhost:8080/tipo_producto_todos"
-                Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                Route = "http://localhost:8080/tipo_producto/todos"
+                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -87,18 +93,21 @@ namespace TCGErcilla.ViewModels
                     ListaTipoProducto =
                        JsonConvert.DeserializeObject<ObservableCollection<TipoProductoInfo>>(response.Data.ToString());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                }
             }
         }
         [RelayCommand]
-        public async void GetDistribuidores()
+        public async Task GetDistribuidores()
         {
 
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                //Route = "http://localhost:8080/distribuidores/todos"
-                Route = "http://192.168.20.102:8080/distribuidores/todos"
+                Route = "http://localhost:8080/distribuidores/todos"
+                //Route = "http://192.168.20.102:8080/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -109,61 +118,112 @@ namespace TCGErcilla.ViewModels
                     ListaDistribuidores =
                 JsonConvert.DeserializeObject<ObservableCollection<DistribuidorInfo>>(response.Data.ToString());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", ex.Message, "Aceptar");
+                }
             }
         }
         [RelayCommand]
-        public void EstablecerValoresIniciales()
+        public async Task EstablecerValoresIniciales()
         {
-            //if (ProductoInfo.Id != null) //Quiere decir que estamos editando
-            //{
-                //RutaImagen = ProductoInfo.AvatarUrl;
-              //  IsEditMode = true;
-            //} else {
-                IsEditMode = false;
-            //}
-            //RutaImagen = "producto_default.png";
-            GetTiposProducto();
-            GetDistribuidores();
-            GetColecciones();
+           await GetTiposProducto();
+          await  GetDistribuidores();
+           await GetColecciones();
+            if (IsEditMode)
+            {
+                int id = ProductoInfo.Distribuidores[0].Id;
+                foreach(var distribuidor in ListaDistribuidores)
+                {
+                    if (distribuidor.Id == id)
+                    {
+                        ProductoInfo.SelectedDistribuidor = distribuidor;
+                        OnPropertyChanged(nameof(ProductoInfo));
+                        OnPropertyChanged(nameof(ProductoInfo.SelectedDistribuidor));
+                        break;
+                    }
+                }
+
+                RutaImagen = ProductoInfo.UrlImagen;
+
+            }
+            else
+            {
+                ProductoInfo = new ProductoInfo();
+                RutaImagen = "product_default.png";
+                ProductoInfo.UrlImagen = RutaImagen;
+            }
         }
         [RelayCommand]
         public async Task CrearProducto()
         {
-            var _producto = new ProductoDto();
-            if (IsEditMode)
-            {
-                _producto.Id = ProductoInfo.Id;
+            if (ProductoInfo.SelectedColeccion != null && ProductoInfo.SelectedTipoProducto != null && ProductoInfo.SelectedColeccion != null)
+        
+                {
+                var _producto = new ProductoDto();
+
+                if (IsEditMode)
+                {
+                    _producto.Id = ProductoInfo.Id;
+                }
+                else
+                {
+                    _producto.Id = null;
+
+                }
+                ColeccionInfo Coleccion = ProductoInfo.SelectedColeccion;
+                TipoProductoInfo TipoProducto = ProductoInfo.SelectedTipoProducto;
+                DistribuidorInfo Distribuidor = ProductoInfo.SelectedDistribuidor;
+                ColeccionDto ColeccionDto = new ColeccionDto();
+                ColeccionDto.Id = Coleccion.Id;
+                TipoProductoDto TipoProductoDto = new TipoProductoDto();
+                TipoProductoDto.Id = TipoProducto.Id;
+                DistribuidorDto DistribuidorDto = new DistribuidorDto();
+                DistribuidorDto.Id = Distribuidor.Id;
+                ObservableCollection<DistribuidorDto> ListaDistribuidores = new ObservableCollection<DistribuidorDto>();
+                ListaDistribuidores.Add(DistribuidorDto);
+
+                _producto.Nombre = ProductoInfo.Nombre;
+                _producto.TipoProducto = TipoProductoDto;
+                _producto.Coleccion = ColeccionDto;
+                _producto.Distribuidores = ListaDistribuidores;
+                var request = new RequestModel()
+                {
+                    Data = _producto,
+                    Method = "POST",
+                    Route = "http://localhost:8080/productos/crear"
+                };
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                await UploadImage(response.Data.ToString());
+                _producto.Id = Convert.ToInt32(response.Data);
+                string extension = Path.GetExtension(RutaImagen);
+            
+                _producto.UrlImagen = "http://localhost:8081/dropbox/download/product/" + _producto.Id + extension;
+
+                var request2 = new RequestModel()
+                {
+                    Data = _producto,
+                    Method = "POST",
+                    Route = "http://localhost:8080/productos/crear"
+
+                    //  Route = "http://192.168.20.102:8080/productos/crear"
+                };
+                ResponseModel response2 = await APIService.ExecuteRequest(request2);
+                await CerrarMopup();
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
             }
-            else
-            {
-                _producto.Id = null;
-            }
-           _producto.Nombre = ProductoInfo.Nombre;
-            var request = new RequestModel()
-            {
-                Data = _producto,
-                Method = "POST",
-                Route = "http://localhost:8080/cartas/crear"
-            };
-            ResponseModel response = await APIService.ExecuteRequest(request);
-            await UploadImage(response.Data.ToString());
-            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-            CerrarMopup();
         }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
         {
             try
             {
-                string _rutaImagen = RutaImagen;
-                RutaImagen = "loading.gif";
-                await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
+                await UploadImageService.UploadImageAsync(RutaImagen, idPersona,
                     "http://localhost:8081/dropbox/upload/product");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
-                RutaImagen = _rutaImagen;
                 return true;
             }
             catch (Exception ex)
@@ -179,6 +239,37 @@ namespace TCGErcilla.ViewModels
         public async Task CerrarMopup()
         {
             await MopupService.Instance.PopAllAsync();
+            var currentPage = Shell.Current.CurrentPage as ContentPage;
+            if (currentPage != null)
+            {
+
+                var viewModel = currentPage.BindingContext as GestionProductosViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.GetProductos();
+                    OnPropertyChanged(nameof(viewModel.ListaProductos));
+
+                }
+            }
+
+        }
+        [RelayCommand]
+        public async Task EliminarProducto()
+        {
+            {
+                var request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://localhost:8080/productos/borrar/" + ProductoInfo.Id
+
+                    //Route = "http://192.168.20.102:8080/productos/borrar/" + SelectedColeccion.Id
+                };
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                await CerrarMopup();
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
+
+            }
         }
     }
 }

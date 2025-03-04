@@ -4,11 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:formularios="clr-namespace:TCGErcilla.Views.Formularios"
-    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups">
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:Name="formulario_coleccion_mopup"
+    x:DataType="viewmodels:ColeccionFormularioViewModel"
+    BindingContext="{viewmodels:ColeccionFormularioViewModel}">
     <Frame Style="{StaticResource FrameColeccionesFormularioStyle}">
 
-        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <formularios:ColeccionFormularioView />
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <formularios:ColeccionFormularioView BindingContext="{Binding Source={x:Reference formulario_coleccion_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>
 </mopups:PopupPage>

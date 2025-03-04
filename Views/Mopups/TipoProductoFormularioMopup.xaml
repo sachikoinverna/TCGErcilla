@@ -11,7 +11,7 @@
     x:DataType="viewmodels:TipoProductoFormularioViewModel"
     BindingContext="{viewmodels:TipoProductoFormularioViewModel}">
     <Frame Style="{StaticResource FrameTipoProductosFormularioStyle}">
-        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <formularios:TipoProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_tipo_producto_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

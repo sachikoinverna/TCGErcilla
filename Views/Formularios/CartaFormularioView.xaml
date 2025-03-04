@@ -41,10 +41,10 @@
             </material:TextField>
             <material:TextField Style="{StaticResource TextFieldNumeroCartaCartasStyle}" Text="{Binding CartaInfo.NumeroColeccion}">
                 <validation:RequiredValidation />
+                <validation:DigitsOnlyValidation />
             </material:TextField>
             <material:DropdownField
                 ItemsSource="{Binding ListaColecciones}"
-                TextColor="Black"
                 SelectedItem="{Binding CartaInfo.SelectedColeccion, Mode=TwoWay}"
                 Style="{StaticResource DropdownFieldColeccionFormularioCartaStyle}" />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -56,7 +56,7 @@
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
                     Style="{StaticResource ButtonStyleEditar}" />
-                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button IsVisible="{Binding IsEditMode}" Command="{Binding EliminarCartaCommand}" Style="{StaticResource ButtonStyleDelete}" />
             </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>
