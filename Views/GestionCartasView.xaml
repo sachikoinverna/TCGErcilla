@@ -45,7 +45,13 @@
                 Style="{StaticResource ButtonStyleOcultarInformeGestionCartas}" />
             <Button Command="{Binding CrearCartaCommand}" Style="{StaticResource ButtonStyleCrearCartasGestionCartas}" />
         </StackLayout>
-        <Image Source="cartas_imagen.png" WidthRequest="500" HeightRequest="500" IsVisible="{Binding IsImagenVisible}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Image
+            HeightRequest="500"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsImagenVisible}"
+            Source="cartas_imagen.png"
+            VerticalOptions="Center"
+            WidthRequest="500" />
         <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Frame IsVisible="{Binding IsCartasVisible}" Style="{StaticResource FrameCartasGestionCartasStyle}">
                 <StackLayout IsVisible="{Binding IsCartasVisible}" Orientation="Vertical">

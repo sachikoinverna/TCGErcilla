@@ -19,7 +19,7 @@
     BackgroundColor="#E6E6FA"
     BindingContext="{viewmodels:GestionProductosViewModel}">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded"/>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
         <toolkit:EventToCommandBehavior Command="{Binding GetProductosCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
@@ -50,7 +50,11 @@
                 Command="{Binding CrearProductoCommand}"
                 Style="{StaticResource ButtonStyleCrearProductoGestionProductos}" />
         </StackLayout>
-        <Image Source="productos_imagen.png" WidthRequest="500" HeightRequest="500" IsVisible="{Binding IsImagenVisible}"/>
+        <Image
+            HeightRequest="500"
+            IsVisible="{Binding IsImagenVisible}"
+            Source="productos_imagen.png"
+            WidthRequest="500" />
 
         <HorizontalStackLayout>
             <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionProductosStyle}">

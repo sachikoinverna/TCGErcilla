@@ -20,7 +20,7 @@
     BindingContext="{viewmodels:GestionColeccionesViewModel}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding EstadoInicialCommand}" EventName="Loaded" />
-        <toolkit:EventToCommandBehavior Command="{Binding GetColeccionesCommand}" EventName="Loaded"/>
+        <toolkit:EventToCommandBehavior Command="{Binding GetColeccionesCommand}" EventName="Loaded" />
 
     </ContentPage.Behaviors>
     <VerticalStackLayout>
@@ -50,7 +50,11 @@
             <Button Command="{Binding CrearColeccionCommand}" Style="{StaticResource ButtonStyleCrearColeccionesGestionColecciones}" />
 
         </StackLayout>
-        <Image Source="colecciones_imagen.png" WidthRequest="500" HeightRequest="500" IsVisible="{Binding IsImagenVisible}"/>
+        <Image
+            HeightRequest="500"
+            IsVisible="{Binding IsImagenVisible}"
+            Source="colecciones_imagen.png"
+            WidthRequest="500" />
 
         <StackLayout
             HorizontalOptions="Center"
@@ -247,17 +251,31 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:CartaInfo">
-                                    <Frame  Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectCartaGestionColeccionesStyle}">
                                         <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
                                                 ErrorPlaceholder="carta_default.png"
                                                 Source="{Binding UrlImagen}"
                                                 WidthRequest="200" />
-                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNombreTitleStyleColecciones}"/>
-                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Nombre}" Style="{StaticResource CartaNombreTitleStyleColeccion}"/>
-                                            <Label HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNumeroTitleStyleColecciones}"/>
-                                            <Label Text="{Binding NumeroColeccion}" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource CartaNumeroCartaTitleStyleColeccion}"/>
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource CartaNombreTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource CartaNombreTitleStyleColeccion}"
+                                                Text="{Binding Nombre}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource CartaNumeroTitleStyleColecciones}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource CartaNumeroCartaTitleStyleColeccion}"
+                                                Text="{Binding NumeroColeccion}"
+                                                VerticalOptions="Center" />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>

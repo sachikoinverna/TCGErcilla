@@ -43,7 +43,11 @@
                 Style="{StaticResource ButtonStyleOcultarInformesGestionTiposProductos}" />
             <Button Command="{Binding CrearTipoProductoCommand}" Style="{StaticResource ButtonStyleCrearTiposProductosGestionTiposProductos}" />
         </StackLayout>
-        <Image Source="tipo_productos_imagen.png" WidthRequest="500" HeightRequest="500" IsVisible="{Binding IsImagenVisible}"/>
+        <Image
+            HeightRequest="500"
+            IsVisible="{Binding IsImagenVisible}"
+            Source="tipo_productos_imagen.png"
+            WidthRequest="500" />
 
         <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
 

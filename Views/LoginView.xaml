@@ -24,6 +24,6 @@
                     EventName="Navigated" />
             </WebView.Behaviors>
         </WebView>
-        <Button Text="Ir" Command="{Binding MostrarMainPageCommand}"/>
+        <Button Command="{Binding MostrarMainPageCommand}" Text="Ir" />
     </Grid>
 </ContentPage>
