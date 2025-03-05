@@ -13,8 +13,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
-        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="ButtonStyleCreate" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Green" />
@@ -26,8 +25,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
-        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="ButtonStyleEditar" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Green" />
@@ -38,9 +36,8 @@
         <Setter Property="Text" Value="Editar" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="ButtonStyleSeleccionarImagen" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Green" />
@@ -53,9 +50,11 @@
         <Setter Property="VerticalOptions" Value="Center" />
 
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="ButtonStyleMostrarCartasGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -64,38 +63,69 @@
         <Setter Property="Text" Value="Mostrar cartas" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="ButtonStyleMostrarProductosGestionTiposProductos" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="#f2fdf8" />
-        <Setter Property="BorderWidth" Value="3" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="BorderColor" Value="#5193d8" />
-        <Setter Property="TextColor" Value="#5193d8" />
-        <Setter Property="Text" Value="Mostrar productos" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
-    </Style>
-    <Style x:Key="ButtonStyleMostrarProductosGestionColecciones" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="#f2fdf8" />
-        <Setter Property="BorderWidth" Value="3" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="BorderColor" Value="#5193d8" />
-        <Setter Property="TextColor" Value="#5193d8" />
-        <Setter Property="Text" Value="Mostrar productos" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Margin" Value="0,5,0,0" />
 
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
-    <Style x:Key="ButtonStyleOcultarProductosGestionTiposProductos" TargetType="Button">
+
+    <Style x:Key="ButtonStyleMostrarDistribuidoresGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar distribuidores" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleOcultarDistribuidoresGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar distribuidores" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleMostrarProductosGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleOcultarProductosGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -104,12 +134,87 @@
         <Setter Property="Text" Value="Ocultar productos" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleBuscar" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#fef698" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="Text" Value="Buscar" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleMostrarProductosGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
-    <Style x:Key="ButtonStyleOcultarCartasGestionColecciones" TargetType="Button">
+    <Style x:Key="ButtonStyleMostrarInformeGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar informe" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleMostrarDetalleColeccionGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar detalles de la coleccion" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleMostrarCartasGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar cartas" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarCartasGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -118,12 +223,72 @@
         <Setter Property="Text" Value="Ocultar cartas" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleOcultarInformeGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar informe" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleOcultarDetalleColeccionGestionCartas" TargetType="Button">
+
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar detalles de la coleccion" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
-    <Style x:Key="ButtonStyleOcultarProductosGestionColecciones" TargetType="Button">
+    <Style x:Key="ButtonStyleMostrarInformeGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleMostrarProductosGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarProductosGestionTiposProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -132,12 +297,248 @@
         <Setter Property="Text" Value="Ocultar productos" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarProductosGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarInformeGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarCartasGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar cartas" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleMostrarInformeGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="ButtonStyleOcultarDistribuidoresGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar distribuidores" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarInformesGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleMostrarDistribuidoresGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar Distribuidores" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="ButtonStyleOcultarProductosGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonMostrarInformesGestionTiposProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarInformesGestionTiposProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonMostrarInformesGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarInformesGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar informes" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonMostrarColeccionesGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar colecciones" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarColeccionesGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar colecciones" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonMostrarTipoProductosGestionTipoProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Mostrar tipos de productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="ButtonStyleOcultarTiposProductosGestionTiposProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,5,5" />
+        <Setter Property="BackgroundColor" Value="#f2fdf8" />
+        <Setter Property="BorderWidth" Value="3" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderColor" Value="#5193d8" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="Text" Value="Ocultar tipos de productos" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
     <Style x:Key="ButtonStyleCrearCartasGestionCartas" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -147,10 +548,12 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
     <Style x:Key="ButtonStyleCrearProductoGestionProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -160,10 +563,12 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
     <Style x:Key="ButtonStyleCrearColeccionesGestionColecciones" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -173,10 +578,12 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
     <Style x:Key="ButtonStyleCrearDistribuidoresGestionDistribuidores" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -186,10 +593,12 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
     <Style x:Key="ButtonStyleCrearTiposProductosGestionTiposProductos" TargetType="Button">
+        <Setter Property="Margin" Value="0,5,0,5" />
+
         <Setter Property="BackgroundColor" Value="#f2fdf8" />
         <Setter Property="BorderWidth" Value="3" />
         <Setter Property="CornerRadius" Value="20" />
@@ -199,7 +608,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
 
     </Style>
 </ResourceDictionary>

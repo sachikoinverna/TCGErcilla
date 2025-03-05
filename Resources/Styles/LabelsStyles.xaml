@@ -3,5 +3,408 @@
     x:Class="TCGErcilla.Resources.Styles.LabelsStyles"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Style x:Key="LabelStyleDataFirstStack" TargetType="Label" />
+    <Style x:Key="ColeccionNombreTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionNumeroCartasColeccionTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="Text" Value="Numero de cartas" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionFechaDeLanzamientoColeccionTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="Text" Value="Fecha de lanzamiento" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionFechaDeLanzamientoColeccionTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Fecha de lanzamiento" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNombreTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNumeroCartaTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Numero de carta" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaColeccionTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Coleccion" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+    <Style x:Key="ColeccionNombreTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionNumeroCartasTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Numero de cartas" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="FechaColeccionTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Fecha de lanzamiento" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+    <Style x:Key="ProductoNombreTitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+    <Style x:Key="ProductoNombreTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoColeccionTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Coleccion" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+    <Style x:Key="ProductoTipoProductoTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Tipo de producto" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+    <Style x:Key="ProductoNombreTitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoColeccionTitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Coleccion" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+    <Style x:Key="ProductoTipoProductoTitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Tipo de producto" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+    <Style x:Key="ProductoNombreColeccionTitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Coleccion" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+    <Style x:Key="ProductoNombreTipoProductoTitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Tipo de producto" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+    <Style x:Key="CartaNombreTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#b74b6d" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Nombre" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+    <Style x:Key="CartaNumeroTitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#b74b6d" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Text" Value="Numero de carta" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+
+
+    <Style x:Key="ProductoNombre2TitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoNombreColeccion2TitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoNombreTipoProducto2TitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+
+    <Style x:Key="ProductoNombre2TitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoColeccion2TitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoTipoProducto2TitleStyleTipoProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+    <Style x:Key="ProductoNombre2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoColeccion2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ProductoTipoProducto2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+
+
+
+
+    <Style x:Key="ColeccionNombre2TitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionNumeroCartas2ColeccionTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionFechaDeLanzamiento2ColeccionTitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionNombre2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="ColeccionNumeroCartas2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="FechaColeccion2TitleStyleColecciones" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNombre2TitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNumeroCarta2TitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaColeccion2TitleStyleCartas" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="DistribuidorTitleStyleDistribuidores" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="DistribuidorTitleStyleProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="TipoProductoTitleStyleTiposProductos" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#5193d8" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNombreTitleStyleColeccion" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#b74b6d" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
+    <Style x:Key="CartaNumeroCartaTitleStyleColeccion" TargetType="Label">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#b74b6d" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+
+    </Style>
 </ResourceDictionary>

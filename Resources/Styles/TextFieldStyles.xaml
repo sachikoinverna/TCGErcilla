@@ -5,6 +5,48 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
+    <Style x:Key="TextFieldNombreDistribuidoresBuscarStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+    </Style>
+    <Style x:Key="TextFieldNombreProductosBuscarStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+    </Style>
+    <Style x:Key="TextFieldNombreColeccionesBuscarStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+    </Style>
+    <Style x:Key="TextFieldNombreCartasBuscarStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+    </Style>
+
+    <Style x:Key="TextFieldColeccionTiposProductosBuscarStyle" TargetType="material:TextField">
+        <Setter Property="Title" Value="Nombre" />
+        <Setter Property="BorderColor" Value="#ffcc03" />
+        <Setter Property="AllowClear" Value="True" />
+        <Setter Property="AccentColor" Value="#ffcc03" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="TextColor" Value="#ffcc03" />
+    </Style>
+
     <Style x:Key="TextFieldNombreCartasStyle" TargetType="material:TextField">
         <Setter Property="Title" Value="Nombre" />
         <Setter Property="BorderColor" Value="Blue" />

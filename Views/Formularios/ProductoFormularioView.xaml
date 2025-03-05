@@ -28,35 +28,41 @@
                 <ffimage:CachedImage
                     ErrorPlaceholder="producto_default.png"
                     HeightRequest="130"
+                    Source="{Binding RutaImagen}"
                     WidthRequest="130" />
                 <Button
                     Margin="5"
                     Command="{Binding SeleccionarImagenCommand}"
                     Style="{StaticResource ButtonStyleSeleccionarImagen}" />
             </HorizontalStackLayout>
-            <material:TextField
-                Text="{Binding ProductoInfo.Nombre}" Style="{StaticResource TextFieldNombreProductosStyle}">
+            <material:TextField Style="{StaticResource TextFieldNombreProductosStyle}" Text="{Binding ProductoInfo.Nombre}">
                 <validation:RequiredValidation />
             </material:TextField>
             <material:DropdownField
-                Style="{StaticResource DropdownFieldColeccionFormularioProductoStyle }"
                 ItemsSource="{Binding ListaColecciones}"
-                SelectedItem="{Binding ColeccionInfo}" />
+                SelectedItem="{Binding ProductoInfo.SelectedColeccion, Mode=TwoWay}"
+                Style="{StaticResource DropdownFieldColeccionFormularioProductoStyle}" />
             <material:DropdownField
-    Style="{StaticResource DropdownFieldTipoProductoFormularioProductoStyle }"
-    ItemsSource="{Binding ListaTipoProducto}"
-    SelectedItem="{Binding TipoProductoInfo}" />
+                ItemsSource="{Binding ListaTipoProducto}"
+                SelectedItem="{Binding ProductoInfo.SelectedTipoProducto, Mode=TwoWay}"
+                Style="{StaticResource DropdownFieldTipoProductoFormularioProductoStyle}" />
             <material:DropdownField
-Style="{StaticResource DropdownFieldDistribuidorFormularioProductoStyle }"
-ItemsSource="{Binding ListaDistribuidores}"
-SelectedItem="{Binding DistribuidorInfo}" />
-            <material:MultiplePickerField
-                Style="{StaticResource MultiplePickerFieldDistribuidoresFormularioProductoStyle}"
-                ItemsSource="{Binding ListaColecciones}"  />
+                ItemsSource="{Binding ListaDistribuidores}"
+                SelectedItem="{Binding ProductoInfo.SelectedDistribuidor, Mode=TwoWay}"
+                Style="{StaticResource DropdownFieldDistribuidorFormularioProductoStyle}" />
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}" Style="{StaticResource ButtonStyleCreate}" />
-                <Button input:FormView.IsSubmitButton="True" IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleEditar}" />
-                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}"/>
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
+                    Style="{StaticResource ButtonStyleCreate}" />
+                <Button
+                    input:FormView.IsSubmitButton="True"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleEditar}" />
+                <Button
+                    Command="{Binding EliminarProductoCommand}"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}" />
             </HorizontalStackLayout>
         </input:FormView>
 

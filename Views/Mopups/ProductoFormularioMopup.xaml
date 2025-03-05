@@ -12,7 +12,7 @@
     BindingContext="{viewmodels:ProductoFormularioViewModel}">
     <Frame Style="{StaticResource FrameProductosFormularioStyle}">
 
-        <VerticalStackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <formularios:ProductoFormularioView BindingContext="{Binding Source={x:Reference formulario_producto_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

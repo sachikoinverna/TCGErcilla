@@ -10,10 +10,9 @@
     Title="CartaFormularioMopup"
     x:DataType="viewmodels:CartaFormularioViewModel"
     BindingContext="{viewmodels:CartaFormularioViewModel}">
-    <Frame
-        Style="{StaticResource FrameCartasFormularioStyle}">
+    <Frame Style="{StaticResource FrameCartasFormularioStyle}">
 
-        <VerticalStackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <formularios:CartaFormularioView BindingContext="{Binding Source={x:Reference formulario_carta_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

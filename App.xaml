@@ -18,6 +18,7 @@
                 <ResourceDictionary x:Name="textFieldStyles" Source="Resources/Styles/TextFieldStyles.xaml" />
                 <ResourceDictionary x:Name="borderStyles" Source="Resources/Styles/BorderStyles.xaml" />
                 <ResourceDictionary x:Name="imageStyles" Source="Resources/Styles/ImageStyles.xaml" />
+                <ResourceDictionary x:Name="labelsStyles" Source="Resources/Styles/LabelsStyles.xaml" />
 
                 <ResourceDictionary x:Name="dropdownFieldStyles" Source="Resources/Styles/DropdownFieldStyles.xaml" />
                 <ResourceDictionary x:Name="multiplePickerFieldStyles" Source="Resources/Styles/MultiplePickerFieldStyles.xaml" />

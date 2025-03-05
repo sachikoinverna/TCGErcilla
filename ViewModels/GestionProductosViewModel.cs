@@ -25,23 +25,54 @@ namespace TCGErcilla.ViewModels
         private bool isDistribuidoresVisible;
         [ObservableProperty]
         private bool isReportesVisible;
+        [ObservableProperty]
+        private bool isImagenVisible;
+        [ObservableProperty]
+        private bool isProductosVisible;
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
             IsReportesVisible = false;
             IsDistribuidoresVisible = false;
+            IsImagenVisible = true;
+            IsProductosVisible = false;
+
         }
         [RelayCommand]
         public void MostrarReportes()
         {
             IsReportesVisible = true;
             IsDistribuidoresVisible = false;
+            IsImagenVisible = false;
+            IsProductosVisible = false;
+
         }
         [RelayCommand]
         public void OcultarReportes()
         {
             IsReportesVisible = false;
             IsDistribuidoresVisible = false;
+            IsImagenVisible = true;
+            IsProductosVisible = false;
+
+        }
+        [RelayCommand]
+        public void MostrarProductos()
+        {
+            IsReportesVisible = false;
+            IsDistribuidoresVisible = false;
+            IsImagenVisible = false;
+            IsProductosVisible = true;
+
+        }
+        [RelayCommand]
+        public void OcultarProductos()
+        {
+            IsReportesVisible = false;
+            IsDistribuidoresVisible = false;
+            IsImagenVisible = true;
+            IsProductosVisible = false;
+
         }
         [RelayCommand]
         public void MostrarDistribuidores()

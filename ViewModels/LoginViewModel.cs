@@ -17,6 +17,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task OnNavigated(object _navigator)
         {
+
             if (_navigator is not WebView webView) return;
 
             string url = await webView.EvaluateJavaScriptAsync("window.location.href;");

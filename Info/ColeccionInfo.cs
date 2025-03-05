@@ -17,9 +17,25 @@ namespace TCGErcilla.Info
         public int NumeroCartas { get; set; }
         [Newtonsoft.Json.JsonConverter(typeof(DateConverter))]
         [JsonProperty("fechaLanzamiento")]
-        public DateTime FechaLanzamiento { get; set; } = DateTime.Now;
+        public DateTime FechaLanzamiento { get; set; }  
+        private string _imagenUrl;
+
         [JsonProperty("urlImagen")]
-        public string UrlImagen { get; set; }
+        public string UrlImagen
+        {
+            set
+            {
+                if (value is not null)
+                {
+                    _imagenUrl = value;
+                }
+                else
+                {
+                    _imagenUrl = "collection_default.png";
+                }
+            }
+            get { return _imagenUrl; }
+        }
         public object Clone()
         {
             return new ColeccionInfo

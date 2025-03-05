@@ -6,167 +6,220 @@
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     xmlns:info="clr-namespace:TCGErcilla.Info"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
     xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
+    x:Name="gestion_productos"
     Title=""
-
     x:DataType="viewmodels:GestionProductosViewModel"
-    BackgroundImageSource="fondo_productos.jpg"
+    BackgroundColor="#E6E6FA"
     BindingContext="{viewmodels:GestionProductosViewModel}">
     <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded"/>
         <toolkit:EventToCommandBehavior Command="{Binding GetProductosCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
-        <Button
-            Margin="0,10"
-            Command="{Binding CrearProductoCommand}"
-            Style="{StaticResource ButtonStyleCrearProductoGestionProductos}" />
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
+            <Button
+                Command="{Binding MostrarProductosCommand}"
+                IsVisible="{Binding IsProductosVisible, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonStyleMostrarProductosGestionProductos}" />
+            <Button
+                Command="{Binding OcultarProductosCommand}"
+                IsVisible="{Binding IsProductosVisible}"
+                Style="{StaticResource ButtonStyleOcultarProductosGestionProductos}" />
+
+
+            <Button
+                Command="{Binding MostrarReportesCommand}"
+                IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"
+                Style="{StaticResource ButtonStyleMostrarInformeGestionProductos}" />
+            <Button
+                Command="{Binding OcultarReportesCommand}"
+                IsVisible="{Binding IsReportesVisible}"
+                Style="{StaticResource ButtonStyleOcultarInformesGestionProductos}" />
+            <Button
+                Margin="0,10"
+                Command="{Binding CrearProductoCommand}"
+                Style="{StaticResource ButtonStyleCrearProductoGestionProductos}" />
+        </StackLayout>
+        <Image Source="productos_imagen.png" WidthRequest="500" HeightRequest="500" IsVisible="{Binding IsImagenVisible}"/>
+
         <HorizontalStackLayout>
-            <Frame Style="{StaticResource FrameProductosGestionProductosStyle}">
+            <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionProductosStyle}">
 
-            <StackLayout
-                Margin="30"
-                HorizontalOptions="Start"
-                Orientation="Vertical"
-                Style="{StaticResource StackLayoutProductosGestionProductosStyle}">
+                <StackLayout IsVisible="{Binding IsProductosVisible}" Orientation="Vertical">
 
-                <Image
-                    Style="{StaticResource ImageProductosTitleStyle}" />
-                <Frame
-                    Style="{StaticResource FrameCollectionViewProductoGestionProductoStyle}">
+                    <Image Style="{StaticResource ImageProductosTitleStyle}" />
+                    <Frame Style="{StaticResource FrameCollectionViewProductoGestionProductoStyle}">
 
-                    <CollectionView
-                        Margin="10"
-                        HeightRequest="350"
-                        ItemsSource="{Binding ListaProductos}"
-                        SelectedItem="{Binding SelectedProducto}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
-                        SelectionMode="Single"
-                        WidthRequest="300">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="info:ProductoInfo">
-                                <Frame Style="{Binding FrameCollectionViewObjectProductoGestionProductosStyle}">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            x:DataType="viewmodels:GestionProductosViewModel"
-                                            BindingContext="{Binding Source={x:Reference}, Path=BindingContext}"
-                                            Command="{Binding EditarProductoCommand}"
-                                            NumberOfTapsRequired="2" />
-                                    </Frame.GestureRecognizers>
-                                    <HorizontalStackLayout>
-                                        <ffimage:CachedImage
-                                            Aspect="AspectFill"
-                                            ErrorPlaceholder="product_default.png"
-                                            Source="{Binding UrlImagen}"
-                                            WidthRequest="50" />
-                                        <VerticalStackLayout Margin="10">
-                                            <Label Text="{Binding Nombre}" />
+                        <CollectionView
+                            Margin="10"
+                            HeightRequest="350"
+                            ItemsSource="{Binding ListaProductos}"
+                            SelectedItem="{Binding SelectedProducto}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
+                            SelectionMode="Single"
+                            WidthRequest="300">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:ProductoInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectProductoGestionProductosStyle}">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                x:DataType="viewmodels:GestionProductosViewModel"
+                                                BindingContext="{Binding Source={x:Reference gestion_productos}, Path=BindingContext}"
+                                                Command="{Binding EditarProductoCommand}"
+                                                NumberOfTapsRequired="2" />
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout>
+                                            <ffimage:CachedImage
+                                                Aspect="AspectFill"
+                                                ErrorPlaceholder="product_default.png"
+                                                Source="{Binding UrlImagen}"
+                                                WidthRequest="200" />
+                                            <Label Style="{StaticResource ProductoNombreTitleStyleProductos}" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoNombre2TitleStyleProductos}"
+                                                Text="{Binding Nombre}"
+                                                VerticalOptions="Center" />
+                                            <Label Style="{StaticResource ProductoNombreColeccionTitleStyleProductos}" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoNombreColeccion2TitleStyleProductos}"
+                                                Text="{Binding SelectedColeccion.Nombre}"
+                                                VerticalOptions="Center" />
+                                            <Label Style="{StaticResource ProductoNombreTipoProductoTitleStyleProductos}" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource ProductoNombreTipoProducto2TitleStyleProductos}"
+                                                Text="{Binding SelectedTipoProducto.Tipo}"
+                                                VerticalOptions="Center" />
+
                                         </VerticalStackLayout>
-
-                                    </HorizontalStackLayout>
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup Name="CommonStates">
-                                            <VisualState Name="Normal" />
-                                            <VisualState Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="LightBlue" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
 
-                    </CollectionView>
-                </Frame>
-                    <Button Command="{Binding MostrarDistribuidoresCommand}" Text="Mostrar distribuidores" IsVisible="{Binding IsDistribuidoresVisible, Converter={toolkit:InvertedBoolConverter}}"/>
-                    <Button Command="{Binding OcultarDistribuidoresCommand}" Text="Ocultar distribuidores" IsVisible="{Binding IsDistribuidoresVisible}"/>
-                    <Button Command="{Binding MostrarReportesCommand}" Text="Mostrar reportes" IsVisible="{Binding IsReportesVisible, Converter={toolkit:InvertedBoolConverter}}"/>
-                    <Button Command="{Binding OcultarReportesCommand}" Text="Ocultar reportes" IsVisible="{Binding IsReportesVisible}"/>
+                        </CollectionView>
+                    </Frame>
+                    <Button
+                        Command="{Binding MostrarDistribuidoresCommand}"
+                        IsVisible="{Binding IsDistribuidoresVisible, Converter={toolkit:InvertedBoolConverter}}"
+                        Style="{StaticResource ButtonStyleMostrarDistribuidoresGestionProductos}" />
+                    <Button
+                        Command="{Binding OcultarDistribuidoresCommand}"
+                        IsVisible="{Binding IsDistribuidoresVisible}"
+                        Style="{StaticResource ButtonStyleOcultarDistribuidoresGestionProductos}" />
                 </StackLayout>
-        </Frame>
-            <Frame  IsVisible="{ Binding IsDistribuidoresVisible }" Style="{StaticResource FrameCartasGestionCartasStyle}">
+            </Frame>
+            <Frame IsVisible="{Binding IsDistribuidoresVisible}" Style="{StaticResource FrameDistribuidoresGestionProductosStyle}">
 
-            <StackLayout
-Margin="30"
-                IsVisible="{ Binding IsReportesVisible }"
-HorizontalOptions="Start"
-Orientation="Vertical"
-Style="{StaticResource StackLayoutCartasGestionCartasStyle}">
-                <Frame
-                    IsVisible="{ Binding IsReportesVisible }"
-    BackgroundColor="#f2fdf8"
-    BorderColor="#5193d8"
-    WidthRequest="350">
-                    <material:TabView>
+                <StackLayout
+                    Margin="30"
+                    HorizontalOptions="Start"
+                    Orientation="Vertical"
+                    Style="{StaticResource StackLayoutDistribuidoresGestionProductosStyle}">
 
-                        <material:TabItem Title="Tab One">
-                            <material:TabItem.ContentTemplate>
-                                <DataTemplate>
-                                    <StackLayout Orientation="Horizontal" Margin="5">
-                                        <Entry Placeholder="Correo" WidthRequest="200" Text="{Binding FiltroCorreo}"/>
-                                        <Button Text="BUSCAR" Margin="5" Command="{Binding GetPDFCommand}"/>
-                                    </StackLayout>
+                    <Image Style="{StaticResource ImageDistribuidoresTitleStyle}" />
+                    <Frame Style="{StaticResource FrameCollectionViewDistribuidoresGestionProductosStyle}">
+
+                        <CollectionView
+                            Margin="10"
+                            HeightRequest="350"
+                            ItemsSource="{Binding SelectedProducto.Distribuidores}"
+                            WidthRequest="300">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="info:DistribuidorInfo">
+                                    <Frame Style="{StaticResource FrameCollectionViewObjectDistribuidoresGestionProductosStyle}">
+                                        <VerticalStackLayout Margin="10">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource DistribuidorTitleStyleProductos}"
+                                                Text="{Binding Nombre}"
+                                                VerticalOptions="Center" />
+
+                                        </VerticalStackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Frame>
                                 </DataTemplate>
-                            </material:TabItem.ContentTemplate>
-                        </material:TabItem>
+                            </CollectionView.ItemTemplate>
 
 
-                        <material:TabItem Title="Tab Two">
-                            <material:TabItem.ContentTemplate>
-                                <DataTemplate>
-                                    <Label Text="Second Tab" />
-                                </DataTemplate>
-                            </material:TabItem.ContentTemplate>
-                        </material:TabItem>
+                        </CollectionView>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameBoxFiltersGestionProductosStyle}">
+                <StackLayout Orientation="Vertical">
+                    <input:FormView Spacing="20" SubmitCommand="{Binding GetPDFNombreCommand}">
 
-                        <material:TabItem Title="Tab Three">
-                            <material:TabItem.ContentTemplate>
-                                <DataTemplate>
-                                    <Label Text="Third Tab" />
-                                </DataTemplate>
-                            </material:TabItem.ContentTemplate>
-                        </material:TabItem>
-                    </material:TabView>
+                        <material:TextField Style="{StaticResource TextFieldNombreProductosBuscarStyle}" Text="{Binding FiltroNombre}">
+                            <validation:RequiredValidation />
 
+                        </material:TextField>
+                        <Button input:FormView.IsSubmitButton="True" Style="{StaticResource ButtonStyleBuscar}" />
+                    </input:FormView>
 
+                    <material:DropdownField
+                        ItemsSource="{Binding ListaTipoInfo}"
+                        SelectedItem="{Binding FiltroTipoProducto, Mode=TwoWay}"
+                        Style="{StaticResource DropdownTipoProductoProductosBuscarStyle}" />
+                    <Button Command="{Binding GetPDFTipoProductoCommand}" Style="{StaticResource ButtonStyleBuscar}" />
+                    <material:DropdownField
+                        ItemsSource="{Binding ListaDistribuidores}"
+                        SelectedItem="{Binding FiltroDistribuidor, Mode=TwoWay}"
+                        Style="{StaticResource DropdownFieldDistribuidorProductoBuscarStyle}" />
+                    <Button Command="{Binding GetPDFDistribuidorCommand}" Style="{StaticResource ButtonStyleBuscar}" />
+                    <material:DropdownField
+                        ItemsSource="{Binding ListaColecciones}"
+                        SelectedItem="{Binding FiltroColeccion, Mode=TwoWay}"
+                        Style="{StaticResource DropdownFieldColeccionProductoBuscarStyle}" />
+                    <Button Command="{Binding GetPDFColeccionCommand}" Style="{StaticResource ButtonStyleBuscar}" />
+                </StackLayout>
+            </Frame>
+            <Frame IsVisible="{Binding IsReportesVisible}" Style="{StaticResource FrameBoxGestionProductosStyle}">
 
-                </Frame>
-            </StackLayout>
-        </Frame>
-            <Frame Style="{StaticResource FrameCartasGestionCartasStyle}" IsVisible="{ Binding IsReportesVisible }">
-
-            <!--  CONTENEDOR PARA EL VISOR PDF  -->
-            <StackLayout
-        Margin="20"
-        BackgroundColor="WhiteSmoke"
-        HeightRequest="550"
-        Orientation="Vertical"
-                IsVisible="{ Binding IsReportesVisible }"
-        WidthRequest="550">
-
-                <StackLayout.Shadow>
-                    <Shadow
-                Brush="Black"
-                Opacity=".7"
-                Radius="20"
-                Offset="10,10" />
-                </StackLayout.Shadow>
-                <WebView
-            Margin="10"
-            HeightRequest="500"
-            Source="{Binding UrlPDF}"
-            WidthRequest="500" />
-            </StackLayout>
-        </Frame>
+                <!--  CONTENEDOR PARA EL VISOR PDF  -->
+                <StackLayout IsVisible="{Binding IsReportesVisible}" Orientation="Vertical">
+                    <Frame Style="{StaticResource FrameBoxNavegadorStyle}">
+                        <WebView Source="{Binding UrlPDF}" />
+                    </Frame>
+                </StackLayout>
+            </Frame>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

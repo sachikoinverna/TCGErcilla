@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCGErcilla.Utils;
 
 namespace TCGErcilla.Dto
 {
@@ -16,6 +17,8 @@ namespace TCGErcilla.Dto
         public string Nombre { get; set; }
         [JsonProperty("numeroCartas")]
         public int NumeroCartas { get; set; }
+        [Newtonsoft.Json.JsonConverter(typeof(DateConverter))]
+
         [JsonProperty("fechaLanzamiento")]
         public DateTime FechaLanzamiento { get; set; } = DateTime.Now;
         [JsonProperty("urlImagen")]

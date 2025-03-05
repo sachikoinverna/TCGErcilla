@@ -14,6 +14,7 @@ using TCGErcilla.Services;
 namespace TCGErcilla.ViewModels
 {
     [QueryProperty(nameof(TipoProductoInfo), "TipoProductoInfo")]
+    [QueryProperty(nameof(IsEditMode), "IsEditMode")]
 
     public partial class TipoProductoFormularioViewModel: ObservableObject
     {
@@ -21,17 +22,13 @@ namespace TCGErcilla.ViewModels
         private TipoProductoInfo tipoProductoInfo;
         [ObservableProperty]
         private bool isEditMode;
-        public TipoProductoFormularioViewModel()
-        {
-            TipoProductoInfo = new TipoProductoInfo();
-        }
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-           // if (TipoProductoInfo.Id != null) //Quiere decir que estamos editando
-            //{
-           //
-            //}
+            if (!IsEditMode)
+            {
+                TipoProductoInfo = new TipoProductoInfo();
+            }
         }
         [RelayCommand]
         public async Task CrearTipoProducto()
@@ -50,16 +47,48 @@ namespace TCGErcilla.ViewModels
             {
                 Data = tipo_producto,
                 Method = "POST",
-                Route = "http://192.168.20.102:8080/tipo_producto/crear"
+                Route = "http://localhost:8080/tipo_producto/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
-            CerrarMopup();
+            await CerrarMopup();
         }
         [RelayCommand]
         public async Task CerrarMopup()
         {
             await MopupService.Instance.PopAllAsync();
+            var currentPage = Shell.Current.CurrentPage as ContentPage;
+            if (currentPage != null)
+            {
+
+                var viewModel = currentPage.BindingContext as GestionTiposProductoViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.GetTiposProducto();
+                    OnPropertyChanged(nameof(viewModel.ListaTiposProducto));
+
+                }
+
+            }
+
+        }
+        [RelayCommand]
+        public async Task EliminarTipoProducto()
+        {
+            {
+                var request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://localhost:8080/tipo_producto/borrar/" + TipoProductoInfo.Id
+
+                    //Route = "http://192.168.20.102:8080//borrar/" + SelectedColeccion.Id
+                };
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                await CerrarMopup();
+                  await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
+
+            }
         }
     }
 }

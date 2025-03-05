@@ -12,7 +12,7 @@
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
     <Frame Style="{StaticResource FrameDistribuidoresFormularioStyle}">
 
-        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <formularios:DistribuidorFormularioView BindingContext="{Binding Source={x:Reference formulario_distribuidor_mopup}, Path=BindingContext}" />
         </VerticalStackLayout>
     </Frame>

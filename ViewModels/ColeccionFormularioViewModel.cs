@@ -6,17 +6,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TCGErcilla.Dto;
 using TCGErcilla.Info;
 using TCGErcilla.Models;
 using TCGErcilla.Services;
 using TCGErcilla.Utils;
+using TCGErcilla.Views;
 using static System.Net.WebRequestMethods;
+
 
 namespace TCGErcilla.ViewModels
 {
     [QueryProperty(nameof(ColeccionInfo), "ColeccionInfo")]
+    [QueryProperty(nameof(IsEditMode), "IsEditMode")]
+
     public partial class ColeccionFormularioViewModel: ObservableObject
     {
         [ObservableProperty]
@@ -26,14 +31,22 @@ namespace TCGErcilla.ViewModels
         private string rutaImagen;
         [ObservableProperty]
         private bool isEditMode;
-        public ColeccionFormularioViewModel()
-        {
-            ColeccionInfo = new ColeccionInfo();
-        }
         [RelayCommand]
         public void EstablecerValoresIniciales()
         {
-            RutaImagen = "coleccion_default.png";
+            if (IsEditMode)
+            {
+                RutaImagen = ColeccionInfo.UrlImagen;
+
+            }
+            else
+            {
+                ColeccionInfo = new ColeccionInfo();
+                ColeccionInfo.FechaLanzamiento = DateTime.Now;
+                RutaImagen = "collection_default.png";
+                OnPropertyChanged(nameof(ColeccionInfo));
+                OnPropertyChanged(nameof(ColeccionInfo.FechaLanzamiento));
+            }
         }
         [RelayCommand]
         public async void SeleccionarImagen()
@@ -57,27 +70,35 @@ namespace TCGErcilla.ViewModels
                 _coleccion.Id = null;
             }
             _coleccion.Nombre = ColeccionInfo.Nombre;
-            _coleccion.FechaLanzamiento = ColeccionInfo.FechaLanzamiento;
+            _coleccion.NumeroCartas = ColeccionInfo.NumeroCartas;
+            _coleccion.FechaLanzamiento = ColeccionInfo.FechaLanzamiento.Date;
             var request = new RequestModel()
             {
                 Data = _coleccion,
                 Method = "POST",
-                Route = "http://192.168.20.102:8080/colecciones/crear"
+                Route = "http://localhost:8080/colecciones/crear"
+
+                // Route = "http://192.168.20.102:8080/colecciones/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await UploadImage(response.Data.ToString());
+
             _coleccion.Id = Convert.ToInt32(response.Data);
+
             string extension = Path.GetExtension(RutaImagen);
-            _coleccion.UrlImagen = "https://www.dropbox.com/home/Aplicaciones/TCGErcilla/collections/?preview=" + response.Data.ToString + extension;
+            _coleccion.UrlImagen = "http://localhost:8081/dropbox/download/collection/" + _coleccion.Id + extension;
 
             var request2 = new RequestModel()
             {
                 Data = _coleccion,
                 Method = "POST",
-                Route = "http://192.168.20.102:8080/colecciones/crear"
+                Route = "http://localhost:8080/colecciones/crear"
+                // Route = "http://192.168.20.102:8080/colecciones/crear"
+
             };
             ResponseModel response2 = await APIService.ExecuteRequest(request2);
             await CerrarMopup();
+            
             await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
         [RelayCommand]
@@ -85,14 +106,11 @@ namespace TCGErcilla.ViewModels
         {
             try
             {
-                string _rutaImagen = RutaImagen;
-                RutaImagen = "loading.gif";
-                await UploadImageService.UploadImageAsync(_rutaImagen, idPersona,
+                await UploadImageService.UploadImageAsync(RutaImagen, idPersona,
                     "http://localhost:8081/dropbox/upload/collection");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
-                RutaImagen = _rutaImagen;
                 return true;
             }
             catch (Exception ex)
@@ -108,6 +126,35 @@ namespace TCGErcilla.ViewModels
         public async Task CerrarMopup()
         {
             await MopupService.Instance.PopAllAsync();
+            var mainPage = Application.Current.MainPage as NavigationPage;
+            var currentPage = Shell.Current.CurrentPage as ContentPage;
+            if (currentPage != null)
+            {
+                var viewModel = currentPage.BindingContext as GestionColeccionesViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.GetColecciones();
+                    OnPropertyChanged(nameof(viewModel.ListaColecciones));
+
+                }
+            }
+        }
+        [RelayCommand]
+        public async Task EliminarColeccion()
+        {
+            {
+                var request = new RequestModel()
+                {
+                    Method = "GET",
+                    Route = "http://localhost:8080/colecciones/borrar/" + ColeccionInfo.Id
+
+                    //Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
+                };
+                ResponseModel response = await APIService.ExecuteRequest(request);
+                CerrarMopup();
+                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+
+            }
         }
     }
 }
