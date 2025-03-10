@@ -41,7 +41,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void GetPDF()
         {
-            UrlPDF = "http://localhost:8082/report/getReportTiposProductoByNombre/" + FiltroNombre;
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportTiposProductoByNombre/" + FiltroNombre;
         }
 
 
@@ -74,9 +74,8 @@ namespace TCGErcilla.ViewModels
                     RequestModel request = new RequestModel()
                     {
                         Method = "GET",
-                        Route = "http://localhost:8080/productos/buscar/tipo_producto/" + SelectedTipoProductoInfo.Id
+                        Route = "http://erciapps.sytes.net:11014/productos/buscar/tipo_producto/" + SelectedTipoProductoInfo.Id
 
-                        // Route = "http://192.168.20.102:8080/productos/buscar/tipo_producto/" + SelectedTipoProductoInfo.Id
                     };
 
                     ResponseModel response = await APIService.ExecuteRequest(request);
@@ -99,7 +98,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public async Task MostrarInforme()
         {
-            UrlPDF = "http://localhost:8082/report/getReportTiposProductoAll";
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportTiposProductoAll";
                 IsProductosVisible = false;
                 IsReportesVisible = true;
             IsTipoProductosVisible = false;
@@ -134,18 +133,19 @@ namespace TCGErcilla.ViewModels
         {
             IsReportesVisible = false;
             IsImagenVisible = true;
+            FiltroNombre = null;
 
 
         }
         [RelayCommand]
             public async void GetTiposProducto()
         {
+            //H
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
                 Data = string.Empty,
-                Route = "http://localhost:8080/tipo_producto/todos"
-                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                Route = "http://erciapps.sytes.net:11014/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

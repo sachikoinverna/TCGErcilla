@@ -8,7 +8,7 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="Source" Value="tipos_de_producto_titulo.png" />
     </Style>
     <Style x:Key="ImageProductosTitleStyle" TargetType="Image">
@@ -16,7 +16,7 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="250" />
         <Setter Property="Source" Value="productos_titulos.png" />
     </Style>
     <Style x:Key="ImageCartasTitleStyle" TargetType="Image">
@@ -24,7 +24,7 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="200" />
         <Setter Property="Source" Value="cartas_titulo.png" />
     </Style>
     <Style x:Key="ImageDistribuidoresTitleStyle" TargetType="Image">
@@ -32,7 +32,7 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="Source" Value="distribuidores_titulo.png" />
     </Style>
     <Style x:Key="ImageColeccionesTitleStyle" TargetType="Image">
@@ -40,7 +40,7 @@
         <Setter Property="HeightRequest" Value="100" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="250" />
         <Setter Property="Source" Value="colecciones_titulos.png" />
     </Style>
 </ResourceDictionary>

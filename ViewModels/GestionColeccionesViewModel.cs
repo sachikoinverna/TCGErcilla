@@ -47,7 +47,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void GetPDFNombre()
         {
-            UrlPDF = "http://localhost:8082/report/getReportColeccionesByNombre/" + FiltroNombre;
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportColeccionesByNombre/" + FiltroNombre;
         }
 
         [RelayCommand]
@@ -60,7 +60,7 @@ namespace TCGErcilla.ViewModels
                     string fechaJasperDesde = FiltroFechaDesde.ToString("yyyy-MM-dd");
                     string fechaJasperHasta = FiltroFechaHasta.ToString("yyyy-MM-dd");
 
-                    UrlPDF = "http://localhost:8082/report/getReportColeccionesByFechas/" + fechaJasperDesde + "/" + fechaJasperHasta;
+                    UrlPDF = "http://erciapps.sytes.net:11015/report/getReportColeccionesByFechas/" + fechaJasperDesde + "/" + fechaJasperHasta;
                 }else if(FiltroFechaHasta == FiltroFechaDesde)
                 {
                     App.Current.MainPage.DisplayAlert("Atencion", "Las fechas no deben ser iguales.", "Aceptar");
@@ -96,7 +96,7 @@ namespace TCGErcilla.ViewModels
                     RequestModel request = new RequestModel()
                     {
                         Method = "GET",
-                        Route = "http://localhost:8080/cartas/buscarPorColeccionId/" + SelectedColeccion.Id
+                        Route = "http://erciapps.sytes.net:11014/cartas/buscarPorColeccionId/" + SelectedColeccion.Id
                     };
 
                     ResponseModel response = await APIService.ExecuteRequest(request);
@@ -144,6 +144,10 @@ namespace TCGErcilla.ViewModels
         {
             IsReportesVisible = false;
             IsImagenVisible = true;
+            FiltroNombre = null;
+            FiltroFechaDesde = DateTime.Now;
+            FiltroFechaHasta = DateTime.Now;
+
 
         }
         [RelayCommand]
@@ -173,7 +177,7 @@ namespace TCGErcilla.ViewModels
                     RequestModel request = new RequestModel()
                     {
                         Method = "GET",
-                        Route = "http://localhost:8080/productos/buscar/coleccion/" + SelectedColeccion.Id
+                        Route = "http://erciapps.sytes.net:11014/productos/buscar/coleccion/" + SelectedColeccion.Id
                     };
 
                     ResponseModel response = await APIService.ExecuteRequest(request);
@@ -208,7 +212,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void MostrarReportes()
         {
-            UrlPDF = "http://localhost:8082/report/getReportColeccionesAll";
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportColeccionesAll";
             IsColeccionesVisible = false;
             IsImagenVisible = false;
 
@@ -224,8 +228,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                 Route = "http://localhost:8080/colecciones/todas"
-                 //Route = "http://192.168.20.102:8080/colecciones/todas"
+                 Route = "http://erciapps.sytes.net:11014/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

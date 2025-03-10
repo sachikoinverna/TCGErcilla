@@ -57,8 +57,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/colecciones/todas"
-                //Route = "http://192.168.20.102:8080/colecciones/todas"
+                Route = "http://erciapps.sytes.net:11014/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -81,8 +80,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/tipo_producto/todos"
-                //Route = "http://192.168.20.102:8080/tipo_producto/todos"
+                Route = "http://erciapps.sytes.net:11014/tipo_producto/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -106,8 +104,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/distribuidores/todos"
-                //Route = "http://192.168.20.102:8080/distribuidores/todos"
+                Route = "http://erciapps.sytes.net:11014/distribuidores/todos"
+                
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -128,7 +126,7 @@ namespace TCGErcilla.ViewModels
         public async Task EstablecerValoresIniciales()
         {
            await GetTiposProducto();
-          await  GetDistribuidores();
+           await  GetDistribuidores();
            await GetColecciones();
             if (IsEditMode)
             {
@@ -191,26 +189,32 @@ namespace TCGErcilla.ViewModels
                 {
                     Data = _producto,
                     Method = "POST",
-                    Route = "http://localhost:8080/productos/crear"
+                    Route = "http://erciapps.sytes.net:11014/productos/crear"
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await UploadImage(response.Data.ToString());
                 _producto.Id = Convert.ToInt32(response.Data);
                 string extension = Path.GetExtension(RutaImagen);
             
-                _producto.UrlImagen = "http://localhost:8081/dropbox/download/product/" + _producto.Id + extension;
+                _producto.UrlImagen = "http://erciapps.sytes.net:11016/dropbox/download/product/" + _producto.Id + extension;
 
                 var request2 = new RequestModel()
                 {
                     Data = _producto,
                     Method = "POST",
-                    Route = "http://localhost:8080/productos/crear"
-
-                    //  Route = "http://192.168.20.102:8080/productos/crear"
+                    Route = "http://erciapps.sytes.net:11014/productos/crear"
                 };
                 ResponseModel response2 = await APIService.ExecuteRequest(request2);
                 await CerrarMopup();
-                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                if (IsEditMode)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", "Producto editado", "Aceptar");
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                }
+                    
 
             }
         }
@@ -220,7 +224,7 @@ namespace TCGErcilla.ViewModels
             try
             {
                 await UploadImageService.UploadImageAsync(RutaImagen, idPersona,
-                    "http://localhost:8081/dropbox/upload/product");
+                    "http://erciapps.sytes.net:11016/dropbox/upload/product");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
@@ -260,9 +264,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://localhost:8080/productos/borrar/" + ProductoInfo.Id
-
-                    //Route = "http://192.168.20.102:8080/productos/borrar/" + SelectedColeccion.Id
+                    Route = "http://erciapps.sytes.net:11014/productos/borrar/" + ProductoInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await CerrarMopup();

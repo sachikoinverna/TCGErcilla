@@ -26,6 +26,7 @@
                 Spacing="20"
                 VerticalOptions="Center">
                 <ffimage:CachedImage
+                    CacheType="None"
                     ErrorPlaceholder="producto_default.png"
                     HeightRequest="130"
                     Source="{Binding RutaImagen}"

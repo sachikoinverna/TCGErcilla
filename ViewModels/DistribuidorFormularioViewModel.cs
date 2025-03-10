@@ -51,11 +51,19 @@ namespace TCGErcilla.ViewModels
             {
                 Data = _distribuidor,
                 Method = "POST",
-                Route = "http://localhost:8080/distribuidores/crear"
+                Route = "http://erciapps.sytes.net:11014/distribuidores/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await CerrarMopup();
-            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            if (IsEditMode)
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", "Distribuidor editado", "Aceptar");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            }
+                
 
 
         }
@@ -66,10 +74,8 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Data = DistribuidorInfo.Id,
-                    Method = "POST",
-                    Route = "http://localhost:8080/distribuidores/eliminar" + DistribuidorInfo.Id
-
-                    //Route = "http://192.168.20.102:8080/distribuidores/eliminar" +DistribuidorInfo.Id
+                    Method = "GET",
+                    Route = "http://erciapps.sytes.net:11014/distribuidores/borrar/" + DistribuidorInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await CerrarMopup();

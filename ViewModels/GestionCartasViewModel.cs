@@ -43,7 +43,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void GetPDFNombre()
         {
-            UrlPDF = "http://localhost:8082/report/getReportCartasByNombre/" + FiltroNombre;
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportCartasByNombre/" + FiltroNombre;
         }
         [RelayCommand]
         public void GetPDFColeccion()
@@ -51,7 +51,7 @@ namespace TCGErcilla.ViewModels
 
             if (FiltroColeccion != null)
             {
-                UrlPDF = "http://localhost:8082/report/getReportCartasByIdColeccion/" + FiltroColeccion.Id;
+                UrlPDF = "http://erciapps.sytes.net:11015/report/getReportCartasByIdColeccion/" + FiltroColeccion.Id;
             }
             else
             {
@@ -79,7 +79,10 @@ namespace TCGErcilla.ViewModels
             IsReportsVisible = false;
             IsColeccionInfoVisible = false;
             IsCartasVisible = false;
-                IsImagenVisible = true;
+            IsImagenVisible = true;
+            FiltroNombre = null;
+            FiltroColeccion = null;
+       
         }
         [RelayCommand]
         public void MostrarColeccion()
@@ -124,7 +127,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void MostrarInformes()
         {
-            UrlPDF = "http://localhost:8082/report/getReportCartasAll";
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportCartasAll";
             GetListaColecciones();
                 IsReportsVisible = true;
             IsCartasVisible =false;
@@ -140,8 +143,8 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/cartas/todas"
-               //Route = "http://192.168.20.102:8080/cartas/todas"
+                Route = "http://erciapps.sytes.net:11014/cartas/todas"
+              
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -162,8 +165,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/colecciones/todas"
-                //Route = "http://192.168.20.102:8080/cartas/todas"
+                Route = "http://erciapps.sytes.net:11014/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -203,7 +205,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://192.168.20.102:8080/cartas/borrar/" + SelectedCarta.Id
+                    Route = "http://erciapps.sytes.net:11014/cartas/borrar/" + SelectedCarta.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");

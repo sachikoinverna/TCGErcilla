@@ -120,8 +120,7 @@
                         <CollectionView
                             Margin="10"
                             HeightRequest="350"
-                            ItemsSource="{Binding ListaCartas}"
-                            SelectedItem="{Binding SelectedCarta}"
+                            ItemsSource="{Binding ListaProductos}"
                             SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
                             SelectionMode="Single"
                             WidthRequest="300">
@@ -129,7 +128,7 @@
                                 <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="info:CartaInfo">
+                                <DataTemplate x:DataType="info:ProductoInfo">
                                     <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionDistribuidoresStyle}">
                                         <HorizontalStackLayout>
                                             <ffimage:CachedImage

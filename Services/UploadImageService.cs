@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace TCGErcilla.Services
 {
     class UploadImageService
     {
-        public static async Task<string> UploadImageAsync(string filePath, string idObject, string url)
+        public static async Task<string> UploadImageAsync(string filePath,string id, string url)
         {
             try
             {
@@ -18,9 +19,20 @@ namespace TCGErcilla.Services
                 using (HttpClient client = new HttpClient())
                 using (var content = new MultipartFormDataContent())
                 {
+                    // Recuperar el token y usuario desde SecureStorage
+                    string token = await SecureStorage.GetAsync("auth_token") ?? "";
+                    string user = await SecureStorage.GetAsync("user") ?? "";
+
+                    // Si el token está disponible, agregarlo a los encabezados del cliente HTTP
+                    if (!string.IsNullOrEmpty(token))
+                    {
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        client.DefaultRequestHeaders.Add("User", user);
+                    }
+
                     var fileContent = new ByteArrayContent(fileBytes);
-                    fileContent.Headers.Add("Content-Type", "application/octet-stream");
-                    content.Add(fileContent, "file", idObject + Path.GetExtension(filePath));
+                    fileContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    content.Add(fileContent, "file",id + Path.GetExtension(filePath));
 
                     // Enviar la imagen al servidor de Spring Boot
                     HttpResponseMessage response = await client.PostAsync(url, content);
@@ -32,13 +44,12 @@ namespace TCGErcilla.Services
                     else
                     {
                         Debug.WriteLine($"Error al subir la imagen. Código de estado: {response.StatusCode}");
-                        return null;  // Devuelves null directamente
+                        return null;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // En caso de error en la lectura del archivo o la solicitud HTTP
                 Debug.WriteLine($"Error: {ex.Message}");
                 return null;
             }

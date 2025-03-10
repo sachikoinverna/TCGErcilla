@@ -47,10 +47,18 @@ namespace TCGErcilla.ViewModels
             {
                 Data = tipo_producto,
                 Method = "POST",
-                Route = "http://localhost:8080/tipo_producto/crear"
+                Route = "http://erciapps.sytes.net:11014/tipo_producto/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
-            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
+            if (IsEditMode)
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", "Tipo producto editado", "ACEPTAR");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "ACEPTAR");
+            }
+               
             await CerrarMopup();
         }
         [RelayCommand]
@@ -79,9 +87,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://localhost:8080/tipo_producto/borrar/" + TipoProductoInfo.Id
-
-                    //Route = "http://192.168.20.102:8080//borrar/" + SelectedColeccion.Id
+                    Route = "http://erciapps.sytes.net:11014/tipo_producto/borrar/" + TipoProductoInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await CerrarMopup();

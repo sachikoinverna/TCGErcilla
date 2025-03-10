@@ -76,9 +76,7 @@ namespace TCGErcilla.ViewModels
             {
                 Data = _coleccion,
                 Method = "POST",
-                Route = "http://localhost:8080/colecciones/crear"
-
-                // Route = "http://192.168.20.102:8080/colecciones/crear"
+                Route = "http://erciapps.sytes.net:11014/colecciones/crear"
             };
             ResponseModel response = await APIService.ExecuteRequest(request);
             await UploadImage(response.Data.ToString());
@@ -86,20 +84,27 @@ namespace TCGErcilla.ViewModels
             _coleccion.Id = Convert.ToInt32(response.Data);
 
             string extension = Path.GetExtension(RutaImagen);
-            _coleccion.UrlImagen = "http://localhost:8081/dropbox/download/collection/" + _coleccion.Id + extension;
+            _coleccion.UrlImagen = "http://erciapps.sytes.net:11016/dropbox/download/collection/" + _coleccion.Id + extension;
 
             var request2 = new RequestModel()
             {
                 Data = _coleccion,
                 Method = "POST",
-                Route = "http://localhost:8080/colecciones/crear"
-                // Route = "http://192.168.20.102:8080/colecciones/crear"
+                Route = "http://erciapps.sytes.net:11014/colecciones/crear"
+               
 
             };
             ResponseModel response2 = await APIService.ExecuteRequest(request2);
             await CerrarMopup();
+            if (IsEditMode)
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", "Coleccion editada", "Aceptar");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+            }
             
-            await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
         }
         [RelayCommand]
         public async Task<bool> UploadImage(string idPersona)
@@ -107,7 +112,7 @@ namespace TCGErcilla.ViewModels
             try
             {
                 await UploadImageService.UploadImageAsync(RutaImagen, idPersona,
-                    "http://localhost:8081/dropbox/upload/collection");
+                    "http://erciapps.sytes.net:11016/dropbox/upload/collection");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
@@ -146,9 +151,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://localhost:8080/colecciones/borrar/" + ColeccionInfo.Id
-
-                    //Route = "http://192.168.20.102:8080/colecciones/borrar/" + SelectedColeccion.Id
+                    Route = "http://erciapps.sytes.net:11014/colecciones/borrar/" + ColeccionInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 CerrarMopup();

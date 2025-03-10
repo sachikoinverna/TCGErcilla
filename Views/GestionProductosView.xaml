@@ -56,7 +56,7 @@
             Source="productos_imagen.png"
             WidthRequest="500" />
 
-        <HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionProductosStyle}">
 
                 <StackLayout IsVisible="{Binding IsProductosVisible}" Orientation="Vertical">
@@ -66,7 +66,7 @@
 
                         <CollectionView
                             Margin="10"
-                            HeightRequest="350"
+                            HeightRequest="475"
                             ItemsSource="{Binding ListaProductos}"
                             SelectedItem="{Binding SelectedProducto}"
                             SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
@@ -88,6 +88,7 @@
                                         <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
+                                                CacheType="None"
                                                 ErrorPlaceholder="product_default.png"
                                                 Source="{Binding UrlImagen}"
                                                 WidthRequest="200" />
@@ -141,7 +142,6 @@
             <Frame IsVisible="{Binding IsDistribuidoresVisible}" Style="{StaticResource FrameDistribuidoresGestionProductosStyle}">
 
                 <StackLayout
-                    Margin="30"
                     HorizontalOptions="Start"
                     Orientation="Vertical"
                     Style="{StaticResource StackLayoutDistribuidoresGestionProductosStyle}">
@@ -151,7 +151,7 @@
 
                         <CollectionView
                             Margin="10"
-                            HeightRequest="350"
+                            HeightRequest="500"
                             ItemsSource="{Binding SelectedProducto.Distribuidores}"
                             WidthRequest="300">
                             <CollectionView.ItemsLayout>
@@ -160,7 +160,7 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="info:DistribuidorInfo">
                                     <Frame Style="{StaticResource FrameCollectionViewObjectDistribuidoresGestionProductosStyle}">
-                                        <VerticalStackLayout Margin="10">
+                                        <VerticalStackLayout>
                                             <Label
                                                 HorizontalOptions="Center"
                                                 Style="{StaticResource DistribuidorTitleStyleProductos}"

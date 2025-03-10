@@ -59,7 +59,7 @@
                     <Frame Style="{StaticResource FrameCollectionViewCartasGestionCartasStyle}">
                         <CollectionView
                             Margin="10"
-                            HeightRequest="350"
+                            HeightRequest="475"
                             HorizontalOptions="Center"
                             ItemsSource="{Binding ListaCartas}"
                             SelectedItem="{Binding SelectedCarta}"
@@ -83,6 +83,7 @@
                                         <VerticalStackLayout>
                                             <ffimage:CachedImage
                                                 Aspect="AspectFill"
+                                                CacheType="None"
                                                 ErrorPlaceholder="carta_default.png"
                                                 Source="{Binding UrlImagen}"
                                                 WidthRequest="200" />

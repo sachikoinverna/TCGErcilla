@@ -30,6 +30,7 @@
                 <ffimage:CachedImage
                     ErrorPlaceholder="collection_default.png"
                     HeightRequest="130"
+                    CacheType="None"
                     Source="{Binding RutaImagen}"
                     WidthRequest="130" />
                 <Button
@@ -43,7 +44,7 @@
                 <validation:DigitsOnlyValidation />
                 <validation:RequiredValidation />
             </material:TextField>
-            <material:DatePickerField  Date="{Binding ColeccionInfo.FechaLanzamiento}" Style="{StaticResource DatePickerFieldColeccionStyle}">
+            <material:DatePickerField Date="{Binding ColeccionInfo.FechaLanzamiento}" Style="{StaticResource DatePickerFieldColeccionStyle}">
                 <validation:RequiredValidation />
 
             </material:DatePickerField>
@@ -51,16 +52,16 @@
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode, Converter={toolkit:InvertedBoolConverter}}"
-                    Style="{StaticResource ButtonStyleCreate}"/>
-                
+                    Style="{StaticResource ButtonStyleCreate}" />
+
                 <Button
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
                     Style="{StaticResource ButtonStyleEditar}" />
                 <Button
-    Command="{Binding EliminarColeccionCommand}"
-    IsVisible="{Binding IsEditMode}"
-    Style="{StaticResource ButtonStyleDelete}" />
+                    Command="{Binding EliminarColeccionCommand}"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}" />
             </HorizontalStackLayout>
         </input:FormView>
     </VerticalStackLayout>

@@ -12,7 +12,7 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:TipoProductoFormularioViewModel">
     <StackLayout.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded"/>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
     </StackLayout.Behaviors>
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="EndAndExpand">
@@ -32,7 +32,10 @@
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
                     Style="{StaticResource ButtonStyleEditar}" />
-                <Button IsVisible="{Binding IsEditMode}" Command="{Binding EliminarTipoProductoCommand}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    Command="{Binding EliminarTipoProductoCommand}"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}" />
 
             </HorizontalStackLayout>
         </input:FormView>

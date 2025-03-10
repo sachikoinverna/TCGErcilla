@@ -60,7 +60,7 @@
 
                         <CollectionView
                             Margin="10"
-                            HeightRequest="350"
+                            HeightRequest="475"
                             ItemsSource="{Binding ListaTiposProducto}"
                             SelectedItem="{Binding SelectedTipoProductoInfo}"
                             SelectionChangedCommandParameter="{Binding Source={x:Reference}}"
@@ -116,14 +116,11 @@
             <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameProductosGestionTiposProductosStyle}">
                 <StackLayout IsVisible="{Binding IsProductosVisible}" Style="{StaticResource StackLayoutProductosGestionTiposProductosStyle}">
                     <Image Style="{StaticResource ImageProductosTitleStyle}" />
-                    <Frame
-                        IsVisible="{Binding IsProductosVisible}"
-                        Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}"
-                        WidthRequest="350">
+                    <Frame IsVisible="{Binding IsProductosVisible}" Style="{StaticResource FrameCollectionViewProductosGestionTiposProductoStyle}">
 
                         <CollectionView
                             Margin="10"
-                            HeightRequest="350"
+                            HeightRequest="500"
                             ItemsSource="{Binding ListaProductos}"
                             SelectionMode="Single"
                             WidthRequest="300">
@@ -134,7 +131,7 @@
                                 <DataTemplate x:DataType="info:ProductoInfo">
                                     <Frame Style="{StaticResource FrameCollectionViewObjectProductosGestionTipoProductoStyle}">
                                         <HorizontalStackLayout>
-                                            <VerticalStackLayout Margin="10">
+                                            <VerticalStackLayout>
                                                 <ffimage:CachedImage
                                                     Aspect="AspectFill"
                                                     ErrorPlaceholder="product_default.png"

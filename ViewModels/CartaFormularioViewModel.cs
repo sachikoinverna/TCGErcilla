@@ -38,13 +38,24 @@ namespace TCGErcilla.ViewModels
         private ColeccionInfo coleccionInfo;
 
         [RelayCommand]
-        public void EstablecerValoresIniciales()
+        public async Task EstablecerValoresIniciales()
         {
-            
-            GetColecciones();
+
+            await GetColecciones();
             if (IsEditMode) {
                 RutaImagen = CartaInfo.UrlImagen;
-
+                int id = CartaInfo.SelectedColeccion.Id;
+                foreach (var coleccion in ListaColecciones)
+                {
+                    if (coleccion.Id == id)
+                    {
+                        ColeccionInfo = new ColeccionInfo();
+                        CartaInfo.SelectedColeccion = coleccion;
+                        OnPropertyChanged(nameof(CartaInfo));
+                        OnPropertyChanged(nameof(CartaInfo.SelectedColeccion));
+                        break;
+                    }
+                }
             }
             else
             {
@@ -70,8 +81,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                 Method = "GET",
-                Route = "http://localhost:8080/colecciones/todas"
-                //Route = "http://192.168.20.102:8080/colecciones/todas"
+                Route = "http://erciapps.sytes.net:11014/colecciones/todas"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);
@@ -112,7 +122,7 @@ namespace TCGErcilla.ViewModels
                 {
                     Data = _carta,
                     Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Route = "http://erciapps.sytes.net:11014/cartas/crear"
 
                     //                Route = "http://192.168.20.102:8080/cartas/crear"
                 };
@@ -122,19 +132,27 @@ namespace TCGErcilla.ViewModels
                 await UploadImage(_carta.Id.ToString());
                 _carta.UrlImagen = RutaImagen;
                 string extension = Path.GetExtension(RutaImagen);
-                _carta.UrlImagen = "http://localhost:8081/dropbox/download/card/" + _carta.Id + extension;
+                _carta.UrlImagen = "http://erciapps.sytes.net:11016/dropbox/download/card/" + _carta.Id + extension;
 
                 var request2 = new RequestModel()
                 {
                     Data = _carta,
                     Method = "POST",
-                    Route = "http://localhost:8080/cartas/crear"
+                    Route = "http://erciapps.sytes.net:11014/cartas/crear"
 
-                    //Route = "http://192.168.20.102:8080/cartas/crear"
+                 
                 };
                 ResponseModel response2 = await APIService.ExecuteRequest(request2);
                 await CerrarMopup();
-                await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                if (IsEditMode)
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", "Carta editada", "Aceptar");
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                }
+                    
 
             }
             else
@@ -149,7 +167,7 @@ namespace TCGErcilla.ViewModels
             try
             {
                 await UploadImageService.UploadImageAsync(RutaImagen, idCarta,
-                    "http://localhost:8081/dropbox/upload/card");
+                    "http://erciapps.sytes.net:11016/dropbox/upload/card");
                 await App.Current.MainPage.DisplayAlert("ÉXITO",
                     "Subiendo imagen...",
                     "ACEPTAR");
@@ -189,9 +207,7 @@ namespace TCGErcilla.ViewModels
                 var request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://localhost:8080/cartas/borrar/" + CartaInfo.Id
-
-                    //Route = "http://192.168.20.102:8080/cartas/borrar/" + SelectedColeccion.Id
+                    Route = "http://erciapps.sytes.net:11014/cartas/borrar/" + CartaInfo.Id
                 };
                 ResponseModel response = await APIService.ExecuteRequest(request);
                 await CerrarMopup();

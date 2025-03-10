@@ -40,9 +40,7 @@ namespace TCGErcilla.ViewModels
         [RelayCommand]
         public void GetPDF()
         {
-            UrlPDF = "http://localhost:8082/report/getReportDistribuidoresByNombre/"+FiltroNombre;
-
-            // UrlPDF = "http://localhost:8080/report/getReport2/" + FiltroNombre;
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportDistribuidoresByNombre/" + FiltroNombre;
         }
 
         [RelayCommand]
@@ -62,8 +60,7 @@ namespace TCGErcilla.ViewModels
                 RequestModel request = new RequestModel()
                 {
                     Method = "GET",
-                    Route = "http://localhost:8080/productos/buscar_distribuidor/" + SelectedDistribuidor.Id
-                    //Route = "http://192.168.20.102:8080/distribuidores/todos"
+                    Route = "http://erciapps.sytes.net:11014/productos/buscar_distribuidor/" + SelectedDistribuidor.Id
                 };
 
                 ResponseModel response = await APIService.ExecuteRequest(request);
@@ -114,12 +111,13 @@ namespace TCGErcilla.ViewModels
         {
             IsProductosVisible = false;
             IsReportesVisible = false;
+            FiltroNombre = null;
 
         }
         [RelayCommand]
         public void MostrarReportes()
         {
-            UrlPDF = "http://localhost:8082/report/getReportDistribuidoresAll";
+            UrlPDF = "http://erciapps.sytes.net:11015/report/getReportDistribuidoresAll";
             IsDistribuidoresVisible = false;
 
             IsProductosVisible = false;
@@ -131,7 +129,7 @@ namespace TCGErcilla.ViewModels
         public void OcultarReportes()
         {
             IsDistribuidoresVisible = false;
-
+            FiltroNombre = null;
             IsProductosVisible = false;
             IsReportesVisible = false;
             IsImagenVisible = true;
@@ -143,8 +141,7 @@ namespace TCGErcilla.ViewModels
             RequestModel request = new RequestModel()
             {
                Method = "GET",
-               Route = "http://localhost:8080/distribuidores/todos"
-               //Route = "http://192.168.20.102:8080/distribuidores/todos"
+               Route = "http://erciapps.sytes.net:11014/distribuidores/todos"
             };
 
             ResponseModel response = await APIService.ExecuteRequest(request);

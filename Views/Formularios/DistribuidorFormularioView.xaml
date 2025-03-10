@@ -13,6 +13,9 @@
     xmlns:viewmodels="clr-namespace:TCGErcilla.ViewModels"
     x:DataType="viewmodels:DistribuidorFormularioViewModel"
     BindingContext="{viewmodels:DistribuidorFormularioViewModel}">
+    <StackLayout.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding EstablecerValoresInicialesCommand}" EventName="Loaded" />
+    </StackLayout.Behaviors>
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="EndAndExpand">
             <ImageButton Command="{Binding CerrarMopupCommand}" Style="{StaticResource ImageButtonClose}" />
@@ -30,7 +33,10 @@
                     input:FormView.IsSubmitButton="True"
                     IsVisible="{Binding IsEditMode}"
                     Style="{StaticResource ButtonStyleEditar}" />
-                <Button IsVisible="{Binding IsEditMode}" Style="{StaticResource ButtonStyleDelete}" />
+                <Button
+                    Command="{Binding EliminarDistribuidorCommand}"
+                    IsVisible="{Binding IsEditMode}"
+                    Style="{StaticResource ButtonStyleDelete}" />
 
             </HorizontalStackLayout>
         </input:FormView>
